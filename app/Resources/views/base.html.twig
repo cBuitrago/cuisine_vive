@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Cuisine Vive{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets 'Resources/public/css/*' filter='cssrewrite' output='css/compiled/app.css' %}
+            <link href="{{ asset_url }}" rel="stylesheet" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+    {% block body %}{% endblock %}
+    {% block javascripts %}
+        {% javascripts 'Resources/public/js/*' output='js/compiled/app.js' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+</body>
+</html>
