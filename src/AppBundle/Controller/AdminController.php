@@ -10,17 +10,14 @@ class AdminController extends Controller {
     /**
      * @Route(
      *     "/administracion",
-     *     defaults={"_locale": "fr"},
-     *     requirements={
-     *         "_locale": "en|fr"
-     *     }
+     *     name="administracion"
      * )
      */
     public function indexAction($locale = 'fr') {
         $number ='Cuisine_vive';
 
-        return $this->render('admin/login.html.twig', array(
-                    'number' => $number,
+        return $this->render('admin/index.html.twig', array(
+                    'number' => 'administracion',
         ));
     }
 

@@ -1,0 +1,33 @@
+{
+    "homepage": {                
+        "sectionTop": {
+            "link1": {
+                "path": "jhfjdghj/ddgfhsdh.png",
+                "title": "Sign up"
+            },
+            "link2": {
+                "path": "jfhdhgghj/ddgfgddfhh.png",
+                "title": "Fr"
+            },
+            "socialIcons":
+                    [{
+                            "imagepath":"kjgkjhj",
+                            "imageAlt":"gjhhjkgjh",
+                            "href":"jhkcvjbxlkbkj"
+                    },
+                    {
+                            "imagepath":"dgdfhh",
+                            "imageAlt":"gjhhdfhgdfhghjkgjh",
+                            "descri":"fghdfhgfhgfd"
+                    },
+                    {
+                            "imagepath":"dgdfhh",
+                            "imageAlt":"gjhhdfhgdfhghjkgjh",
+                            "descri":"fghdfhgfhgfd"
+                    }]
+                
+            
+        }
+    }
+}        
+       

@@ -1,0 +1,18 @@
+{
+    "homepage": {
+        "title": "titulo en frances",
+        "section1": {
+            "title": "subtitulo en frances",
+            "section1_a": {
+                "GlossEntry": {
+                    "ID": "fr id",
+                    "name": "fr name",
+                    "lastName": "fr last name",
+                    "GlossDef": {
+                        "GlossSeeAlso": ["77777", "55555"]
+                    }
+                }
+            }
+        }
+    }
+}

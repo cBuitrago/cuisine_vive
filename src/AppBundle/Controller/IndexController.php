@@ -31,9 +31,12 @@ class IndexController extends Controller {
      */
     public function indexLangueAction(Request $request) {
         $language = $request->getLocale();
-        //$lang = json_decode(file_get_contents("data/localization/".$lang.".json"));
+        $path = $this->get('kernel')->getRootDir() . '/../web' 
+                . '/Resources/public/data/index'.$language.'.json';
+        $lang = json_decode(file_get_contents($path));
+        
         return $this->render('index/index.html.twig', array(
-                    'number' => 'hola perrito',
+                    'lang' => $lang,
         ));
     }
     
