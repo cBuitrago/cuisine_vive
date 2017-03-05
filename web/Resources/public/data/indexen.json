@@ -1,5 +1,5 @@
 {
-    "homepage": {                
+    "homepage": {
         "sectionTop": {
             "link1": {
                 "path": "jhfjdghj/ddgfhsdh.png",
@@ -10,24 +10,106 @@
                 "title": "Fr"
             },
             "socialIcons":
-                    [{
-                            "imagepath":"kjgkjhj",
-                            "imageAlt":"gjhhjkgjh",
-                            "href":"jhkcvjbxlkbkj"
-                    },
-                    {
-                            "imagepath":"dgdfhh",
-                            "imageAlt":"gjhhdfhgdfhghjkgjh",
-                            "descri":"fghdfhgfhgfd"
-                    },
-                    {
-                            "imagepath":"dgdfhh",
-                            "imageAlt":"gjhhdfhgdfhghjkgjh",
-                            "descri":"fghdfhgfhgfd"
-                    }]
-                
-            
+                    "link2": {
+                "imagepath": "https://www.facebook.com/",
+                            "imageAlt": "facebook"
+            }
+                    [   {
+                            
+                        },
+                        {
+                            "imagepath": "https://www.facebook.com/",
+                            "imageAlt": "Twitter"
+                        },
+                        {
+                            "imagepath": "https://www.facebook.com/",
+                            "imageAlt": "Instagram"
+                        },
+                        {
+                            "imagepath": "https://www.facebook.com/",
+                            "imageAlt": "Youtube"
+                        },
+                        {
+                            "imagepath": "https://www.facebook.com/",
+                            "imageAlt": "Google+"
+                        },
+                        {
+                            "imagepath": "https://www.facebook.com/",
+                            "imageAlt": "Pinterest"
+                        }
+                    ],
+            "menu1": {
+                "path": "jhfjdghj/ddgfhsdh.png",
+                "title": "Accueil"
+            },
+            "menu2": {
+                "path": "#about",
+                "title": "About "
+            },
+            "menu3": {
+                "path": "#howItWorks",
+                "title": "How it works"
+            },
+            "menu4": {
+                "path": "#menu",
+                "title": "Menu"
+            },
+            "menu5": {
+                "path": "#contact",
+                "title": "Contact"
+            },
+            "menu6": {
+                "path": "jfhdhgghj/ddgfgddfhh.png",
+                "title": "shoppingCart"
+            }
+        },
+        "sectionAbout": {
+            "contenu": {
+                "title": "About Cuisine Vive",
+                "text": [
+                    "A Chef, A Kitchen, A Dream",
+                    "It‘s been scientific prouved that what we eat has a direct impact in our body’s functioning Andre Luis saw this reality and he had as  challenge  to reinvent several recipes of traditional cuisine when he began working in s Montreal’s Day care. He has to deal with all kinds of intolerences, food allergies and restrictions in his job.",
+                    "The Andre’s biggest worry  was make kids  eat more fruits and vegetables , avoid the conservese,  fried foods and sugar-excess snacks.",
+                    "Everything should be served in healthy food  portions including essential aliments for their development. He succeeded! He makes them eat his soups, couscous salad, the energy balls, and cereal bars, and lots of other dishes he prepares every day in a CPE in Montreal. The surprising parents ask him the recipe  because their children do not eat certain aliments  at home.",
+                    "Andre Luis has created Cuisine Vive another option to eat well for life. We offer homemade dishes without conservative. When you do not have time to cook, when looking for a paleo option, vege and gluten free or simply when you want to surprise your guests with new recipes."
+                ]
+            }
+        },
+        "sectionHowItWorks": {
+            "contenu": {
+                "title": "How does it work?",
+                "text": [
+                    "The modern  lifestyle is crazy busy. With a  full work schedule, travels,  small children or all of the above, a healthy cooking may be the last thing on your mind.",
+                    "Cuisine Vive is here to help you save time in grocery shopping,  recipe –hunting and cooking Easy!.",
+                    "Check out our weekly menu posted every Sunday morning.",
+                    "Click on the quantities you want to order and they automatically will be added to your chart. ",
+                    "Fill out the form with you basic information and we will confirm you order within 24 hours by email and txt message.",
+                    "Orders can be placed until Wednesday. We shop and cook on Thrusdays and Fridays  Meals are freshly prepared and delivered right to your home over the weekend.",
+                    "Pay with debit card or cash on your  delivery day. You can also save 5% on your purchase if you pick up your oder."
+                ]
+            }
+        },
+        "sectionMenu": {
+            "contenu": {
+                "title": "Our Menu",
+                "text": "Our menu has been carefully created thinking of each of the palates of our customers with the idea of ​​satisfying them. Our dishes are healthy, well-proportioned and really delicious.",
+                "category": {
+                    "alt1": "Follow Us",
+                    "title1": "Follow Us",
+                    "path1": "Follow Us",
+                    "button1": "Follow Us"
+                }
+            }
+        },
+        "setionNewsletter": {
+            "contenuRight": {
+                "title": "Follow Us"
+            },
+            "contenuLeft": {
+                "title": "Newsletter",
+                "text": "Be the first to be informed about Cuisine Vive’s news, offers and events.",
+                "placeholder":"Your email address"
+            }
         }
     }
-}        
-       
+}

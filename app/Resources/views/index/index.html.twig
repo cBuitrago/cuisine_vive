@@ -15,8 +15,8 @@
    </ul> #}
 
     <header>
-        <div class="barTop mainBgColor">  
-            <div class="container">
+        <div class="barTop">  
+            <div class="content">
                 <div class="links">
                     <a href="{{ lang.homepage.sectionTop.link1.path}}">
                         <p class="">{{ lang.homepage.sectionTop.link1.title}}</p>
@@ -26,57 +26,176 @@
                     </a>
                     <div class="social-networks">
                         <ul>
-                            <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
-                                <li class=""><span class="icon icon-facebook-with-circle"></span></li>
-                            </a>
-                            <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
-                                <li class=""><span class="icon icon-twitter-with-circle"></span></li>
-                            </a>
-                            <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
-                                <li class=""><span class="icon icon-instagram-with-circle"></span></li>
-                            </a>
-                            <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
-                                <li class=""><span class="icon icon-youtube-with-circle"></span></li>
-                            </a>
-                            <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
-                                <li class=""><span class="icon icon-google-with-circle"></span></li>
-                            </a>
-                            <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
-                                <li class=""><span class="icon icon-pinterest-with-circle"></span></li>
-                            </a>
+                            <li class=""><a href="{{ lang.homepage.sectionTop.s.path}}" target="_blank">
+                                    <span class="icon icon-facebook-with-circle"/></a></li>
+                            <li class=""><a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                    <span class="icon icon-twitter-with-circle"/></a></li>
+                            <li class=""> <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                    <span class="icon icon-instagram-with-circle"/></a></li>
+                            <li class=""><a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                    <span class="icon icon-youtube-with-circle"/></a></li>
+                            <li class=""> <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                    <span class="icon icon-google-with-circle"/></a></li>
+                            <li class=""><a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                    <span class="icon icon-pinterest-with-circle"/></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <nav class="navbar">
-            <div class="container">
-                <h1>
-                    <a href="/">
-                        {% image 'Resources/public/images/logo.png' %}
-                        <img src="{{ asset_url }}" alt="Cuisine Vive" />
-                        {% endimage %}
-                    </a>    
-                </h1>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li><a href="#">Separated link<span class='glyphicon glyphicon-apple'></span></a></li>                                
-                            </ul>
-                        </li>
+        <nav class="navbar content">
+            <h1>
+                <a href="/">
+                    {% image 'Resources/public/images/logo.png' %}
+                    <img src="{{ asset_url }}" alt="Cuisine Vive" />
+                    {% endimage %}
+                </a>    
+            </h1>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+
+                    <li class="active"><a href="{{ lang.homepage.sectionTop.menu1.path}}"> <span class="icon-home"></span></a></li>
+
+                    <li><a href="{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu6.path}}"> <span class="icon-shopping-cart"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="img-responsive item active">
+                {% image 'Resources/public/images/picture1.jpg' %}
+                <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
+                {% endimage %}
+                <div class="carousel-caption">
+                    ...
+                </div>
+            </div>
+
+            <div class="img-responsive item">
+                {% image 'Resources/public/images/picture3.jpg' %}
+                <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
+                {% endimage %}
+                <div class="carousel-caption">
+                    ...
+                </div>
+            </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>            
+        </a>
+    </div>    
+    <div id='howItWorks'>
+        <div class='content'>
+            <h2>{{ lang.homepage.sectionHowItWorks.contenu.title}}</h2>
+            {% for textHowItWorks in lang.homepage.sectionHowItWorks.contenu.text %}
+                <p>{{ textHowItWorks }}</p>
+            {% endfor %}
+
+            <div class="howItWorks-icons">
+                <div class="howItWorks-icon">
+                    <span class="home-works__icon-order icon-cart"></span>
+                </div>
+                <div class="howItWorks-icon">
+                    <span class="home-works__icon-order icon-food"></span>
+                </div>
+                <div class="howItWorks-icon">
+                    <span class="home-works__icon-order icon-truck"></span>
+                </div>
+                <div class="howItWorks-icon">
+                    <span class="home-works__icon-order icon-love"></span>
+                </div>
+            </div>
+        </div>  
+    </div> 
+
+    <div id='menu'>
+        <div class='content'>
+            <h2>{{ lang.homepage.sectionMenu.contenu.title}}</h2>
+            <p>{{ lang.homepage.sectionMenu.contenu.text}}</p>
+            <div class="categories-menu">                
+                <div class="category-img">
+                    {% image 'Resources/public/images/picture2.jpg' %}
+                    <img class="" src="{{ asset_url }}" alt="{{ lang.homepage.sectionMenu.contenu.category.alt1}}" />
+                    {% endimage %}
+                </div>
+                <div class="category-bg">
+                    <h3>{{ lang.homepage.sectionMenu.contenu.category.title1}}</h3>
+                    <a href="{{ lang.homepage.sectionMenu.contenu.category.path1}}">
+                        {{ lang.homepage.sectionMenu.contenu.category.button1}}
+                    </a>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <div id='facebook'>
+        <div class='content'>
+            {% image 'Resources/public/images/sombreroChef.png' %}
+            <img src="{{ asset_url }}" alt="Cuisine Vive" />
+            {% endimage %}
+            <div class="fb-page" data-href="https://www.facebook.com/Journal-Eureka-1435830350024137/" data-tabs="timeline" data-width="500" data-height="220" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/Journal-Eureka-1435830350024137/" class="fb-xfbml-parse-ignore">
+                    <a href="https://www.facebook.com/Journal-Eureka-1435830350024137/">Cuisine Vive</a>
+                </blockquote>
+            </div>
+        </div> 
+    </div>
+    <div id='about'>
+        <div class='content'>
+            <h2>{{ lang.homepage.sectionAbout.contenu.title}}</h2>
+            {% for textAbout in lang.homepage.sectionAbout.contenu.text %}
+                <p>{{ textAbout }}</p>
+            {% endfor %}
+        </div>    
+    </div>    
+    <div id='newsletter'>
+        <div class='content'>
+            <div class="fl_left left">
+                <h3>{{ lang.homepage.setionNewsletter.contenuLeft.title}}</h3>
+                <p>{{ lang.homepage.setionNewsletter.contenuLeft.text }}</p>
+                <input class="emailNewsletter" type="text" placeholder="{{lang.homepage.setionNewsletter.contenuLeft.placeholder}}">
+            </div>
+            <div class="fl_right right">
+                <h3>{{ lang.homepage.setionNewsletter.contenuRight.title}}</h3>
+                <div class="social-networks">
+                    <ul>
+                        <li class=""><a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                <span class="icon icon-facebook-with-circle"/></a></li>
+                        <li class=""><a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                <span class="icon icon-twitter-with-circle"/></a></li>
+                        <li class=""> <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                <span class="icon icon-instagram-with-circle"/></a></li>
+                        <li class=""><a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                <span class="icon icon-youtube-with-circle"/></a></li>
+                        <li class=""> <a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                <span class="icon icon-google-with-circle"/></a></li>
+                        <li class=""><a href="{{ lang.homepage.sectionTop.link1.path}}" target="_blank">
+                                <span class="icon icon-pinterest-with-circle"/></a></li>
                     </ul>
                 </div>
-            </div>  
-        </nav>
+            </div>    
+        </div>
+    </div>
+    <div id='contact'>
+        <div class='content'>
 
-    </header>
+        </div>    
+    </div>
 
 
 {% endblock %}

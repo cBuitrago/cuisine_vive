@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dishportion</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dishPortion.id }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ dishPortion.price }}</td>
+            </tr>
+            <tr>
+                <th>Lastprice</th>
+                <td>{{ dishPortion.lastPrice }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dishportion_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('dishportion_edit', { 'id': dishPortion.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

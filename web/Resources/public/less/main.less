@@ -152,13 +152,12 @@
 }
 
 
-@viveColorGreen: #84bd00;
-@viveColorYellow:#fedb00;
+@viveColorGreen: #60c800;
+@viveColorYellow:#fddd00;
 @mainColor:#afe27b;
 @secondColor:#d7f1bf;
 @thirdColor:#f3f9e6;
 @white:#ffffff;
-
 @black:#000000;
 
 
@@ -171,7 +170,22 @@
 h1,h2,h3,h4,p{
     font-family: Helvetica, Verdana, Arial, Sans-Serif;
 }
-
+h2{
+    text-align: center;
+    padding: 10px 0 20px 0;
+    margin: 0;
+    font-size: 36px;
+    font-weight: bold;
+}
+h3{
+    font-size:28px;
+    text-transform: uppercase;
+    margin: 10px 0;    
+}
+p{
+    font-size: 16px;
+    line-height: 20px;
+}
 
 
 @media only screen 
@@ -179,25 +193,66 @@ and (min-device-width: 320px)
 and (max-device-width: 480px)
 and (-webkit-min-device-pixel-ratio: 2) {
 
+    .content{
+        width: 310px;
+        margin: 0 auto;
+    }
+}
+@media only screen 
+and (min-device-width: 481px) 
+and (max-device-width: 768px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+    .content{
+        width: 470px;
+        margin: 0 auto;
+    }
+}
+@media only screen 
+and (min-device-width: 769px) 
+and (max-device-width: 1024px) 
+and (-webkit-min-device-pixel-ratio: 1) {
+    .content{
+        width: 760px;
+        margin: 0 auto;
+    }
 
 }
+@media only screen 
+and (min-device-width: 1025px) 
+and (max-device-width: 1200px) 
+and (-webkit-min-device-pixel-ratio: 1) {
+    .content{
+        width: 940px;
+        margin: 0 auto;
+    }
 
+}
+@media only screen 
+and (min-device-width: 1201px) 
+and (-webkit-min-device-pixel-ratio: 1) {
+    .content{
+        width: 960px;
+        margin: 0 auto;
+    }
+
+}
 header{
     font-family: Helvetica, Verdana, Arial, Sans-Serif;
     font-size: 18px;
     .barTop{
-        background-color: @secondColor;
+        background-color: @black;
         height: 55px;
         padding-top: 14px;
         .links{
             a{color: @viveColorGreen;}
             float:right;
-            width:40%; 
+            width:45%; 
             a{
                 p{
                     display: inline;                    
                     text-transform: uppercase;
-                    margin-right: 8%;
+                    margin-right: 5%;
                 }  
             }
             a:hover{
@@ -231,19 +286,18 @@ header{
     .navbar{
         height:95px;
         h1{
-            width: 25%;
+            width: 18%;
             float:left;
             img{
-                position: relative;
-                top: -75px;
-                left: 20%;
+                position: absolute;
+                top: -54px;
             }
         }
         .navbar-nav{
             position: relative;
             top: 30px;            
             li{
-                a{
+                a, a:focus, a:visited, a:active{
                     color:@viveColorGreen;
                     font-weight: bold;
                     font-size: 18px;
@@ -266,8 +320,153 @@ header{
             }
         }
     }
-
 }
 
 
+#carousel{
+    .carousel-control.left, .carousel-control.right {
+        background-image: -webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-image: -o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));
+        background-image: linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);
+        background-repeat: repeat-x;  
+    }
+}
+
+#howItWorks{
+    padding: 50px; 
+    .howItWorks-icons{  
+        padding-top:50px;
+        width: 100%;
+        .howItWorks-icon{
+            width: 24%;
+            height: 180px;
+            text-align: center;
+            display: inline-block;            
+            span{
+                padding: 50px 50px 50px 50px;                
+                -webkit-border-radius: 100px;
+                -moz-border-radius: 100px;
+                border-radius: 100px;
+                text-align: center;
+                margin: 0 auto 20px;
+                font-size: 6rem;
+                background-color: @viveColorGreen;
+                color:@white;
+                font-weight: bold;
+                display: inline-block;
+                vertical-align: middle;
+                -webkit-transform: perspective(1px) translateZ(0);
+                transform: perspective(1px) translateZ(0);
+                box-shadow: 0 0 1px transparent;
+                -webkit-transition-duration: 0.5s;
+                transition-duration: 0.5s;
+            }
+            span:hover{
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+                -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+                transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+            }
+        }
+    }
+}
+#menu{
+    background-color: @thirdColor;
+    padding: 50px; 
+    p{
+        text-align: center;
+    }
+    .categories-menu{
+        .category{
+            
+        }
+    }
+}
+#facebook{
+    background-color: @viveColorYellow;
+    padding: 50px; 
+    text-align: center;
+    position: relative;
+    img{
+        width: 200px;
+        position: absolute;
+        top: -82px;
+        left: 748px;
+        z-index: 3;
+    }
+}
+#about{
+    background-color: @secondColor;
+    padding: 50px;
+    p{
+        line-height: 28px;
+        text-align: center;
+    }
+    p:first-of-type{
+        font-size: 18px;
+        text-align: center;
+        line-height: 30px;
+        color: @viveColorGreen;
+        font-style: italic;            
+    }
+}
+#newsletter{
+    background-color: @viveColorGreen;
+    padding: 50px;
+    height:240px;
+    .right{
+        width: 40%;
+        text-align:center;
+        h3{
+            text-transform: uppercase;
+            padding-bottom: 5px;
+        }
+        .social-networks{
+            padding-top:30px;
+            ul{
+                display:inline;  
+                padding:0px;
+                li{
+                    text-decoration: none;
+                    list-style-type: none;
+                    padding-right: 1%;
+                    display: inline-block;  
+                    a:hover{
+                        text-decoration: none;
+                        opacity: 0.7;
+                    }
+                    .icon:before{
+                        color:@black;
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+    }
+    .left{
+        width: 60%;
+        text-align:center;
+        h2{
+            text-transform: uppercase;
+            padding-bottom: 5px;
+        }
+        p{
+            text-align: center;
+            font-size:14px;
+        }
+        .emailNewsletter{
+            width: 240px;
+            height: 40px;
+            padding: 12px 10px;
+            border: 0;
+            font-style: italic;
+
+        }
+    }
+}
+#contact{
+    background-color: @mainColor;
+    padding: 50px; 
+}
 

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Categorylanguages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categoryLanguage in categoryLanguages %}
+            <tr>
+                <td><a href="{{ path('categorylanguage_show', { 'id': categoryLanguage.id }) }}">{{ categoryLanguage.id }}</a></td>
+                <td>{{ categoryLanguage.name }}</td>
+                <td>{{ categoryLanguage.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('categorylanguage_show', { 'id': categoryLanguage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('categorylanguage_edit', { 'id': categoryLanguage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorylanguage_new') }}">Create a new categoryLanguage</a>
+        </li>
+    </ul>
+{% endblock %}

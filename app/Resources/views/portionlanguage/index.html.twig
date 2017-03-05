@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Portionlanguages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for portionLanguage in portionLanguages %}
+            <tr>
+                <td><a href="{{ path('portionlanguage_show', { 'id': portionLanguage.id }) }}">{{ portionLanguage.id }}</a></td>
+                <td>{{ portionLanguage.name }}</td>
+                <td>{{ portionLanguage.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('portionlanguage_show', { 'id': portionLanguage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('portionlanguage_edit', { 'id': portionLanguage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('portionlanguage_new') }}">Create a new portionLanguage</a>
+        </li>
+    </ul>
+{% endblock %}

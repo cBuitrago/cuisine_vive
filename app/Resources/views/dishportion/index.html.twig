@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dishportions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Price</th>
+                <th>Lastprice</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dishPortion in dishPortions %}
+            <tr>
+                <td><a href="{{ path('dishportion_show', { 'id': dishPortion.id }) }}">{{ dishPortion.id }}</a></td>
+                <td>{{ dishPortion.price }}</td>
+                <td>{{ dishPortion.lastPrice }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('dishportion_show', { 'id': dishPortion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dishportion_edit', { 'id': dishPortion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('dishportion_new') }}">Create a new dishPortion</a>
+        </li>
+    </ul>
+{% endblock %}

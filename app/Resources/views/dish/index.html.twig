@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Dishes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Isactive</th>
+                <th>Priority</th>
+                <th>Isdishweek</th>
+                <th>Photo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dish in dishes %}
+            <tr>
+                <td><a href="{{ path('administracion_dish_show', { 'id': dish.id }) }}">{{ dish.id }}</a></td>
+                <td>{{ dish.name }}</td>
+                <td>{% if dish.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>{{ dish.priority }}</td>
+                <td>{% if dish.isDishWeek %}Yes{% else %}No{% endif %}</td>
+                <td>{{ dish.photo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('administracion_dish_show', { 'id': dish.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('administracion_dish_edit', { 'id': dish.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('administracion_dish_new') }}">Create a new dish</a>
+        </li>
+    </ul>
+{% endblock %}

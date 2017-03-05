@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Icons list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for icon in icons %}
+            <tr>
+                <td><a href="{{ path('icon_show', { 'id': icon.id }) }}">{{ icon.id }}</a></td>
+                <td>{{ icon.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('icon_show', { 'id': icon.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('icon_edit', { 'id': icon.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('icon_new') }}">Create a new icon</a>
+        </li>
+    </ul>
+{% endblock %}
