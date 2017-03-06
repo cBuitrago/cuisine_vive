@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="dish_language")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DishLanguageRepository")
  */
-class DishLanguage
-{
+class DishLanguage {
+
     /**
      * @var int
      *
@@ -22,24 +22,24 @@ class DishLanguage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Dish", inversedBy="languages")
+     * @ORM\ManyToOne(targetEntity="Dish", inversedBy="languages", cascade={"persist"})
      * @ORM\JoinColumn(name="dish", referencedColumnName="id", nullable=false)
      */
     private $dish;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Language", inversedBy="dishes")
+     * @ORM\ManyToOne(targetEntity="Language", inversedBy="dishes", cascade={"persist"})
      * @ORM\JoinColumn(name="language", referencedColumnName="id", nullable=false)
      */
     private $language;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
-    
+
     /**
      * @var string
      *
@@ -54,14 +54,12 @@ class DishLanguage
      */
     private $ingredients;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -72,8 +70,7 @@ class DishLanguage
      *
      * @return DishLanguage
      */
-    public function setDish($dish)
-    {
+    public function setDish($dish) {
         $this->dish = $dish;
 
         return $this;
@@ -84,8 +81,7 @@ class DishLanguage
      *
      * @return int
      */
-    public function getDish()
-    {
+    public function getDish() {
         return $this->dish;
     }
 
@@ -96,8 +92,7 @@ class DishLanguage
      *
      * @return DishLanguage
      */
-    public function setLanguage($language)
-    {
+    public function setLanguage($language) {
         $this->language = $language;
 
         return $this;
@@ -108,8 +103,7 @@ class DishLanguage
      *
      * @return int
      */
-    public function getLanguage()
-    {
+    public function getLanguage() {
         return $this->language;
     }
 
@@ -120,8 +114,7 @@ class DishLanguage
      *
      * @return DishLanguage
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -132,8 +125,7 @@ class DishLanguage
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -144,8 +136,7 @@ class DishLanguage
      *
      * @return DishLanguage
      */
-    public function setIngredients($ingredients)
-    {
+    public function setIngredients($ingredients) {
         $this->ingredients = $ingredients;
 
         return $this;
@@ -156,8 +147,7 @@ class DishLanguage
      *
      * @return string
      */
-    public function getIngredients()
-    {
+    public function getIngredients() {
         return $this->ingredients;
     }
 
@@ -168,8 +158,7 @@ class DishLanguage
      *
      * @return DishLanguage
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -180,8 +169,7 @@ class DishLanguage
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 }

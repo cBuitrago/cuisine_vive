@@ -9,35 +9,26 @@
                 "path": "jfhdhgghj/ddgfgddfhh.png",
                 "title": "Fr"
             },
-            "socialIcons":
+            "socialIcons": {
+                    "link1": {
+                            "path": "https://www.facebook.com/"                           
+                        },
                     "link2": {
-                "imagepath": "https://www.facebook.com/",
-                            "imageAlt": "facebook"
-            }
-                    [   {
-                            
+                            "path": "https://twitter.com/"                          
                         },
-                        {
-                            "imagepath": "https://www.facebook.com/",
-                            "imageAlt": "Twitter"
+                    "link3": {
+                            "path": "www.instagram.com"                           
                         },
-                        {
-                            "imagepath": "https://www.facebook.com/",
-                            "imageAlt": "Instagram"
+                    "link4": {
+                            "path": "https://www.youtube.com/"                         
                         },
-                        {
-                            "imagepath": "https://www.facebook.com/",
-                            "imageAlt": "Youtube"
+                    "link5": {
+                            "path": "https://plus.google.com/collections/featured"                           
                         },
-                        {
-                            "imagepath": "https://www.facebook.com/",
-                            "imageAlt": "Google+"
-                        },
-                        {
-                            "imagepath": "https://www.facebook.com/",
-                            "imageAlt": "Pinterest"
+                    "link6": {
+                            "path": "https://es.pinterest.com/"                           
                         }
-                    ],
+            },                    
             "menu1": {
                 "path": "jhfjdghj/ddgfhsdh.png",
                 "title": "Accueil"

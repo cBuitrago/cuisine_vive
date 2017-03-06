@@ -13,8 +13,8 @@ class DishIconType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('dish')->add('icon')        ;
-    }
+
+        }
     
     /**
      * {@inheritdoc}

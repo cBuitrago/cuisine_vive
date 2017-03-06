@@ -13,7 +13,7 @@ class DishPortionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('price')->add('lastPrice')->add('dish')->add('portion')        ;
+        $builder->add('price')->add('lastPrice');
     }
     
     /**

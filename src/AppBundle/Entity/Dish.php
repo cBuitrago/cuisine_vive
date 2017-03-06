@@ -64,17 +64,17 @@ class Dish
     private $photo;
 
     /**
-     * @ORM\OneToMany(targetEntity="DishLanguage", mappedBy="dish")
+     * @ORM\OneToMany(targetEntity="DishLanguage", mappedBy="dish", cascade={"persist"})
      */
     private $languages;
     
     /**
-     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="dish")
+     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="dish", cascade={"persist"})
      */
     private $portions;
     
     /**
-     * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="dish")
+     * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="dish", cascade={"persist"})
      */
     private $icons;
 
@@ -247,6 +247,8 @@ class Dish
      */
     public function addLanguage(\AppBundle\Entity\DishLanguage $language)
     {
+        $language->setDish($this);
+
         $this->languages[] = $language;
 
         return $this;
@@ -281,6 +283,8 @@ class Dish
      */
     public function addPortion(\AppBundle\Entity\DishPortion $portion)
     {
+        $portion->setDish($this);
+        
         $this->portions[] = $portion;
 
         return $this;
@@ -315,6 +319,8 @@ class Dish
      */
     public function addIcon(\AppBundle\Entity\DishIcon $icon)
     {
+        $icon->setDish($this);
+        
         $this->icons[] = $icon;
 
         return $this;

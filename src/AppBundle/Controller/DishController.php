@@ -3,31 +3,34 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Dish;
+use AppBundle\Entity\DishLanguage;
+use AppBundle\Entity\DishPortion;
+use AppBundle\Entity\DishIcon;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Dish controller.
  *
  * @Route("dish")
  */
-class DishController extends Controller
-{
+class DishController extends Controller {
+
     /**
      * Lists all dish entities.
      *
      * @Route("/", name="administracion_dish_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $dishes = $em->getRepository('AppBundle:Dish')->findAll();
 
         return $this->render('dish/index.html.twig', array(
-            'dishes' => $dishes,
+                    'dishes' => $dishes,
         ));
     }
 
@@ -37,11 +40,33 @@ class DishController extends Controller
      * @Route("/new", name="administracion_dish_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
         $dish = new Dish();
+        $em = $this->getDoctrine()->getManager();
+        $languages = $em->getRepository('AppBundle:Language')->findAll();
+        foreach ($languages as $language) {
+            $newDishLanguage = new DishLanguage();
+            $newDishLanguage->setLanguage( $language );
+            $dish->addLanguage($newDishLanguage);
+        }
+        $portions = $em->getRepository('AppBundle:Portion')->findAll();
+        foreach ($portions as $portion) {
+            $newDishPortion = new DishPortion();
+            $newDishPortion->setPortion( $portion );
+            $dish->addPortion($newDishPortion);
+        }
+        $icons = $em->getRepository('AppBundle:Icon')->findAll();
+        foreach ($icons as $icon) {
+            $newDishIcon = new DishIcon();
+            $newDishIcon->setIcon( $icon );
+            //$dish->addIcon($newDishIcon);
+        }
+
+
         $form = $this->createForm('AppBundle\Form\DishType', $dish);
         $form->handleRequest($request);
+
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -52,8 +77,8 @@ class DishController extends Controller
         }
 
         return $this->render('dish/new.html.twig', array(
-            'dish' => $dish,
-            'form' => $form->createView(),
+                    'dish' => $dish,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -63,13 +88,12 @@ class DishController extends Controller
      * @Route("/{id}", name="administracion_dish_show")
      * @Method("GET")
      */
-    public function showAction(Dish $dish)
-    {
+    public function showAction(Dish $dish) {
         $deleteForm = $this->createDeleteForm($dish);
 
         return $this->render('dish/show.html.twig', array(
-            'dish' => $dish,
-            'delete_form' => $deleteForm->createView(),
+                    'dish' => $dish,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -79,8 +103,7 @@ class DishController extends Controller
      * @Route("/{id}/edit", name="administracion_dish_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Dish $dish)
-    {
+    public function editAction(Request $request, Dish $dish) {
         $deleteForm = $this->createDeleteForm($dish);
         $editForm = $this->createForm('AppBundle\Form\DishType', $dish);
         $editForm->handleRequest($request);
@@ -92,9 +115,9 @@ class DishController extends Controller
         }
 
         return $this->render('dish/edit.html.twig', array(
-            'dish' => $dish,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'dish' => $dish,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -104,8 +127,7 @@ class DishController extends Controller
      * @Route("/{id}", name="administracion_dish_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Dish $dish)
-    {
+    public function deleteAction(Request $request, Dish $dish) {
         $form = $this->createDeleteForm($dish);
         $form->handleRequest($request);
 
@@ -125,12 +147,12 @@ class DishController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Dish $dish)
-    {
+    private function createDeleteForm(Dish $dish) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('administracion_dish_delete', array('id' => $dish->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('administracion_dish_delete', array('id' => $dish->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
+
 }

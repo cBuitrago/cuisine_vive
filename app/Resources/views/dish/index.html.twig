@@ -12,6 +12,7 @@
                 <th>Priority</th>
                 <th>Isdishweek</th>
                 <th>Photo</th>
+                <th>Category</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ dish.priority }}</td>
                 <td>{% if dish.isDishWeek %}Yes{% else %}No{% endif %}</td>
                 <td>{{ dish.photo }}</td>
+                <td>{{ dish.category.name }}</td>
                 <td>
                     <ul>
                         <li>

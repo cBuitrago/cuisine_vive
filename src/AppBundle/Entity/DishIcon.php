@@ -22,13 +22,13 @@ class DishIcon
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Dish", inversedBy="icons")
+     * @ORM\ManyToOne(targetEntity="Dish", inversedBy="icons", cascade={"persist"})
      * @ORM\JoinColumn(name="dish", referencedColumnName="id", nullable=false)
      */
     private $dish;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Icon", inversedBy="dishes")
+     * @ORM\ManyToOne(targetEntity="Icon", inversedBy="dishes", cascade={"persist"})
      * @ORM\JoinColumn(name="icon", referencedColumnName="id", nullable=false)
      */
     private $icon;
