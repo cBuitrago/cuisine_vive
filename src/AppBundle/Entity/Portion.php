@@ -30,12 +30,12 @@ class Portion
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="PortionLanguage", mappedBy="portion")
+     * @ORM\OneToMany(targetEntity="PortionLanguage", mappedBy="portion", cascade={"persist"})
      */
     private $languages;
     
     /**
-     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="portion")
+     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="portion", cascade={"persist"})
      */
     private $dishes;
 
@@ -88,6 +88,8 @@ class Portion
      */
     public function addLanguage(\AppBundle\Entity\PortionLanguage $language)
     {
+        $language->setPortion($this);
+        
         $this->languages[] = $language;
 
         return $this;

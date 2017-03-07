@@ -5,7 +5,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Icon;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Icon controller.
@@ -44,6 +45,17 @@ class IconController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $icon->getImage();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+
+            $icon->setImage($fileName);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($icon);
             $em->flush($icon);
@@ -86,6 +98,17 @@ class IconController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $icon->getImage();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+            
+            $icon->setImage($fileName);
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('icon_edit', array('id' => $icon->getId()));

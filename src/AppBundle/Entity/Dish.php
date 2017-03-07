@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Dish
@@ -60,6 +61,12 @@ class Dish
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the photo as a jpg, jpeg or png file.")
+     * @Assert\File(mimeTypes = {
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *      })
      */
     private $photo;
 

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\Entity\CategoryLanguage;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Category
@@ -12,8 +13,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="category")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
-class Category
-{
+class Category {
+
     /**
      * @var int
      *
@@ -34,16 +35,22 @@ class Category
      * @var string
      *
      * @ORM\Column(name="photo", type="string", length=255)
+     * @Assert\NotBlank(message="Please, upload the photo as a jpg, jpeg or png file.")
+     * @Assert\File(mimeTypes = {
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *      })
      */
     private $photo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Dish", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Dish", mappedBy="category", cascade={"persist"})
      */
     private $dishes;
-    
+
     /**
-     * @ORM\OneToMany(targetEntity="CategoryLanguage", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="CategoryLanguage", mappedBy="category", cascade={"persist"})
      */
     private $languages;
 
@@ -57,8 +64,7 @@ class Category
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -69,8 +75,7 @@ class Category
      *
      * @return Category
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -81,8 +86,7 @@ class Category
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -93,8 +97,7 @@ class Category
      *
      * @return Category
      */
-    public function setPhoto($photo)
-    {
+    public function setPhoto($photo) {
         $this->photo = $photo;
 
         return $this;
@@ -105,8 +108,7 @@ class Category
      *
      * @return string
      */
-    public function getPhoto()
-    {
+    public function getPhoto() {
         return $this->photo;
     }
 
@@ -117,8 +119,7 @@ class Category
      *
      * @return Category
      */
-    public function addDish(\AppBundle\Entity\Dish $dish)
-    {
+    public function addDish(\AppBundle\Entity\Dish $dish) {
         $this->dishes[] = $dish;
 
         return $this;
@@ -129,8 +130,7 @@ class Category
      *
      * @param \AppBundle\Entity\Dish $dish
      */
-    public function removeDish(\AppBundle\Entity\Dish $dish)
-    {
+    public function removeDish(\AppBundle\Entity\Dish $dish) {
         $this->dishes->removeElement($dish);
     }
 
@@ -139,8 +139,7 @@ class Category
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDishes()
-    {
+    public function getDishes() {
         return $this->dishes;
     }
 
@@ -151,8 +150,8 @@ class Category
      *
      * @return Category
      */
-    public function addLanguage(\AppBundle\Entity\CategoryLanguage $language)
-    {
+    public function addLanguage(\AppBundle\Entity\CategoryLanguage $language) {
+        $language->setCategory($this);
         $this->languages[] = $language;
 
         return $this;
@@ -163,8 +162,7 @@ class Category
      *
      * @param \AppBundle\Entity\CategoryLanguage $language
      */
-    public function removeLanguage(\AppBundle\Entity\CategoryLanguage $language)
-    {
+    public function removeLanguage(\AppBundle\Entity\CategoryLanguage $language) {
         $this->languages->removeElement($language);
     }
 
@@ -173,8 +171,8 @@ class Category
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLanguages()
-    {
+    public function getLanguages() {
         return $this->languages;
     }
+
 }

@@ -99,7 +99,9 @@
             "contenuLeft": {
                 "title": "Newsletter",
                 "text": "Be the first to be informed about Cuisine Vive’s news, offers and events.",
-                "placeholder":"Your email address"
+                "placeholder":"Your email address",
+                "pathTitle":"suscribe",
+                "path":"www.hjkh.com"
             }
         }
     }

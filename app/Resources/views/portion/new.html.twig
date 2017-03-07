@@ -4,8 +4,11 @@
     <h1>Portion creation</h1>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    {{ form_widget(form) }}
+    {% for language in form.languages %}
+        <li>{{ form_row(language) }}</li>
+        {% endfor %}
+    <input type="submit" value="Create" />
     {{ form_end(form) }}
 
     <ul>

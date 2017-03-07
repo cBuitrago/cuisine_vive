@@ -3,10 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Category;
+use AppBundle\Entity\CategoryLanguage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Category controller.
@@ -41,10 +43,30 @@ class CategoryController extends Controller
     public function newAction(Request $request)
     {
         $category = new Category();
+        
+        $em = $this->getDoctrine()->getManager();
+        $languages = $em->getRepository('AppBundle:Language')->findAll();
+        foreach ($languages as $language) {
+            $newCategoryLanguage = new CategoryLanguage();
+            $newCategoryLanguage->setLanguage($language);
+            $category->addLanguage($newCategoryLanguage);
+        }
+        
         $form = $this->createForm('AppBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $category->getPhoto();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+
+            $category->setPhoto($fileName);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush($category);

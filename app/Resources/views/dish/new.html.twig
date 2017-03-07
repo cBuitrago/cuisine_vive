@@ -7,7 +7,6 @@
     {{ form_start(form) }}
         {{ form_widget(form) }}
         {% for language in form.languages %}
-            <p>{{language.vars.data.language.name }}</p>
             <li>{{ form_row(language) }}</li>
         {% endfor %}
         {% for portion in form.portions %}

@@ -22,13 +22,13 @@ class PortionLanguage
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Portion", inversedBy="languages")
+     * @ORM\ManyToOne(targetEntity="Portion", inversedBy="languages", cascade={"persist"})
      * @ORM\JoinColumn(name="portion", referencedColumnName="id", nullable=false)
      */
     private $portion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Language", inversedBy="portions")
+     * @ORM\ManyToOne(targetEntity="Language", inversedBy="portions", cascade={"persist"})
      * @ORM\JoinColumn(name="language", referencedColumnName="id", nullable=false)
      */
     private $language;

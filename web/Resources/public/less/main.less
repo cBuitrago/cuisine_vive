@@ -379,23 +379,30 @@ header{
     }
     .categories-menu{
         width:100%;
-        padding:50px 0;
+        padding:50px 0 80px;
         height:auto;
         .categories{
             display: inline-block;
             width: 24.5%;
             padding: 0.5%;
             height: 167px;
+            position:relative;
             .category-img{
                 width: 100%;
                 img{
                     width: 100%;
                     height: 168px;
+                    index:9;
                 }
             }
             .category-bg{
+
                 text-align: center;
                 background-color: rgba(243, 249, 230, 0.84);
+                position: absolute;
+                top: 70%;
+                z-index: 4;
+                width: 96%;
             }
         }
     }
@@ -479,6 +486,16 @@ header{
             padding: 12px 10px;
             border: 0;
             font-style: italic;
+            a{
+                background-color: #000;
+                color: #60c800;
+                padding: 12px 15px;
+                text-transform: uppercase;
+            }
+            a:hover{
+                text-decoration: none;
+                opacity: 0.7;
+            }
 
         }
     }

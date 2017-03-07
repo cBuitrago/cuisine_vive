@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Dish controller.
@@ -46,21 +47,21 @@ class DishController extends Controller {
         $languages = $em->getRepository('AppBundle:Language')->findAll();
         foreach ($languages as $language) {
             $newDishLanguage = new DishLanguage();
-            $newDishLanguage->setLanguage( $language );
+            $newDishLanguage->setLanguage($language);
             $dish->addLanguage($newDishLanguage);
         }
         $portions = $em->getRepository('AppBundle:Portion')->findAll();
         foreach ($portions as $portion) {
             $newDishPortion = new DishPortion();
-            $newDishPortion->setPortion( $portion );
+            $newDishPortion->setPortion($portion);
             $dish->addPortion($newDishPortion);
         }
-        $icons = $em->getRepository('AppBundle:Icon')->findAll();
+        /*$icons = $em->getRepository('AppBundle:Icon')->findAll();
         foreach ($icons as $icon) {
             $newDishIcon = new DishIcon();
-            $newDishIcon->setIcon( $icon );
+            $newDishIcon->setIcon($icon);
             //$dish->addIcon($newDishIcon);
-        }
+        }*/
 
 
         $form = $this->createForm('AppBundle\Form\DishType', $dish);
@@ -69,6 +70,18 @@ class DishController extends Controller {
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $file = $dish->getPhoto();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+
+            $dish->setPhoto($fileName);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($dish);
             $em->flush($dish);
@@ -109,6 +122,17 @@ class DishController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            
+            $file = $dish->getPhoto();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+
+            $dish->setPhoto($fileName);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('administracion_dish_edit', array('id' => $dish->getId()));

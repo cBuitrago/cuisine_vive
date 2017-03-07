@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Icon
@@ -28,6 +29,19 @@ class Icon
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Please, upload the photo as a jpg, jpeg or png file.")
+     * @Assert\File(mimeTypes = {
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *      })
+     */
+    private $image;
 
     /**
      * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="icon")
@@ -104,5 +118,29 @@ class Icon
     public function getDishes()
     {
         return $this->dishes;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Icon
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

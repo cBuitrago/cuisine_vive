@@ -3,9 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Portion;
+use AppBundle\Entity\PortionLanguage;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Portion controller.
@@ -40,6 +42,15 @@ class PortionController extends Controller
     public function newAction(Request $request)
     {
         $portion = new Portion();
+        
+        $em = $this->getDoctrine()->getManager();
+        $languages = $em->getRepository('AppBundle:Language')->findAll();
+        foreach ($languages as $language) {
+            $newPortionLanguage = new PortionLanguage();
+            $newPortionLanguage->setLanguage($language);
+            $portion->addLanguage($newPortionLanguage);
+        }
+        
         $form = $this->createForm('AppBundle\Form\PortionType', $portion);
         $form->handleRequest($request);
 
