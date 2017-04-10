@@ -71,17 +71,17 @@ class Dish
     private $photo;
 
     /**
-     * @ORM\OneToMany(targetEntity="DishLanguage", mappedBy="dish", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="DishLanguage", mappedBy="dish", cascade={"persist", "remove"})
      */
     private $languages;
     
     /**
-     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="dish", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="dish", cascade={"persist", "remove"})
      */
     private $portions;
     
     /**
-     * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="dish", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="dish", cascade={"persist", "remove"})
      */
     private $icons;
 

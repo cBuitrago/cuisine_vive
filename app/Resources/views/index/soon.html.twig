@@ -1,0 +1,21 @@
+{% block title %}Cuisine Vive{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <div  class="homepage">
+        <h1>
+            <a href="/">
+                {% image 'Resources/public/images/logo.png' %}
+                <img src="{{ asset_url }}" alt="Cuisine Vive" />
+                {% endimage %}
+            </a>    
+        </h1>
+        <p>{{ lang.homepage.sectionSoon.contenu.title}}</p>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+

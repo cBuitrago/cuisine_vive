@@ -44,7 +44,7 @@ class Icon
     private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="icon")
+     * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="icon", cascade={"persist", "remove"} )
      */
     private $dishes;
 

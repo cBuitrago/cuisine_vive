@@ -1,24 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    {{ dump(form) }}
-    <h1>Dish creation</h1>
+    <div class="contenu">
+        <h1>Dish creation</h1>
+        <div class="form-horizontal">
+            <div class="form-group">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" value="Create" class="btn btn-default"/>
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="{{ path('administracion_dish_index') }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back to the list
+                </a>
+            </li>
+        </ul>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {% for language in form.languages %}
-            <li>{{ form_row(language) }}</li>
-        {% endfor %}
-        {% for portion in form.portions %}
-            <li>{{ form_row(portion) }}</li>
-        {% endfor %}
-      
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('administracion_dish_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    </div>
 {% endblock %}

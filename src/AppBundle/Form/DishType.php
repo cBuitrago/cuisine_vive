@@ -17,8 +17,12 @@ class DishType extends AbstractType {
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('name')->add('isActive')->add('priority')->add('isDishWeek')->add('photo', FileType::class, array(
-                    "label" => "Imagen:",
+        $builder->add('name')
+                ->add('isActive')
+                ->add('priority')
+                ->add('isDishWeek')
+                ->add('photo', FileType::class, array(
+                    "label" => "Image : ",
                     "attr" => array("class" => "form-control"),
                     "data_class" => null))
                 ->add('category', EntityType::class, array(
@@ -26,11 +30,17 @@ class DishType extends AbstractType {
                     'choice_label' => 'name'));
 
         $builder->add('languages', CollectionType::class, array(
-            'entry_type' => DishLanguageType::class
+            'entry_type' => DishLanguageType::class,
+            'label' => 'Languages',
+            'entry_options' => array(
+                'label' => false)
         ));
 
         $builder->add('portions', CollectionType::class, array(
-            'entry_type' => DishPortionType::class
+            'entry_type' => DishPortionType::class,
+            'label' => 'Portions',
+            'entry_options' => array(
+                'label' => false)
         ));
     }
 

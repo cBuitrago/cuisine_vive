@@ -1,23 +1,27 @@
 {
     "homepage": {
         "sectionTop": {
+             "link0": {
+                "path": "jhfjdghj/ddgfhsdh.png",
+                "title": "Log In"
+            },
             "link1": {
                 "path": "jhfjdghj/ddgfhsdh.png",
                 "title": "Sign up"
             },
             "link2": {
-                "path": "jfhdhgghj/ddgfgddfhh.png",
+                "path": "fr",
                 "title": "Fr"
             },
             "socialIcons": {
                     "link1": {
-                            "path": "https://www.facebook.com/"                           
+                            "path": "https://www.facebook.com/cuisineVive/"                           
                         },
                     "link2": {
                             "path": "https://twitter.com/"                          
                         },
                     "link3": {
-                            "path": "www.instagram.com"                           
+                            "path": "https://www.instagram.com/cuisinevive/"                           
                         },
                     "link4": {
                             "path": "https://www.youtube.com/"                         
@@ -26,27 +30,27 @@
                             "path": "https://plus.google.com/collections/featured"                           
                         },
                     "link6": {
-                            "path": "https://es.pinterest.com/"                           
+                            "path": "https://pinterest.com/cuisinevive/"                           
                         }
             },                    
             "menu1": {
-                "path": "jhfjdghj/ddgfhsdh.png",
-                "title": "Accueil"
+                "path": "home",
+                "title": "Home"
             },
             "menu2": {
-                "path": "#about",
+                "path": "about",
                 "title": "About "
             },
             "menu3": {
-                "path": "#howItWorks",
+                "path": "howItWorks",
                 "title": "How it works"
             },
             "menu4": {
-                "path": "#menu",
+                "path": "menu",
                 "title": "Menu"
             },
             "menu5": {
-                "path": "#contact",
+                "path": "contact",
                 "title": "Contact"
             },
             "menu6": {
@@ -54,6 +58,32 @@
                 "title": "shoppingCart"
             }
         },
+        "sectionPromo":{
+           "content": {
+                "text": "texto de prueba PROMOCIONES."                                
+            } 
+        },
+        "sectionCarousel": {
+            "slider1": {
+                "text": "Cuisine Vive is another option to eat well for life.",
+                "button": "Get Started"                   
+            },
+            "slider2": {
+                "text": "Make a dinner happened",
+                "button": "How it works"                   
+            },
+            "slider3": {
+                "text": "When you do not have time to cook, when looking for a paleo option, vege and gluten free or simply when you want to surprise your guests with new recipes."                                
+            },
+            "slider4": {
+                "text": "FREE SHIPPING",                                
+                "subtext": "When you expend plus de $60 before taxes."                                
+            },
+             "slider5": {
+                "text": "When you do not have time to cook, when looking for a paleo option, vege and gluten free or simply when you want to surprise your guests with new recipes."                                
+            }
+        },
+        
         "sectionAbout": {
             "contenu": {
                 "title": "About Cuisine Vive",
@@ -69,26 +99,28 @@
         "sectionHowItWorks": {
             "contenu": {
                 "title": "How does it work?",
-                "text": [
-                    "The modern  lifestyle is crazy busy. With a  full work schedule, travels,  small children or all of the above, a healthy cooking may be the last thing on your mind.",
-                    "Cuisine Vive is here to help you save time in grocery shopping,  recipe –hunting and cooking Easy!.",
+                "text": "The modern  lifestyle is crazy busy. With a  full work schedule, travels,  small children or all of the above, a healthy cooking may be the last thing on your mind. Cuisine Vive is here to help you save time in grocery shopping,  recipe –hunting and cooking Easy!.",
+                "list": [
                     "Check out our weekly menu posted every Sunday morning.",
                     "Click on the quantities you want to order and they automatically will be added to your chart. ",
                     "Fill out the form with you basic information and we will confirm you order within 24 hours by email and txt message.",
                     "Orders can be placed until Wednesday. We shop and cook on Thrusdays and Fridays  Meals are freshly prepared and delivered right to your home over the weekend.",
-                    "Pay with debit card or cash on your  delivery day. You can also save 5% on your purchase if you pick up your oder."
-                ]
+                    "Pay with Debit Card, Credit Card, Interac or Cash on your  delivery day",
+                    "You can also save 5% on your purchase if you pick up your oder."
+                ],
+                "icon1": "You choose",
+                "icon2": "We cook",
+                "icon3": "We deliver",
+                "icon4": "You enjoy!",
+                "button": "Learn more"
             }
         },
         "sectionMenu": {
             "contenu": {
-                "title": "Our Menu",
+                "title": "Cuisine Vive Menu",
                 "text": "Our menu has been carefully created thinking of each of the palates of our customers with the idea of ​​satisfying them. Our dishes are healthy, well-proportioned and really delicious.",
                 "category": {
-                    "alt1": "Follow Us",
-                    "title1": "Follow Us",
-                    "path1": "Follow Us",
-                    "button1": "Follow Us"
+                    "button1": "See More"
                 }
             }
         },
@@ -100,9 +132,73 @@
                 "title": "Newsletter",
                 "text": "Be the first to be informed about Cuisine Vive’s news, offers and events.",
                 "placeholder":"Your email address",
-                "pathTitle":"suscribe",
+                "pathTitle":"subscribe",
                 "path":"www.hjkh.com"
             }
+        },
+        "sectionContact": {
+            "contenu": {
+                "title": "Contact Us",
+                "text":"For any questions or comments do not hesitate to contact us"
+            }
         }
-    }
+    },
+    "menu": {
+        "contenu": {
+                "title": "Cuisine Vive Menu"                
+            }
+    },
+    "menuId": {
+        "contenu": {             
+            "ingredients": {
+                "title": "Ingredients:"                
+            }
+        },
+        "button": {
+            "title": "Order Now"                
+        },
+        "banner": {
+            "title": "Are you still hungry?",
+            "button2": {
+                "title": "Keep Shopping",
+                "path": "#menu:"
+            },
+            "button1": {
+                "title": "How it works",
+                "path": "#howItWorks:"
+            }
+        }
+   },
+   "shoppingCart":{
+        "title":{
+           "text":"Your shopping list"
+        },
+        "contenu":{
+            "dishName":"Dish Name",
+            "dishPortion":"Portion",
+            "dishPrice":"Price",
+            "dishQty":"Quantity",
+            "dishTotal":"Total",            
+            "emptyText":"Your cart is empty"
+        }
+   },
+   "order":{
+        "contenu":{
+           "title":"Cuisine Vive - Order Summary"
+        },
+        "form":{
+            "name":"Name",
+            "address":"Address",
+            "zipcode":"Zip Code",
+            "email":"E-mail",
+            "tel":"Phone Number",
+            "comments": "Comments  ***additional or allergy information",
+            "submit":"Order"
+        }        
+   },
+   "orderReceived":{
+       "text":"Your order has been received, we'll send you a confirmation to your email"
+   }
 }
+
+

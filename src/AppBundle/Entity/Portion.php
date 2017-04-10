@@ -30,12 +30,12 @@ class Portion
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="PortionLanguage", mappedBy="portion", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="PortionLanguage", mappedBy="portion", cascade={"persist", "remove"})
      */
     private $languages;
     
     /**
-     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="portion", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="portion", cascade={"persist", "remove"})
      */
     private $dishes;
 

@@ -14,7 +14,12 @@ class CategoryLanguageType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('description');
+        $builder->add('language', EntityType::class, array(
+                    'class' => 'AppBundle:Language',
+                    'choice_label' => 'name',
+                    'disabled' => true))
+                ->add('name')
+                ->add('description');
     }
     
     /**

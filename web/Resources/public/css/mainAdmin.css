@@ -1,0 +1,113 @@
+.contenu {
+  width: 80%;
+  margin: auto;
+  padding-left: 20px;
+  float: right;
+  padding-top: 80px;
+}
+.contenu ul li {
+  list-style: none;
+}
+.contenu a {
+  color: #60c800;
+}
+.contenu a span {
+  padding: 5px;
+  font-size: 18px;
+}
+.contenu a:hover {
+  color: #60c800;
+}
+.contenu .btn {
+  padding: 8px 18px;
+  font-size: 16px;
+  border-radius: 0px;
+}
+.contenu .btn-default {
+  color: #60c800;
+  background-color: #000000;
+  border-color: #000000;
+  margin: 2px 0;
+  width: 250px;
+}
+.contenu .form-horizontal .form-group {
+  width: 100%;
+}
+.contenu .form-horizontal .form-group div {
+  width: 900px;
+  display: inline-block;
+  margin: 5px 0;
+}
+.contenu .form-horizontal .form-group div label {
+  padding-top: 7px;
+  margin: 0 50px;
+  text-align: right;
+  width: 20%;
+  float: left;
+}
+.contenu .form-horizontal .form-group div input,
+.contenu .form-horizontal .form-group div textarea,
+.contenu .form-horizontal .form-group div select {
+  display: block;
+  width: 55%;
+  height: 35px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.contenu .form-horizontal .form-group div input[type="checkbox"] {
+  width: 35px;
+  height: 35px;
+}
+.contenu .form-horizontal .form-group input[type="submit"] {
+  text-align: center;
+  width: 250px;
+  margin: 0px 55px;
+}
+.sidebar {
+  width: 20%;
+  height: 100%;
+  background-color: #000000;
+  text-align: center;
+  padding: 20px 0 20px;
+  float: left;
+  position: fixed;
+}
+.sidebar .brand {
+  padding-bottom: 15px;
+}
+.sidebar .nav li {
+  list-style: none;
+}
+.sidebar .nav li a {
+  color: #60c800;
+}
+.sidebar .nav li a span {
+  font-size: 25px;
+}
+.sidebar .nav li a .glyphicon-class {
+  display: inherit;
+  font-size: 14px;
+}
+.sidebar .nav li a:hover {
+  text-decoration: none;
+  background-color: #f3f9e6;
+}
+.navbar-default {
+  position: fixed;
+  right: 0;
+  z-index: 1030;
+  width: 80%;
+  float: right;
+}
+/*# sourceMappingURL=mainAdmin.css.map */

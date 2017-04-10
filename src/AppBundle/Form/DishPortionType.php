@@ -5,22 +5,26 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class DishPortionType extends AbstractType
-{
+class DishPortionType extends AbstractType {
+
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder->add('price')->add('lastPrice');
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+        $builder->add('portion', EntityType::class, array(
+                    'class' => 'AppBundle:Portion',
+                    'choice_label' => 'name',
+                    'disabled' => true))
+                ->add('price')
+                ->add('lastPrice');
     }
-    
+
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\DishPortion'
         ));
@@ -29,10 +33,8 @@ class DishPortionType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
-    {
+    public function getBlockPrefix() {
         return 'appbundle_dishportion';
     }
-
 
 }

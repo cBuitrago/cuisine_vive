@@ -45,12 +45,12 @@ class Category {
     private $photo;
 
     /**
-     * @ORM\OneToMany(targetEntity="Dish", mappedBy="category", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Dish", mappedBy="category", cascade={"persist", "remove"})
      */
     private $dishes;
 
     /**
-     * @ORM\OneToMany(targetEntity="CategoryLanguage", mappedBy="category", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="CategoryLanguage", mappedBy="category", cascade={"persist", "remove"})
      */
     private $languages;
 

@@ -1,18 +1,204 @@
 {
     "homepage": {
-        "title": "titulo en frances",
-        "section1": {
-            "title": "subtitulo en frances",
-            "section1_a": {
-                "GlossEntry": {
-                    "ID": "fr id",
-                    "name": "fr name",
-                    "lastName": "fr last name",
-                    "GlossDef": {
-                        "GlossSeeAlso": ["77777", "55555"]
-                    }
+        "sectionTop": {
+            "link0": {
+                "path": "jhfjdghj/ddgfhsdh.png",
+                "title": "Log In"
+            },
+            "link1": {
+                "path": "jhfjdghj/ddgfhsdh.png",
+                "title": "Sign up"
+            },
+            "link2": {
+                "path": "en",
+                "title": "En"
+            },
+            "socialIcons": {
+                "link1": {
+                    "path": "https://www.facebook.com/cuisineVive/"
+                },
+                "link2": {
+                    "path": "https://twitter.com/"
+                },
+                "link3": {
+                    "path": "https://www.instagram.com/cuisinevive/"
+                },
+                "link4": {
+                    "path": "https://www.youtube.com/"
+                },
+                "link5": {
+                    "path": "https://plus.google.com/collections/featured"
+                },
+                "link6": {
+                    "path": "https://pinterest.com/cuisinevive/"
+                }
+            },
+            "menu1": {
+                "path": "home",
+                "title": "Accueil"
+            },
+            "menu2": {
+                "path": "about",
+                "title": "À propos "
+            },
+            "menu3": {
+                "path": "howItWorks",
+                "title": "Comment ça marche"
+            },
+            "menu4": {
+                "path": "menu",
+                "title": "Menu"
+            },
+            "menu5": {
+                "path": "contact",
+                "title": "Contact"
+            },
+            "menu6": {
+                "path": "jfhdhgghj/ddgfgddfhh.png",
+                "title": "shoppingCart"
+            }
+        },
+        "sectionPromo": {
+            "content": {
+                "text": "texto de prueba PROMOCIONES."
+            }
+        },
+        "sectionCarousel": {
+            "slider1": {
+                "text": "Cuisine Vive est une autre option pour bien manger.",
+                "button": "Commencer"
+            },
+            "slider2": {
+                "text": "Faire un dîner se produisit",
+                "button": "Comment ça marche"
+            },
+            "slider3": {
+                "text": "Lorsque vous n'avez pas le temps de cuisiner, lorsque vous cherchez une option paleo, végétal et sans gluten ou simplement lorsque vous souhaitez surprendre vos invités avec de nouvelles recettes."
+            },
+            "slider4": {
+                "text": "Livraison Gratuite",                                
+                "subtext": "Lorsque vous dépensez plus de 60 $ avant taxes."                                
+            },
+             "slider5": {
+                "text": "When you do not have time to cook, when looking for a paleo option, vege and gluten free or simply when you want to surprise your guests with new recipes."                                
+            }
+        },
+        "sectionAbout": {
+            "contenu": {
+                "title": "À propos de Cuisine Vive",
+                "text": [
+                    "Un chef, Une cuisine, Un rêve",
+                    "C’est scientifiquement prouvé que tout ce que nous mangeons a une incidence directe dans le fonctionnement de notre corp. Andre Luis a vu cette realité et il  a eu le défis de reinventer differents recettes de la cuisine traditionnelle quand il a commencé à travailler dans les services de garde à Montreal. Il a du faire face à toutes sortes d’intolerences, allergies et restriccions alimentaires dans son poste de travail.",
+                    "La grande préocupation d’Andre était de faire manger les petits plus de fruits et legumes, d’eviter les conserves,  les fritures et les collations avec un exces de sucre.",
+                    "Le tout devrait etre servi  dans des  plats santés et  nourrisants essentiels pour leur development.  Il a reussi! Il les fait manger ses soupes, sa salade de couscous , les boules d’energie, et les barres de cereale et  tas d’autres plats qu’il prépare à tous les jours dans un CPE à Montreal. Les parents éttonés lui demandent comment il a fait telle recette, car leurs enfants n'en mangent pas  à la maison.",
+                    "Andre Luis a créé Cuisine Vive, Une autre option pour bien manger à vie. Nous vous offrons des plats faits maison sans conservatives.  Quand vous n’avez pas le temps de cuisiner, quand vous cherchez une option paléo, vege ou sans gluten ou simplement quand vous voulez surprendre vos invités avec  des nouvelles recettes."
+                ]
+            }
+        },
+        "sectionHowItWorks": {
+            "contenu": {
+                "title": "Comment ça marche?",
+                "text": "Le mode de vie moderne est très occupé. Avec un  travail à temps plein , les voyages, les petits enfants ou tous les anterieurs ensemble, Faire la bouffe pour votre famille  peut être la dernière chose sur votre esprit. Cuisine Vive est là pour vous aider à gagner du temps dans l'épicerie, la chasse de recettes et meme dans la préparation facile!.",
+                "list": [
+                    "Check out our weekly menu posted every Sunday morning.",
+                    "Click on the quantities you want to order and they automatically will be added to your chart. ",
+                    "Fill out the form with you basic information and we will confirm you order within 24 hours by email and txt message.",
+                    "Orders can be placed until Wednesday. We shop and cook on Thrusdays and Fridays  Meals are freshly prepared and delivered right to your home over the weekend.",
+                    "Pay with Debit Card, Credit Card, Interac or Cash on your  delivery day",
+                    "You can also save 5% on your purchase if you pick up your oder."
+                ],
+                "icon1": "Vous choisissez",
+                "icon2": "Nous cuisinons",
+                "icon3": "Nous livrons",
+                "icon4": "Vous aimez!",
+                "button": "Savoir plus"
+            }
+        },
+        "sectionMenu": {
+            "contenu": {
+                "title": "Cuisine Vive Menu",
+                "text": "Notre menu a été soigneusement créé en pensant à chacun des palais de nos clients avec l'idée de les satisfaire. Nos plats sont sains, bien proportionnés et vraiment délicieux. ",
+                "category": {
+                    "button1": "Voir plus"
                 }
             }
+        },
+        "setionNewsletter": {
+            "contenuRight": {
+                "title": "Suivez nous"
+            },
+            "contenuLeft": {
+                "title": "Infolettre",
+                "text": "Soyez le premier à être informé des nouvelles, offres et événements de Cuisine Vive. ",
+                "placeholder": "Votre adresse email",
+                "pathTitle": "Souscrire",
+                "path": "www.hjkh.com"
+            }
+        },
+        "sectionContact": {
+            "contenu": {
+                "title": "Contactez nous",
+                "text": "Pour toute question ou commentaire n'hésitez pas à nous contacter"
+            }
         }
+    },
+    "menu": {
+        "contenu": {
+            "title": "Cuisine Vive Menu"
+        }
+    },
+    "menuId": {
+        "contenu": {
+            "ingredients": {
+                "title": "Ingrédients:"
+            }
+        },
+        "button": {
+            "title": "Commander"
+        },
+        "banner": {
+            "title": "Avez-vous encore faim?",
+            "button2": {
+                "title": "Continuer vos achats",
+                "path": "#menu:"
+            },
+            "button1": {
+                "title": "Comment ça marche",
+                "path": "#howItWorks:"
+            }
+        }
+    },
+    "shoppingCart": {
+        "title": {
+            "text": "Your shopping list"
+        },
+        "contenu": {
+            "dishName": "Dish Name",
+            "dishPortion": "Portion",
+            "dishPrice": "Price",
+            "dishQty": "Quantity",
+            "dishTotal": "Total",
+            "emptyText": "Your cart is empty"
+        }
+    },
+    "order": {
+        "contenu": {
+            "title": "Cuisine Vive - Order Summary"
+        },
+        "form": {
+            "name": "Name",
+            "address": "Address",
+            "zipcode": "Zip Code",
+            "email": "E-mail",
+            "tel": "Phone Number",
+            "comments": "Comments  ***additional or allergy information",
+            "submit": "Order"
+        }
+    },
+    "orderReceived": {
+        "text": "Your order has been received, we'll send you a confirmation to your email"
     }
 }
+
+
+

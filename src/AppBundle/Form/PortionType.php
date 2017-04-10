@@ -19,7 +19,10 @@ class PortionType extends AbstractType
     {
         $builder->add('name');
         $builder->add('languages', CollectionType::class, array(
-            'entry_type' => PortionLanguageType::class
+            'entry_type' => PortionLanguageType::class,
+            'label' => 'languages',
+            'entry_options' => array(
+                'label' => false)
         ));
     }
     

@@ -6,7 +6,162 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Este es el {{ menu }}</h1>
+        <header>
+        <div id="home" class="barTop">  
+            <div class="content">
+                <div class="promotion">
+                    <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} </p>
+                </div>
+                <div class="links">        
+
+                    {#<a href="{{ lang.homepage.sectionTop.link0.path}}">
+                        <p class="">{{ lang.homepage.sectionTop.link0.title}}</p>
+                    </a>
+                    <a href="{{ lang.homepage.sectionTop.link1.path}}">
+                        <p class="">{{ lang.homepage.sectionTop.link1.title}}</p>
+                    </a>#}
+                    <form method="POST">
+                        <input type="hidden" name="language" value="{{ lang.homepage.sectionTop.link2.path }}">
+                        <input type="submit" value="{{ lang.homepage.sectionTop.link2.title}}">
+                    </form>
+                    <div class="social-networks">
+                        <ul>
+                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
+                                    <span class="icon icon-facebook-with-circle"/></a></li>
+                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
+                                            <span class="icon icon-twitter-with-circle"/></a></li>#}
+                            <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
+                                    <span class="icon icon-instagram-with-circle"/></a></li>
+                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
+                                            <span class="icon icon-youtube-with-circle"/></a></li>#}
+                                    {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
+                                            <span class="icon icon-google-with-circle"/></a></li>#}
+                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
+                                    <span class="icon icon-pinterest-with-circle"/></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar content" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <h1>
+                        <a href="/">
+                            {% image 'Resources/public/images/logo.png' %}
+                            <img src="{{ asset_url }}" alt="Cuisine Vive" />
+                            {% endimage %}
+                        </a>    
+                    </h1>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar-collapse-1">
+                            <span class="sr-only"> </span>
+                            <span class="icon-bar bg-primary"></span>
+                            <span class="icon-bar bg-primary"></span>
+                            <span class="icon-bar bg-primary"></span>
+                        </button>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{{ path('homepage') }}"> <span class="icon-home"></span></a></li>
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                    <li><a  href="" data-toggle="modal" data-target="#myModal"> <span class="icon-shopping-cart"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="menuIdCategory" id="menuIdCategory">
+        <div class="content">
+            <div class="left">
+                <img class="menuId-photo" src="{{ asset('Resources/public/images/' ~ dish.dish.photo ) }}" alt="{{ dish.name }}" />
+                <div class="likes">
+                    <div class="fb-like" data-href="https://www.facebook.com/cuisineVive/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+                    <div class="pin-it">
+                        <a href="//pinterest.com/pin/create/button/" data-pin-do="buttonBookmark">
+                            <img src="//assets.pinterest.com/images/pidgets/pin_it_button.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <h1 class="title">{{ dish.name }}</h1>
+                <h2 class="subtitle">{{ dish.description }}</h2>
+                <div class="icons">
+                    {% for icon in dish.dish.icons %}
+                        <img class="" src="{{ asset('Resources/public/images/' ~ icon.icon.image ) }}" alt="{{ dish.name }}" />
+                    {% endfor %}
+                </div>
+                <p class="text">{{ lang.menuId.contenu.ingredients.title}}</p>
+                <p>{{ dish.ingredients }}</p>
+                {% for portion in dish.dish.portions %}
+                    {% for portionLang in portion.portion.languages %}
+                        {% if portionLang.language.name == language %}
+                            <div class="portion">
+                                <h3>{{ portionLang.name}}</h3>
+                                <p>$ {{ portion.price }}</p>
+                                <form method="POST" action="{{ path('updateCart') }}" class="js_cart">
+                                    <input type="hidden" name="dish_item" value="{{ portion.id }}">
+                                    <button type="submit" class="cart"><span class="icon-shopping-cart"></span></button>
+                                </form>
+                                {#<a class="cart" data-toggle="modal" data-target="#myModal"> 
+                                    <span class="icon-shopping-cart"></span></a>#}
+                                <form method="POST" action="{{ path('order') }}">
+                                    <input type="hidden" name="dish_item" value="{{ portion.id }}">
+                                    <button type="submit" class="btn-4">{{lang.menuId.button.title}}</button>
+                                </form>
+                                {#<a class="btn-4" href="{{lang.homepage.setionNewsletter.contenuLeft.path}}" target="_blank">
+                                    {{lang.menuId.button.title}}</a>#}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}               
+            </div>
+        </div>
+    </div>
+    <div class="bannerButtons">
+        <div class="content">
+            <h2>{{lang.menuId.banner.title}}</h2>
+            <a class="btn-1" href="{{ path('homepage', { '_fragment' : lang.homepage.sectionTop.menu3.path } ) }}"> 
+                {{ lang.menuId.banner.button1.title }} </a>
+            <a class="btn-1" href="{{ path('menu') }}"> 
+                {{ lang.menuId.banner.button2.title }} </a>
+        </div>
+
+    </div>
+    <div class='newsletter'>
+        <div class='content'>
+            <div class="fl_left left">
+                <h3>{{ lang.homepage.setionNewsletter.contenuLeft.title}}</h3>
+                <p>{{ lang.homepage.setionNewsletter.contenuLeft.text }}</p>
+                <input class="emailNewsletter" type="text" placeholder="{{lang.homepage.setionNewsletter.contenuLeft.placeholder}}">
+                <a class="btn-3" href="{{lang.homepage.setionNewsletter.contenuLeft.path}}" target="_blank">
+                    {{lang.homepage.setionNewsletter.contenuLeft.pathTitle}}</a>
+            </div>
+            <div class="fl_right right">
+                <h3>{{ lang.homepage.setionNewsletter.contenuRight.title}}</h3>
+                <div class="social-networks">
+                    <ul>
+                        <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
+                                <span class="icon icon-facebook-with-circle"/></a></li>
+                                {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
+                                        <span class="icon icon-twitter-with-circle"/></a></li>#}
+                        <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
+                                <span class="icon icon-instagram-with-circle"/></a></li>
+                                {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
+                                        <span class="icon icon-youtube-with-circle"/></a></li>#}
+                                {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
+                                        <span class="icon icon-google-with-circle"/></a></li>#}
+                        <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
+                                <span class="icon icon-pinterest-with-circle"/></a></li>
+                    </ul> 
+                </div>
+            </div>    
+        </div>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

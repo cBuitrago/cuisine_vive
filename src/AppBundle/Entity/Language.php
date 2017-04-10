@@ -30,17 +30,17 @@ class Language
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="CategoryLanguage", mappedBy="language")
+     * @ORM\OneToMany(targetEntity="CategoryLanguage", mappedBy="language", cascade={"persist", "remove"})
      */
     private $categories;
     
     /**
-     * @ORM\OneToMany(targetEntity="DishLanguage", mappedBy="language")
+     * @ORM\OneToMany(targetEntity="DishLanguage", mappedBy="language", cascade={"persist", "remove"})
      */
     private $dishes;
     
     /**
-     * @ORM\OneToMany(targetEntity="PortionLanguage", mappedBy="language")
+     * @ORM\OneToMany(targetEntity="PortionLanguage", mappedBy="language", cascade={"persist", "remove"})
      */
     private $portions;
 

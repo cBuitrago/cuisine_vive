@@ -56,18 +56,9 @@ class DishController extends Controller {
             $newDishPortion->setPortion($portion);
             $dish->addPortion($newDishPortion);
         }
-        /*$icons = $em->getRepository('AppBundle:Icon')->findAll();
-        foreach ($icons as $icon) {
-            $newDishIcon = new DishIcon();
-            $newDishIcon->setIcon($icon);
-            //$dish->addIcon($newDishIcon);
-        }*/
-
 
         $form = $this->createForm('AppBundle\Form\DishType', $dish);
         $form->handleRequest($request);
-
-
 
         if ($form->isSubmitted() && $form->isValid()) {
 

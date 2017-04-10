@@ -1,16 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Dishicon creation</h1>
+    <div class="contenu">
+        <h1>Dish icon creation</h1>
+        <div class="form-horizontal">
+            <div class="form-group">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <input type="submit" class="btn btn-default" value="Create" />
+                {{ form_end(form) }}
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="{{ path('dishicon_index') }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back to the list
+                </a>
+            </li>
+        </ul>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('dishicon_index') }}">Back to the list</a>
-        </li>
-    </ul>
+
+
+    </div>
 {% endblock %}

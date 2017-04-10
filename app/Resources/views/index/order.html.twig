@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Cuisine Vive{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Catamaran|Dancing+Script" rel="stylesheet">
+        {% block stylesheets %}
+            {% stylesheets 'Resources/public/css/*' filter='cssrewrite' output='css/compiled/app.css' %}
+            <link href="{{ asset_url }}" rel="stylesheet" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+    <body>
+        <header>
+            <div id="home" class="barTop">  
+                <div class="content">
+                    <div class="promotion">
+                        <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} </p>
+                    </div>
+                    <div class="links">        
+
+                        {#<a href="{{ lang.homepage.sectionTop.link0.path}}">
+                            <p class="">{{ lang.homepage.sectionTop.link0.title}}</p>
+                        </a>
+                        <a href="{{ lang.homepage.sectionTop.link1.path}}">
+                            <p class="">{{ lang.homepage.sectionTop.link1.title}}</p>
+                        </a>#}
+                        <form method="POST">
+                            <input type="hidden" name="language" value="{{ lang.homepage.sectionTop.link2.path }}">
+                            <input type="submit" value="{{ lang.homepage.sectionTop.link2.title}}">
+                        </form>
+                        <div class="social-networks">
+                            <ul>
+                                <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
+                                        <span class="icon icon-facebook-with-circle"/></a></li>
+                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
+                                                <span class="icon icon-twitter-with-circle"/></a></li>#}
+                                <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
+                                        <span class="icon icon-instagram-with-circle"/></a></li>
+                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
+                                                <span class="icon icon-youtube-with-circle"/></a></li>#}
+                                        {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
+                                                <span class="icon icon-google-with-circle"/></a></li>#}
+                                <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
+                                        <span class="icon icon-pinterest-with-circle"/></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar content" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <h1>
+                            <a href="/">
+                                {% image 'Resources/public/images/logo.png' %}
+                                <img src="{{ asset_url }}" alt="Cuisine Vive" />
+                                {% endimage %}
+                            </a>    
+                        </h1>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar-collapse-1">
+                            <span class="sr-only"> </span>
+                            <span class="icon-bar bg-primary"></span>
+                            <span class="icon-bar bg-primary"></span>
+                            <span class="icon-bar bg-primary"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#{{ lang.homepage.sectionTop.menu1.path}}"> <span class="icon-home"></span></a></li>
+                        <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                        <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                        <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
+                        <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <article class="content orderSummary">
+            <form method="POST" class="form-horizontal">
+                <h2>{{ lang.order.contenu.title }}</h2>
+                <table class="table table-condensed">
+                    <tr>
+                        <th></th>
+                        <th>{{ lang.shoppingCart.contenu.dishName }}</th>
+                        <th>{{ lang.shoppingCart.contenu.dishPortion }}</th>
+                        <th>{{ lang.shoppingCart.contenu.dishPrice }}</th>
+                        <th class="qty" >{{ lang.shoppingCart.contenu.dishQty }}</th>
+                        <th class="total">{{ lang.shoppingCart.contenu.dishTotal }}</th>
+                    </tr>
+                    {% for item in cart %}
+                        <tr>
+                            <td><img class="" src="{{ asset('Resources/public/images/' ~ item.photo ) }}" alt="{{ item.dishName }}" /></td>
+                            <td>{{ item.dishName }}</td>
+                            <td>{{ item.portionName }}</td>
+                            <td>$<input type="text" class="price" id="price_{{ item.id }}" value="{{ item.price }}" disabled="disabled" ></td>
+                            <td><input type="text" class="chartQte" data-total="_{{ item.id }}" value="{{ item.qte }}"></td>
+                            <td><input type="text" id="total_{{ item.id }}" class="orderTotal chartTotal" disabled="disabled"></td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>TPS (5%)</td>
+                        <td><input type="text" id="tps_total" class="chartTotal" disabled="disabled"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>TVQ (9.975%)</td>
+                        <td><input type="text" id="tvq_total" class="chartTotal" disabled="disabled"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>TOTAL</td>
+                        <td><input type="text" id="total_total" class="total_total" disabled="disabled"></td>
+                    </tr>
+                </table>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="name">{{ lang.order.form.name }}</label>
+                    <input type="text" id="name" name="name" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="address">{{ lang.order.form.address }}</label>
+                    <input type="text" id="address" name="address" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="postalCode">{{ lang.order.form.zipcode }}</label>
+                    <input type="text" id="postalCode" name="postalCode" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email">{{ lang.order.form.email }}</label>
+                    <input type="text" id="email" name="email" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="tel">{{ lang.order.form.tel }}</label>
+                    <input type="text" id="tel" name="tel" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="tel">{{ lang.order.form.comments }}</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn-2" name="order">{{ lang.order.form.submit }}</button>
+
+            </form>
+        </article>
+
+        <footer>
+            <div class="content">
+                <div class="col col-1">
+                    <li><a href="{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>                
+                </div>
+                <div class="col col-2">
+                    <li><a href="{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                </div>
+                <div class="col col-3">                
+                    <div class="copyright ">
+                        <span class="wt">Cuisine Vive</span> - 702 2e Avenue, Montréal, QC H8S 0A3<div style="clear:both"></div>
+                        <span class="wt">Copyright © 2017 </span><a class="wt" href="#" target="_blank">Cuisine Vive</a>
+                        {#Powered by <a href="" target="_blank">CarlosyVanessa Marketing</a> #}
+                    </div>
+                </div>
+                <div class="col col-4">
+                    <div class="social-networks">
+                        <ul>
+                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
+                                    <span class="icon icon-facebook-with-circle"/></a></li>
+                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
+                                            <span class="icon icon-twitter-with-circle"/></a></li>#}
+                            <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
+                                    <span class="icon icon-instagram-with-circle"/></a></li>
+                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
+                                            <span class="icon icon-youtube-with-circle"/></a></li>#}
+                                    {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
+                                            <span class="icon icon-google-with-circle"/></a></li>#}
+                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
+                                    <span class="icon icon-pinterest-with-circle"/></a></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% block javascripts %}
+            {% javascripts 'Resources/public/js/*' output='js/compiled/app.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %} 
+        {% endblock %}
+    </body>
+</html>
+
+
+

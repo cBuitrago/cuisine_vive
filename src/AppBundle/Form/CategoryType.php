@@ -22,7 +22,10 @@ class CategoryType extends AbstractType {
             "attr" => array("class" => "form-control"),
             "data_class" => null));
         $builder->add('languages', CollectionType::class, array(
-            'entry_type' => CategoryLanguageType::class
+            'entry_type' => CategoryLanguageType::class,
+            'label' => 'Languages',
+            'entry_options' => array(
+                'label' => false)
         ));
     }
 

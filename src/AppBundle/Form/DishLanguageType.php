@@ -13,7 +13,13 @@ class DishLanguageType extends AbstractType {
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('name')->add('description')->add('ingredients');
+        $builder->add('language', EntityType::class, array(
+                    'class' => 'AppBundle:Language',
+                    'choice_label' => 'name',
+                    'disabled' => true))
+                ->add('name')
+                ->add('description')
+                ->add('ingredients');
     }
 
     /**

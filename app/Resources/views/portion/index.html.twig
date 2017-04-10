@@ -1,39 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Portions list</h1>
+    <div class="contenu">
+        <h1>Portions list</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for portion in portions %}
-            <tr>
-                <td><a href="{{ path('portion_show', { 'id': portion.id }) }}">{{ portion.id }}</a></td>
-                <td>{{ portion.name }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('portion_show', { 'id': portion.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('portion_edit', { 'id': portion.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for portion in portions %}
+                    <tr>
+                        <td><a href="{{ path('portion_show', { 'id': portion.id }) }}">{{ portion.id }}</a></td>
+                        <td>{{ portion.name }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('portion_show', { 'id': portion.id }) }}">
+                                        <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('portion_edit', { 'id': portion.id }) }}">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('portion_new') }}">Create a new portion</a>
-        </li>
-    </ul>
+        <ul>
+            <li>
+                <a href="{{ path('portion_new') }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Create a new portion
+                </a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

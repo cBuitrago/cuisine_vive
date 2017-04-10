@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Cuisine Vive{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Catamaran|Dancing+Script" rel="stylesheet">
+        {% block stylesheets %}
+            {% stylesheets 'Resources/public/css/*' filter='cssrewrite' output='css/compiled/app.css' %}
+            <link href="{{ asset_url }}" rel="stylesheet" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+    <body>
+        <header>
+            <div class="barTop">  
+                <div class="content">
+                    <div class="links">
+                        {#<a href="{{ lang.homepage.sectionTop.link0.path}}">
+                            <p class="">{{ lang.homepage.sectionTop.link0.title}}</p>
+                        </a>
+                        <a href="{{ lang.homepage.sectionTop.link1.path}}">
+                            <p class="">{{ lang.homepage.sectionTop.link1.title}}</p>
+                        </a>#}
+                        <form method="POST">
+                            <input type="hidden" name="language" value="{{ lang.homepage.sectionTop.link2.path }}">
+                            <input type="submit" value="{{ lang.homepage.sectionTop.link2.title}}">
+                        </form>
+                        <div class="social-networks">
+                            <ul>
+                                <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
+                                        <span class="icon icon-facebook-with-circle"/></a></li>
+                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
+                                                <span class="icon icon-twitter-with-circle"/></a></li>#}
+                                <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
+                                        <span class="icon icon-instagram-with-circle"/></a></li>
+                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
+                                                <span class="icon icon-youtube-with-circle"/></a></li>#}
+                                        {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
+                                                <span class="icon icon-google-with-circle"/></a></li>#}
+                                <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
+                                        <span class="icon icon-pinterest-with-circle"/></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar content">
+                <h1>
+                    <a href="/">
+                        {% image 'Resources/public/images/logo.png' %}
+                        <img src="{{ asset_url }}" alt="Cuisine Vive" />
+                        {% endimage %}
+                    </a>    
+                </h1>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ path('homepage') }}"> <span class="icon-home"></span></a></li>
+                        <li><a href="{{ path('homepage', { '_fragment' : lang.homepage.sectionTop.menu3.path } ) }}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                        <li><a href="{{ path('homepage', { '_fragment' : lang.homepage.sectionTop.menu4.path } ) }}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                        <li><a href="{{ path('homepage', { '_fragment' : lang.homepage.sectionTop.menu2.path } ) }}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
+                        <li><a href="{{ path('homepage', { '_fragment' : lang.homepage.sectionTop.menu5.path } ) }}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                            {#<li><a  href="" data-toggle="modal" data-target="#myModal"> <span class="icon-shopping-cart"></span></a></li>#}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class='content'>
+            <div class="orderReceived">
+                <span class="icon-wink"></span>
+                <p>{{ lang.orderReceived.text }}</p>
+            </div>
+        </div>
+        <footer>
+            <div class="content">
+                <div class="col col-1">
+                    <li><a href="{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>                
+                </div>
+                <div class="col col-2">
+                    <li><a href="{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                    <li><a href="{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                </div>
+                <div class="col col-3">                
+                    <div class="copyright ">
+                        <span class="wt">Cuisine Vive</span> - 702 2e Avenue, Montréal, QC H8S 0A3<div style="clear:both"></div>
+                        <span class="wt">Copyright © 2017 </span><a class="wt" href="#" target="_blank">Cuisine Vive</a>
+                        {#Powered by <a href="" target="_blank">CarlosyVanessa Marketing</a> #}
+                    </div>
+                </div>
+                <div class="col col-4">
+                    <div class="social-networks">
+                        <ul>
+                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
+                                    <span class="icon icon-facebook-with-circle"/></a></li>
+                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
+                                            <span class="icon icon-twitter-with-circle"/></a></li>#}
+                            <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
+                                    <span class="icon icon-instagram-with-circle"/></a></li>
+                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
+                                            <span class="icon icon-youtube-with-circle"/></a></li>#}
+                                    {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
+                                            <span class="icon icon-google-with-circle"/></a></li>#}
+                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
+                                    <span class="icon icon-pinterest-with-circle"/></a></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </footer>
+        {% block javascripts %}
+            {% javascripts 'Resources/public/js/*' output='js/compiled/app.js' %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %} 
+        {% endblock %}
+    </body>
+</html>
+

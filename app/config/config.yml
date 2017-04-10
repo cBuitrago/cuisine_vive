@@ -79,7 +79,7 @@ assetic:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: AppBundle\Entity\FirstUser
     from_email:
         address: "cabcas84@yahoo.es"
         sender_name: "cuisine_vive"
