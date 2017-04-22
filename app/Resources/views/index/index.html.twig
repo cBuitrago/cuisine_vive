@@ -4,8 +4,12 @@
 {% block stylesheets %}
     {{ parent() }}
 {% endblock %}
-
 {% block body %}
+    <div class="promo">
+        <div class="content">
+            <p class="text">{{ lang.homepage.sectionPromo.content.text }} </p>
+        </div>
+    </div>
     <header>
         <div id="home" class="barTop">  
             <div class="content">
@@ -43,9 +47,9 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar content" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
+        <nav class="navbar content" id="nav">
+            <div class="container-fluid content" >
+                <div class="navbar-header" >
                     <h1>
                         <a href="/">
                             {% image 'Resources/public/images/logo.png' %}
@@ -53,18 +57,26 @@
                             {% endimage %}
                         </a>    
                     </h1>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar-collapse-1">
+                    <div class='cart-collapsed'>
+                        <a  href="" data-toggle="modal" data-target="#myModal"> 
+                            <span class="icon-shopping-cart"></span>
+                        </a>
+                    </div>    
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only"> </span>
-                        <span class="icon-bar bg-primary"></span>
-                        <span class="icon-bar bg-primary"></span>
-                        <span class="icon-bar bg-primary"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
                     </button>
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">                  
+                <ul class="nav navbar-nav">                    
                     <li class="active"><a href="#{{ lang.homepage.sectionTop.menu1.path}}"> <span class="icon-home"></span></a></li>
+                    <li class="button">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon icon-circle-with-cross"/></button>
+                    </li>
                     <li><a href="#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
                     <li><a href="#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
                     <li><a href="#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
@@ -74,11 +86,6 @@
             </div>
         </nav>
     </header>
-    {#<div class="promotion">
-        <div class="content">
-            <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} <p>
-        </div>
-    </div>#}
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -87,6 +94,7 @@
             <li data-target="#carousel" data-slide-to="2"></li>
             <li data-target="#carousel" data-slide-to="3"></li>
             <li data-target="#carousel" data-slide-to="4"></li>
+            <li data-target="#carousel" data-slide-to="5"></li>
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
@@ -95,7 +103,7 @@
                 <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
                 {% endimage %}
                 <div class="carousel-caption">
-                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider1.text }} <p>
+                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider1.text }}</p>
                     <div class="button">
                         <a class="btn-1" href="{{ path('menu') }}">
                             {{ lang.homepage.sectionCarousel.slider1.button }}
@@ -103,13 +111,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="img-responsive item itm-2">
                 {% image 'Resources/public/images/banner2.jpg' %}
                 <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
                 {% endimage %}
                 <div class="carousel-caption">
-                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider2.text }}<p>
+                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider2.text }}</p>
                     <div class="button">
                         <a class="btn-1" href="{{ path('homepage', { '_fragment' : lang.homepage.sectionTop.menu3.path } ) }}">
                             {{ lang.homepage.sectionCarousel.slider2.button }}
@@ -122,7 +129,7 @@
                 <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
                 {% endimage %}
                 <div class="carousel-caption">
-                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider3.text }}<p>                       
+                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider3.text }}</p>                       
                 </div>
             </div>
             <div class="img-responsive item itm-4">
@@ -130,8 +137,8 @@
                 <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
                 {% endimage %}
                 <div class="carousel-caption">
-                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider4.text }}<p>
-                    <p class="subtitle-carousel">{{ lang.homepage.sectionCarousel.slider4.subtext }}<p>
+                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider4.text }}</p>
+                    <p class="subtitle-carousel">{{ lang.homepage.sectionCarousel.slider4.subtext }}</p>
                 </div>
             </div>
             <div class="img-responsive item itm-5">
@@ -139,7 +146,20 @@
                 <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
                 {% endimage %}
                 <div class="carousel-caption">
-                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider5.text }}<p> 
+                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider5.text }}</p> 
+                    <div class="button">
+                        <a class="btn-1" href="{{ path('homepage', { '_fragment' : lang.homepage.sectionTop.menu5.path } ) }}">
+                            {{ lang.homepage.sectionCarousel.slider5.button }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="img-responsive item itm-6">
+                {% image 'Resources/public/images/banner6.jpg' %}
+                <img class="fill img-responsive" src="{{ asset_url }}" alt="Cuisine Vive" />
+                {% endimage %}
+                <div class="carousel-caption">
+                    <p class="title-carousel">{{ lang.homepage.sectionCarousel.slider6.text }}</p>                       
                 </div>
             </div>
         </div>
@@ -193,21 +213,15 @@
             <p>{{ lang.homepage.sectionMenu.contenu.text}}</p>
             <div class="categories-menu">
                 {% for category in categories %}
-                    {% for languageCat in category.languages %}
-                        {% if languageCat.language.name == language %}
-                            <div class="categories view view-first"> 
-                                <img class="" src="{{ asset('Resources/public/images/' ~ category.photo ) }}" alt="{{ languageCat.name }}" />
-                                <div class="category-bg mask">
-
-                                    <h3>{{ languageCat.name}}</h3>
-
-                                    <a class="info btn-2" href="{{ path('menu', { _fragment : category.name|replace({ (" "): "-" }) }) }}">
-                                        {{ lang.homepage.sectionMenu.contenu.category.button1}}
-                                    </a>
-                                </div>  
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                    <div class="categories view view-first"> 
+                        <img class="" src="{{ asset('Resources/public/images/' ~ category.photo ) }}" alt="{{ category.name }}" />
+                        <div class="category-bg mask">
+                            <h3>{{ category.name}}
+                                <a class="info btn-2" href="{{ path('menu', { _fragment : category.id|replace({ (" "): "-" }) }) }}">
+                                    {{ lang.homepage.sectionMenu.contenu.category.button1}}
+                                </a>
+                        </div>  
+                    </div>
                 {% endfor %} 
             </div>
         </div>
@@ -215,9 +229,6 @@
 
     <div class='facebook'>
         <div class='content'>
-            {% image 'Resources/public/images/sombreroChef.png' %}
-            <img src="{{ asset_url }}" alt="Cuisine Vive" />
-            {% endimage %}
             <div class="fb-page" data-href="https://www.facebook.com/cuisineVive/" data-tabs="timeline" data-width="500" data-height="220" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                 <blockquote cite="https://www.facebook.com/cuisineVive/" class="fb-xfbml-parse-ignore">
                     <a href="https://www.facebook.com/cuisineVive/">Cuisine Vive</a>
@@ -228,7 +239,12 @@
     <div id='{{ lang.homepage.sectionTop.menu2.path}}' class="about">
         <div class='content'>
             <h2>{{ lang.homepage.sectionAbout.contenu.title}}</h2>
-            <div id="aboutText">
+            <div class="photo">
+                {% image 'Resources/public/images/cuisineViveAbout.png' %}
+                <img src="{{ asset_url }}" alt="Cuisine Vive" />
+                {% endimage %}
+            </div>
+            <div class="aboutText">
                 {% for textAbout in lang.homepage.sectionAbout.contenu.text %}
                     <p>{{ textAbout }}</p>
                 {% endfor %}
@@ -240,9 +256,11 @@
             <div class="fl_left left">
                 <h3>{{ lang.homepage.setionNewsletter.contenuLeft.title}}</h3>
                 <p>{{ lang.homepage.setionNewsletter.contenuLeft.text }}</p>
-                <input class="emailNewsletter" type="text" placeholder="{{lang.homepage.setionNewsletter.contenuLeft.placeholder}}">
-                <a class="btn-3" href="{{lang.homepage.setionNewsletter.contenuLeft.path}}" target="_blank">
-                    {{lang.homepage.setionNewsletter.contenuLeft.pathTitle}}</a>
+                <div class="emailNewsletter">
+                    <input class="email" type="text" id="newsletter" placeholder="{{lang.homepage.setionNewsletter.contenuLeft.placeholder}}">
+                    <a class="btn-3" href="" id="btn_newsletter">
+                        {{lang.homepage.setionNewsletter.contenuLeft.pathTitle}}</a>
+                </div>
             </div>
             <div class="fl_right right">
                 <h3>{{ lang.homepage.setionNewsletter.contenuRight.title}}</h3>
@@ -276,7 +294,24 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2799.36119370762!2d-73.66795814971718!3d45.44237714281923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc916c2c580f6c7%3A0xec565c5c950bdb96!2s702+2e+Avenue%2C+Lachine%2C+QC+H8S!5e0!3m2!1ses!2sca!4v1489848842461"></iframe>
         </div>
     </div>
+    <div class="modal fade modal_newsletter" id="modal_newsletter" tabindex="-1" role="dialog" aria-labelledby="modal_newsletterLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">          
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon icon-circle-with-cross"/></button>
+                    {% image 'Resources/public/images/logo.png' %}<img src="{{ asset_url }}" alt="Cuisine Vive"/>{% endimage %}
 
+                    <h4 class="modal-title" id="myModalLabel">{{ lang.modalNewsletter.title }}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class='hidden js_invalid_mail emptyText'>{{ lang.modalNewsletter.invalidMail }}</div>
+                    <div class='hidden js_add_newsletter_ok emptyText'>{{ lang.modalNewsletter.newsletterOk }}</div>
+                    <div class='hidden js_already_newsletter emptyText'>{{ lang.modalNewsletter.newsletterAlready }}</div>
+                    <div class='hidden js_problem_newslleter emptyText'>{{ lang.modalNewsletter.newsletterProblem }}</div>
+                </div>
+            </div>            
+        </div>
+    </div>
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}

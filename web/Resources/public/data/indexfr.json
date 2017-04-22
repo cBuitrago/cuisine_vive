@@ -51,36 +51,39 @@
             },
             "menu5": {
                 "path": "contact",
-                "title": "Contact"
+                "title": "Contactez-nous"
             },
             "menu6": {
-                "path": "jfhdhgghj/ddgfgddfhh.png",
                 "title": "shoppingCart"
             }
         },
         "sectionPromo": {
             "content": {
-                "text": "texto de prueba PROMOCIONES."
+                "text": "Votre commande sera livrée entre le 29 et le 30 Avril 2016."
             }
         },
         "sectionCarousel": {
             "slider1": {
-                "text": "Cuisine Vive est une autre option pour bien manger.",
+                "text": "Savourez la Cuisine Vive en profitant de votre temps en famille",
                 "button": "Commencer"
             },
             "slider2": {
-                "text": "Faire un dîner se produisit",
+                "text": "Cuisine Vive une autre option pour bien manger",
                 "button": "Comment ça marche"
             },
             "slider3": {
-                "text": "Lorsque vous n'avez pas le temps de cuisiner, lorsque vous cherchez une option paleo, végétal et sans gluten ou simplement lorsque vous souhaitez surprendre vos invités avec de nouvelles recettes."
+                "text": "Si vous n'avez pas le temps de cuisiner, si vous cherchez une option paleo, végétarienne, sans gluten ou si  vous souhaitez surprendre avec de nouvelles recettes, Cuisine Vive est la réponse"
             },
             "slider4": {
-                "text": "Livraison Gratuite",                                
-                "subtext": "Lorsque vous dépensez plus de 60 $ avant taxes."                                
+                "text": "Livraison Gratuite",
+                "subtext": "Lorsque vous dépensez plus de 60 $ avant taxes."
             },
-             "slider5": {
-                "text": "When you do not have time to cook, when looking for a paleo option, vege and gluten free or simply when you want to surprise your guests with new recipes."                                
+            "slider5": {
+                "text": "Service de Traiteur sur demande.",
+                "button": "Contactez nous"
+            },
+            "slider6": {
+                "text": "Ne vous inquiétez pas avec vos allergies, nous prenons plaisir a vous faire bien manger."
             }
         },
         "sectionAbout": {
@@ -98,14 +101,19 @@
         "sectionHowItWorks": {
             "contenu": {
                 "title": "Comment ça marche?",
-                "text": "Le mode de vie moderne est très occupé. Avec un  travail à temps plein , les voyages, les petits enfants ou tous les anterieurs ensemble, Faire la bouffe pour votre famille  peut être la dernière chose sur votre esprit. Cuisine Vive est là pour vous aider à gagner du temps dans l'épicerie, la chasse de recettes et meme dans la préparation facile!.",
+                "text": "Le mode de vie moderne est très occupé. Avec un  travail à temps plein , les voyages, les petits enfants ou tous les anterieurs ensemble, faire la bouffe pour votre famille  peut être la dernière chose sur votre esprit. Cuisine Vive est là pour vous aider à gagner du temps dans l'épicerie, la chasse de recettes et meme dans la préparation facile!.",
                 "list": [
-                    "Check out our weekly menu posted every Sunday morning.",
-                    "Click on the quantities you want to order and they automatically will be added to your chart. ",
-                    "Fill out the form with you basic information and we will confirm you order within 24 hours by email and txt message.",
-                    "Orders can be placed until Wednesday. We shop and cook on Thrusdays and Fridays  Meals are freshly prepared and delivered right to your home over the weekend.",
-                    "Pay with Debit Card, Credit Card, Interac or Cash on your  delivery day",
-                    "You can also save 5% on your purchase if you pick up your oder."
+                    "Consultez notre menu hebdomadaire tous les vendredis matin.",
+                    "Cliquez sur les quantités que vous souhaitez commander et elles seront automatiquement ajoutées à votre liste.",
+                    "Remplissez le formulaire avec vos informations de base et nous vous confirmerons votre commande dans les 24 heures par email ou par message texto. ",
+                    "Les commandes peuvent être placées jusqu'a jeudi minuit.",
+                    "Les repas sont préparés et livrés à votre maison tout au long du week-end.",
+                    "Payez avec carte de débit, carte de crédit, Interac ou en espèces au jour de livraison.",
+                    "Vous pouvez également économiser 5% sur votre achat si vous prenez votre commande.",
+                    "Nous vous contacterons pour confirmer la date et heure de  livraison.",
+                    "Livraison seulement à Montréal.",
+                    "Nous offrons une LIVRAISON GRATUITE sur toutes les commandes de plus de 60 $ (avant taxes).",
+                     "Obtenez votre cadeau gratuit pour le paiement en espèces ou interact."
                 ],
                 "icon1": "Vous choisissez",
                 "icon2": "Nous cuisinons",
@@ -170,15 +178,30 @@
     },
     "shoppingCart": {
         "title": {
-            "text": "Your shopping list"
+            "text": "Votre panier"
         },
         "contenu": {
-            "dishName": "Dish Name",
+            "dishName": "Nom du plat",
             "dishPortion": "Portion",
-            "dishPrice": "Price",
-            "dishQty": "Quantity",
+            "dishPrice": "Prix",
+            "dishQty": "Quantité",
             "dishTotal": "Total",
-            "emptyText": "Your cart is empty"
+            "emptyText": "Votre panier est vide",
+            "deliveryTitle": "Mode de livraison",
+            "pickup": "Ramasser",
+            "delivery": "Livraison",
+            "zipCode": "Code postal",
+            "GST": "TPS (5%)",
+            "QST": "TVQ (9.975%)"
+        },
+        "button1": {
+            "text": "continuer vos achats"
+        },
+        "button2": {
+            "text": "Commandez maintenant"
+        },
+        "button3": {
+            "text": "Commencer vos achats"
         }
     },
     "order": {
@@ -186,17 +209,38 @@
             "title": "Cuisine Vive - Order Summary"
         },
         "form": {
-            "name": "Name",
-            "address": "Address",
-            "zipcode": "Zip Code",
-            "email": "E-mail",
-            "tel": "Phone Number",
-            "comments": "Comments  ***additional or allergy information",
-            "submit": "Order"
+            "name": "Prénom",
+            "address": "Adresse",
+            "zipcode": "Code postal",
+            "email": "Courriel",
+            "tel": "Téléphone",
+            "comments": "Informations supplémentaires ou allergiques",
+            "submit": "Commander",
+            "gift": " Obtenez votre cadeau gratuit pour le paiement en espèces ou interact si vous ramassez votre commande.",
+            "newsletter": "Je souhaite recevoir des courriels de rappel, des nouvelles et des promotions de Cuisine Vive."
         }
     },
     "orderReceived": {
-        "text": "Your order has been received, we'll send you a confirmation to your email"
+        "text": "Votre commande a été reçue, nous vous enverrons une confirmation à votre courriel électronique"
+    },
+    "modalNewsletter": {
+        "title": "Cuisine Vive - Infolettre",
+        "invalidMail": "Veuillez insérer un courriel valide",
+        "newsletterOk": "Vous avez été enregistré. Merci de votre abonnement",
+        "newsletterAlready": "Votre courriel est déjà inscrit dans notre infolettre",
+        "newsletterProblem": "Oups ... il y a un problème, s'il vous plaît essayer plus tard"
+    },
+    "modalOrder": {
+        "title": "Cuisine Vive - Oups...Un erreur",
+        "contenu": {
+            "list": [
+                "Sorry, the zip code is not valid ",
+                 "Do not forget, Delivery only in Montreal.",
+                 "We offer FREE SHIPPING on all orders over $ 60 (before taxes).",
+                 "We offer a 5% discount if you pick up your order.",
+                 "Get your free gift for cash or interact payment."
+            ]
+        }
     }
 }
 

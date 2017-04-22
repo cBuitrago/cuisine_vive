@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Language controller.
  *
- * @Route("language")
+ * @Route("admin/language")
  */
 class LanguageController extends Controller
 {

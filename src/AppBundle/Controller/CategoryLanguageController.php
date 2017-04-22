@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Categorylanguage controller.
  *
- * @Route("categorylanguage")
+ * @Route("admin/categorylanguage")
  */
 class CategoryLanguageController extends Controller
 {

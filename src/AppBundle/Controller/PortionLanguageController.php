@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Portionlanguage controller.
  *
- * @Route("portionlanguage")
+ * @Route("admin/portionlanguage")
  */
 class PortionLanguageController extends Controller
 {

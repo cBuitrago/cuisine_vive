@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Dishlanguage controller.
  *
- * @Route("dishlanguage")
+ * @Route("admin/dishlanguage")
  */
 class DishLanguageController extends Controller
 {

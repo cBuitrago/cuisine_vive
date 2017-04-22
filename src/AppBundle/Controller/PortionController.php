@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Portion controller.
  *
- * @Route("portion")
+ * @Route("admin/portion")
  */
 class PortionController extends Controller
 {

@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Dishportion controller.
  *
- * @Route("dishportion")
+ * @Route("admin/dishportion")
  */
 class DishPortionController extends Controller
 {

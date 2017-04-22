@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Icon controller.
  *
- * @Route("icon")
+ * @Route("admin/icon")
  */
 class IconController extends Controller
 {

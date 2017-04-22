@@ -13,4 +13,4 @@ web_profiler:
     intercept_redirects: false
 
 swiftmailer:
-    disable_delivery: true
+    delivery_addresses: ['cabcas84@yahoo.es']

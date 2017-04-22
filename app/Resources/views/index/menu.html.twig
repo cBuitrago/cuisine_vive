@@ -6,20 +6,18 @@
 {% endblock %}
 
 {% block body %}
-        <header>
+    <div class="promo">
+        <div class="content">
+            <p class="text">{{ lang.homepage.sectionPromo.content.text }} </p>
+        </div>
+    </div>
+    <header>
         <div id="home" class="barTop">  
             <div class="content">
                 <div class="promotion">
                     <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} </p>
                 </div>
-                <div class="links">        
-
-                    {#<a href="{{ lang.homepage.sectionTop.link0.path}}">
-                        <p class="">{{ lang.homepage.sectionTop.link0.title}}</p>
-                    </a>
-                    <a href="{{ lang.homepage.sectionTop.link1.path}}">
-                        <p class="">{{ lang.homepage.sectionTop.link1.title}}</p>
-                    </a>#}
+                <div class="links"> 
                     <form method="POST">
                         <input type="hidden" name="language" value="{{ lang.homepage.sectionTop.link2.path }}">
                         <input type="submit" value="{{ lang.homepage.sectionTop.link2.title}}">
@@ -28,14 +26,8 @@
                         <ul>
                             <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
                                     <span class="icon icon-facebook-with-circle"/></a></li>
-                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
-                                            <span class="icon icon-twitter-with-circle"/></a></li>#}
                             <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
                                     <span class="icon icon-instagram-with-circle"/></a></li>
-                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
-                                            <span class="icon icon-youtube-with-circle"/></a></li>#}
-                                    {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
-                                            <span class="icon icon-google-with-circle"/></a></li>#}
                             <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
                                     <span class="icon icon-pinterest-with-circle"/></a></li>
                         </ul>
@@ -43,8 +35,8 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar content" role="navigation">
-            <div class="container-fluid">
+        <nav class="navbar content" id="nav" role="navigation">
+            <div class="container-fluid content">
                 <div class="navbar-header">
                     <h1>
                         <a href="/">
@@ -53,18 +45,26 @@
                             {% endimage %}
                         </a>    
                     </h1>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar-collapse-1">
-                            <span class="sr-only"> </span>
-                            <span class="icon-bar bg-primary"></span>
-                            <span class="icon-bar bg-primary"></span>
-                            <span class="icon-bar bg-primary"></span>
-                        </button>
+                    <div class='cart-collapsed'>
+                        <a  href="" data-toggle="modal" data-target="#myModal"> 
+                            <span class="icon-shopping-cart"></span>
+                        </a>
+                    </div>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only"> </span>
+                        <span class="icon-bar bg-primary"></span>
+                        <span class="icon-bar bg-primary"></span>
+                        <span class="icon-bar bg-primary"></span>
+                    </button>
                 </div>
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{ path('homepage') }}"> <span class="icon-home"></span></a></li>
+                    <li class="button">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon icon-circle-with-cross"/></button>
+                    </li>
                     <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
                     <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
                     <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
@@ -77,57 +77,43 @@
     <div class='menuCategory content' id="menuCategory">
         <h1>{{ lang.menu.contenu.title }}</h1>
         {% for category in categories %}
-            <article class="" id="{{ category.name|replace({ (" "): "-" }) }}">
-                {% for languageCat in category.languages %}
-                    {% if languageCat.language.name == language %}
-                        <h2>{{ languageCat.name}}</h2>
-                    {% endif %}
-                {% endfor %}
+            <article class="" id="{{ category.id|replace({ (" "): "-" }) }}">
+                <h2>{{ category.name}}</h2>
                 {% for dish in category.dishes %}
-                    {% for languageDish in dish.languages %}
-                        {% if languageDish.language.name == language %}
-                            <div class="listMenu content">
-                                <a class="title" href="{{ path('menuId', { 'id' : languageDish.name|replace({ (" "): "-" }) } ) }}">
-                                    <h3>{{ languageDish.name }}</h3>   
-                                </a> 
-                                <div class="view second-effect">  
-                                    <img class="" src="{{ asset('Resources/public/images/' ~ dish.photo ) }}" alt="{{ languageDish.name }}" />
-                                    <div class="mask">
-                                        <a class="info" href="{{ path('menuId', { 'id' : languageDish.name|replace({ (" "): "-" }) } ) }}">
-                                            <span class="icon-zoom-in"></span> 
-                                        </a>                                      
-                                    </div>  
-                                </div>                             
-                                <p class="description">{{ languageDish.description }}</p>
-                                <div class="icons">
-                                    {% for icon in dish.icons %}
-                                        <img class="" src="{{ asset('Resources/public/images/' ~ icon.icon.image ) }}" alt="{{ languageDish.name }}" />
-                                    {% endfor %}
-                                </div>
-                                {% for portion in dish.portions %}
-                                    {% for languagePortion in portion.portion.languages %}
-                                        {% if languagePortion.language.name == language %}
-                                            <div class="portion">
-                                                <h3>{{ languagePortion.name }}</h3>
-                                                <p>$ {{ portion.price }}</p>
-                                                <form method="POST" action="{{ path('updateCart') }}" class="js_cart" >
-                                                    <input type="hidden" name="dish_item" value="{{ portion.id }}">
-                                                    <button type="submit" class="cart" ><span class="icon-shopping-cart"></span></button>
-                                                </form>
-                                                {#<a class="cart" data-toggle="modal" data-target="#myModal"> <span class="icon-shopping-cart"></span></a>#}
-                                                <form method="POST" action="{{ path('order') }}">
-                                                    <input type="hidden" name="dish_item" value="{{ portion.id }}">
-                                                    <button type="submit" class="btn-4">{{lang.menuId.button.title}}</button>
-                                                </form>
-                                                {#<a class="btn-4" href="{{lang.homepage.setionNewsletter.contenuLeft.path}}" target="_blank">
-                                                    {{lang.menuId.button.title}}</a>#}
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% endfor %}
+                    <div class="listMenu content">
+                        <a class="title" href="{{ path('menuId', { 'id' : dish.name|replace({ (" "): "-" }) } ) }}">
+                            <h3>{{ dish.name }}</h3>
+                        </a> 
+                        <div class="view second-effect">  
+                            <img class="" src="{{ asset('Resources/public/images/' ~ dish.photo ) }}" alt="{{ dish.name }}" />
+                            <div class="mask">
+                                <a class="info" href="{{ path('menuId', { 'id' : dish.name|replace({ (" "): "-" }) } ) }}">
+                                    <span class="icon-zoom-in"></span> 
+                                </a>                                      
+                            </div>  
+                        </div>                             
+                        <p class="description">{{ dish.description }}</p>
+                        <div class="icons">
+                            {% for icon in dish.icons %}
+                                <img class="" src="{{ asset('Resources/public/images/' ~ icon ) }}" alt="{{ dish.name }}" />
+                            {% endfor %}
+                        </div>
+                        {% for portion in dish.portions %}
+                            <div class="portion">
+                                <h3>{{ portion.name }}</h3>
+                                <p>$ {{ portion.price }}</p>
+                                <form method="POST" action="{{ path('updateCart') }}" class="js_cart" >
+                                    <input type="hidden" name="dish_item" value="{{ portion.id }}">
+                                    <button type="submit" class="cart" ><span class="icon-shopping-cart"></span></button>
+                                </form>
+                                {#<a class="cart" data-toggle="modal" data-target="#myModal"> <span class="icon-shopping-cart"></span></a>#}
+                                <form method="POST" action="{{ path('order') }}">
+                                    <input type="hidden" name="dish_item" value="{{ portion.id }}">
+                                    <button type="submit" class="btn-4">{{lang.menuId.button.title}}</button>
+                                </form>
                             </div>
-                        {% endif %}
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 {% endfor %}
             </article>
         {% endfor %}  

@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 /**
  * Dish controller.
  *
- * @Route("dish")
+ * @Route("admin/dish")
  */
 class DishController extends Controller {
 

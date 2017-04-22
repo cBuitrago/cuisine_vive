@@ -46,6 +46,7 @@ class Category {
 
     /**
      * @ORM\OneToMany(targetEntity="Dish", mappedBy="category", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"priority": "ASC"})
      */
     private $dishes;
 

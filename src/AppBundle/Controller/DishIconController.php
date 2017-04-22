@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Dishicon controller.
  *
- * @Route("dishicon")
+ * @Route("admin/dishicon")
  */
 class DishIconController extends Controller {
 

@@ -32,16 +32,23 @@ class FirstUser
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tel", type="string", length=255)
+     * @ORM\Column(name="tel", type="string", length=255 , nullable=true)
      */
     private $tel;
+    
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="newsletter", type="boolean", unique=false, nullable=true)
+     */
+    private $newsletter;
     
     /**
      * @ORM\OneToMany(targetEntity="Orden", mappedBy="firstUser", cascade={"persist", "remove"})
@@ -167,5 +174,29 @@ class FirstUser
     public function getOrdenes()
     {
         return $this->ordenes;
+    }
+
+    /**
+     * Set newsletter
+     *
+     * @param boolean $newsletter
+     *
+     * @return FirstUser
+     */
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+
+        return $this;
+    }
+
+    /**
+     * Get newsletter
+     *
+     * @return boolean
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
     }
 }
