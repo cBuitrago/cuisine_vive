@@ -1,0 +1,35 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <div class="contenu">
+        <div class="form-horizontal">
+            <h1>Commande #{{ orden.id }} - {{ orden.firstUser.name }}</h1>
+            <table class="table table-striped">
+                <tbody>
+
+                    <tr>
+                        <th>Date de la commande</th>
+                        <td>{% if orden.dateOrder %}{{ orden.dateOrder|date('d-m-Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                <form method="POST" >
+                    <th><label style='display:inline-block' class="control-label large" for="delivered">Déjà Livré ?</label></th>
+                    <td>
+                        <input style='display:inline-block;width: 40px;float:left' type="checkbox" id="delivered" name="delivered" class="form-control" 
+                               {% if orden.status == 'delivered' %}checked{% endif %} >
+                        <button style='display:inline-block;float:left' type="submit" class="btn btn-default" name="status">Modifier Statut</button>
+                    </td>
+                </form>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <ul>
+            <li>
+                <a href="{{ path('orden_index') }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Retourner
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

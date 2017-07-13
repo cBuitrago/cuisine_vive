@@ -11,8 +11,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="portion")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PortionRepository")
  */
-class Portion
-{
+class Portion {
+
     /**
      * @var int
      *
@@ -33,7 +33,7 @@ class Portion
      * @ORM\OneToMany(targetEntity="PortionLanguage", mappedBy="portion", cascade={"persist", "remove"})
      */
     private $languages;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="portion", cascade={"persist", "remove"})
      */
@@ -43,15 +43,13 @@ class Portion
         $this->languages = new ArrayCollection();
         $this->dishes = new ArrayCollection();
     }
-    
-    
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -62,8 +60,7 @@ class Portion
      *
      * @return Portion
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -74,8 +71,7 @@ class Portion
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -86,10 +82,9 @@ class Portion
      *
      * @return Portion
      */
-    public function addLanguage(\AppBundle\Entity\PortionLanguage $language)
-    {
+    public function addLanguage(\AppBundle\Entity\PortionLanguage $language) {
         $language->setPortion($this);
-        
+
         $this->languages[] = $language;
 
         return $this;
@@ -100,8 +95,7 @@ class Portion
      *
      * @param \AppBundle\Entity\PortionLanguage $language
      */
-    public function removeLanguage(\AppBundle\Entity\PortionLanguage $language)
-    {
+    public function removeLanguage(\AppBundle\Entity\PortionLanguage $language) {
         $this->languages->removeElement($language);
     }
 
@@ -110,8 +104,7 @@ class Portion
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLanguages()
-    {
+    public function getLanguages() {
         return $this->languages;
     }
 
@@ -122,8 +115,7 @@ class Portion
      *
      * @return Portion
      */
-    public function addDish(\AppBundle\Entity\DishPortion $dish)
-    {
+    public function addDish(\AppBundle\Entity\DishPortion $dish) {
         $this->dishes[] = $dish;
 
         return $this;
@@ -134,8 +126,7 @@ class Portion
      *
      * @param \AppBundle\Entity\DishPortion $dish
      */
-    public function removeDish(\AppBundle\Entity\DishPortion $dish)
-    {
+    public function removeDish(\AppBundle\Entity\DishPortion $dish) {
         $this->dishes->removeElement($dish);
     }
 
@@ -144,8 +135,17 @@ class Portion
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getDishes()
-    {
+    public function getDishes() {
         return $this->dishes;
     }
+
+    public function getLanguageOfPortion($lang) {
+        foreach($this->getLanguages() as $language){
+            if ($language->getLanguage()->getName() === $lang) {
+                return $language->getName();
+            }
+        }
+        return NULL;
+    }
+
 }

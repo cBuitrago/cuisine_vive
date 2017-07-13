@@ -1,12 +1,16 @@
 {
     "homepage": {
+        "meta":{
+            "keywords":"Cuisine Vive, cuisine vive, cuisinevive, cuisine, vive, soupes, salades, vege, paleo, sans gluten, cuisine familiale, enfants, allergies, restrictions alimentaires, bien manger, cuisiner, option paléo, végétarienne, sans gluten, surprendre vos invités, nouvelles recettes, recettes, plats faits maison, sans agents de conservation, Service de Traiteur, Livraison Gratuite, option pour bien manger, bien manger, vege, paleo ",
+            "description":"Nous vous offrons des plats faits maison sans agents de conservation. Quand vous n’avez pas le temps de cuisiner, quand vous cherchez une option paléo, végétarienne ou sans gluten ou simplement quand vous voulez surprendre vos invités avec des nouvelles recettes, ayez le réflexe Cuisine Vive!, Cuisine Vive est là pour vous aider à gagner du temps à l'épicerie, la chasse aux recettes et même dans la préparation!"
+        },
         "sectionTop": {
             "link0": {
-                "path": "jhfjdghj/ddgfhsdh.png",
+                "path": "",
                 "title": "Log In"
             },
             "link1": {
-                "path": "jhfjdghj/ddgfhsdh.png",
+                "path": "",
                 "title": "Sign up"
             },
             "link2": {
@@ -59,7 +63,7 @@
         },
         "sectionPromo": {
             "content": {
-                "text": "Votre commande sera livrée entre le 29 et le 30 Avril 2016."
+                "text": "Date de livraison : "
             }
         },
         "sectionCarousel": {
@@ -72,7 +76,7 @@
                 "button": "Comment ça marche"
             },
             "slider3": {
-                "text": "Si vous n'avez pas le temps de cuisiner, si vous cherchez une option paleo, végétarienne, sans gluten ou si  vous souhaitez surprendre avec de nouvelles recettes, Cuisine Vive est la réponse"
+                "text": "Si vous n'avez pas le temps de cuisiner, si vous cherchez une option paléo, végétarienne, sans gluten ou si  vous souhaitez surprendre avec de nouvelles recettes, Cuisine Vive est la réponse"
             },
             "slider4": {
                 "text": "Livraison Gratuite",
@@ -83,7 +87,7 @@
                 "button": "Contactez nous"
             },
             "slider6": {
-                "text": "Ne vous inquiétez pas avec vos allergies, nous prenons plaisir a vous faire bien manger."
+                "text": "Ne vous inquiétez pas de vos allergies, nous prenons plaisir à vous faire bien manger."
             }
         },
         "sectionAbout": {
@@ -91,29 +95,30 @@
                 "title": "À propos de Cuisine Vive",
                 "text": [
                     "Un chef, Une cuisine, Un rêve",
-                    "C’est scientifiquement prouvé que tout ce que nous mangeons a une incidence directe dans le fonctionnement de notre corp. Andre Luis a vu cette realité et il  a eu le défis de reinventer differents recettes de la cuisine traditionnelle quand il a commencé à travailler dans les services de garde à Montreal. Il a du faire face à toutes sortes d’intolerences, allergies et restriccions alimentaires dans son poste de travail.",
-                    "La grande préocupation d’Andre était de faire manger les petits plus de fruits et legumes, d’eviter les conserves,  les fritures et les collations avec un exces de sucre.",
-                    "Le tout devrait etre servi  dans des  plats santés et  nourrisants essentiels pour leur development.  Il a reussi! Il les fait manger ses soupes, sa salade de couscous , les boules d’energie, et les barres de cereale et  tas d’autres plats qu’il prépare à tous les jours dans un CPE à Montreal. Les parents éttonés lui demandent comment il a fait telle recette, car leurs enfants n'en mangent pas  à la maison.",
-                    "Andre Luis a créé Cuisine Vive, Une autre option pour bien manger à vie. Nous vous offrons des plats faits maison sans conservatives.  Quand vous n’avez pas le temps de cuisiner, quand vous cherchez une option paléo, vege ou sans gluten ou simplement quand vous voulez surprendre vos invités avec  des nouvelles recettes."
+                    "C’est scientifiquement prouvé que tout ce que nous mangeons a une incidence directe dans le fonctionnement de notre corps. Andre Luis est très sensible à cette réalité et s’est donné comme défi de réinventer différentes recettes de la cuisine traditionnelle quand il a commencé à travailler dans les services de garde à Montréal. C’est un milieu exigeant où il a dû faire face à toutes sortes d’intolérances, allergies et restrictions alimentaires.",
+                    "La grande préoccupation d’Andre a été de faire manger aux petits plus de fruits et de légumes, tout en évitant les conserves, les fritures et les collations avec un excès de sucre. Le tout devait être servi dans des plats santé et nourrissants, essentiels pour leur développement.",
+                    "Tous les parents s’entendent pour dire qu’il a réussi haut la main!",
+                    "Les parents de ce CPE de Montréal sont toujours étonnés de voir leurs enfants manger ses soupes, sa salade de couscous, ses boules d’énergie, les barres de céréale et tous ces petits variés préparés au quotidien. Et ils sont nombreux à lui demander ses secrets, afin que leurs enfants mangent des légumes pas uniquement à la garderie… ",
+                    "C’est cette expérience positive et stimulante qui a poussé Andre Luis à créer Cuisine Vive, une autre option pour bien manger. ",
+                    "Nous vous offrons des plats faits maison sans agents de conservation. Quand vous n’avez pas le temps de cuisiner, quand vous cherchez une option paléo, végétarienne ou sans gluten ou simplement quand vous voulez surprendre vos invités avec des nouvelles recettes, ayez le réflexe Cuisine Vive!"
                 ]
             }
         },
         "sectionHowItWorks": {
             "contenu": {
                 "title": "Comment ça marche?",
-                "text": "Le mode de vie moderne est très occupé. Avec un  travail à temps plein , les voyages, les petits enfants ou tous les anterieurs ensemble, faire la bouffe pour votre famille  peut être la dernière chose sur votre esprit. Cuisine Vive est là pour vous aider à gagner du temps dans l'épicerie, la chasse de recettes et meme dans la préparation facile!.",
+                "text": " De nos jours, tout va très vite et nous avons toujours moins de temps pour nous dédier aux choses importantes. Avec un travail à temps plein, le temps perdu dans les transports, les  enfants, ou tout cela ensemble, cuisiner pour votre famille peut être la dernière chose dont vous avez envie. Cuisine Vive est là pour vous aider à gagner du temps à l'épicerie, la chasse aux recettes et même dans la préparation!",
                 "list": [
-                    "Consultez notre menu hebdomadaire tous les vendredis matin.",
+                    "Consultez notre menu hebdomadaire affiché tous les vendredis matin.",
                     "Cliquez sur les quantités que vous souhaitez commander et elles seront automatiquement ajoutées à votre liste.",
                     "Remplissez le formulaire avec vos informations de base et nous vous confirmerons votre commande dans les 24 heures par email ou par message texto. ",
-                    "Les commandes peuvent être placées jusqu'a jeudi minuit.",
+                    "Les commandes peuvent être placées jusqu'à jeudi minuit.",
                     "Les repas sont préparés et livrés à votre maison tout au long du week-end.",
-                    "Payez avec carte de débit, carte de crédit, Interac ou en espèces au jour de livraison.",
-                    "Vous pouvez également économiser 5% sur votre achat si vous prenez votre commande.",
+                    "Payez avec carte de débit, carte de crédit, Interac ou en espèces le jour de livraison.",
+                    "Vous pouvez également économiser 5% sur votre achat si vous ramassez votre commande.",
                     "Nous vous contacterons pour confirmer la date et heure de  livraison.",
                     "Livraison seulement à Montréal.",
-                    "Nous offrons une LIVRAISON GRATUITE sur toutes les commandes de plus de 60 $ (avant taxes).",
-                     "Obtenez votre cadeau gratuit pour le paiement en espèces ou interact."
+                    "Nous offrons une LIVRAISON GRATUITE sur toutes les commandes de plus de 60 $ (avant taxes)."
                 ],
                 "icon1": "Vous choisissez",
                 "icon2": "Nous cuisinons",
@@ -125,7 +130,7 @@
         "sectionMenu": {
             "contenu": {
                 "title": "Cuisine Vive Menu",
-                "text": "Notre menu a été soigneusement créé en pensant à chacun des palais de nos clients avec l'idée de les satisfaire. Nos plats sont sains, bien proportionnés et vraiment délicieux. ",
+                "text": "Notre menu a été soigneusement créé afin de satisfaire les palais les plus exigeants de nos clients. Nos plats sont sains, bien proportionnés et vraiment délicieux.",
                 "category": {
                     "button1": "Voir plus"
                 }
@@ -137,10 +142,9 @@
             },
             "contenuLeft": {
                 "title": "Infolettre",
-                "text": "Soyez le premier à être informé des nouvelles, offres et événements de Cuisine Vive. ",
+                "text": "Soyez informés en primeur des nouvelles, offres et événements de Cuisine Vive ",
                 "placeholder": "Votre adresse email",
-                "pathTitle": "Souscrire",
-                "path": "www.hjkh.com"
+                "pathTitle": "Souscrire"
             }
         },
         "sectionContact": {
@@ -188,7 +192,7 @@
             "dishTotal": "Total",
             "emptyText": "Votre panier est vide",
             "deliveryTitle": "Mode de livraison",
-            "pickup": "Ramasser",
+            "pickup": "Cuillette",
             "delivery": "Livraison",
             "zipCode": "Code postal",
             "GST": "TPS (5%)",
@@ -206,7 +210,7 @@
     },
     "order": {
         "contenu": {
-            "title": "Cuisine Vive - Order Summary"
+            "title": "Cuisine Vive - Liste d'achats"
         },
         "form": {
             "name": "Prénom",
@@ -216,12 +220,12 @@
             "tel": "Téléphone",
             "comments": "Informations supplémentaires ou allergiques",
             "submit": "Commander",
-            "gift": " Obtenez votre cadeau gratuit pour le paiement en espèces ou interact si vous ramassez votre commande.",
             "newsletter": "Je souhaite recevoir des courriels de rappel, des nouvelles et des promotions de Cuisine Vive."
         }
     },
     "orderReceived": {
-        "text": "Votre commande a été reçue, nous vous enverrons une confirmation à votre courriel électronique"
+        "text": "Votre commande a été reçue, nous vous enverrons une confirmation à votre courriel électronique",
+        "button": "Retourner a l'accueil"
     },
     "modalNewsletter": {
         "title": "Cuisine Vive - Infolettre",
@@ -234,14 +238,25 @@
         "title": "Cuisine Vive - Oups...Un erreur",
         "contenu": {
             "list": [
-                "Sorry, the zip code is not valid ",
-                 "Do not forget, Delivery only in Montreal.",
-                 "We offer FREE SHIPPING on all orders over $ 60 (before taxes).",
-                 "We offer a 5% discount if you pick up your order.",
-                 "Get your free gift for cash or interact payment."
+                "Désolé, le code postal n'est pas valide",
+                "Ne oubliez pas, Livraison seulement à Montréal.",
+                "Nous offrons une LIVRAISON GRATUITE sur toutes les commandes de plus de 60 $ (avant taxes)."
             ]
         }
-    }
+    },
+    "404": {
+        "text": "La page demandée n'a pas été trouvée, et nous avons une bonne estimation. Si vous ne connaissez pas l'URL, assurez-vous que l'orthographe est correcte.",
+        "button": "Retourner a l'accueil"
+    },
+    "orderConfirm": {
+        "order": "Confirmation de commande",
+        "title": "Bonjour",
+        "comments": "Commentaires",
+        "quantity":"Qté",
+        "deliveryTitle":"Prix de livraison",
+        "total":"TOTAL taxe compris",
+        "message":"Nous vous contacterons pour confirmer la date et l'heure de livraison ou de cueillette"
+    }  
 }
 
 

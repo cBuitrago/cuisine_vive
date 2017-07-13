@@ -7,14 +7,14 @@
 {% block body %}
     <div class="promo">
         <div class="content">
-            <p class="text">{{ lang.homepage.sectionPromo.content.text }} </p>
+            <p class="text"></p>
         </div>
     </div>
     <header>
         <div id="home" class="barTop">  
             <div class="content">
                 <div class="promotion">
-                    <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} </p>
+                    <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} {{ liv|date("d/m/Y") }} - {{ liv|date_modify('+1 day')|date(" d/m/Y") }}</p>
                 </div>
                 <div class="links">        
 
@@ -71,30 +71,30 @@
                 </div>
             </div>
 
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">                  
+            <div class="collapse navbar-collapse content" id="navbar-collapse-1">                  
                 <ul class="nav navbar-nav">                    
-                    <li class="active"><a href="#{{ lang.homepage.sectionTop.menu1.path}}"> <span class="icon-home"></span></a></li>
+                    <li class="active"><a href="#cuisinevive"> <span class="icon-home"></span></a></li>
                     <li class="button">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon icon-circle-with-cross"/></button>
+                        <button type="button" class="close" data-dismiss="modal" data-toggle="collapse" data-target="#navbar-collapse-1" aria-label="Close"><span class="icon icon-circle-with-cross"/></button>
                     </li>
-                    <li><a href="#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
-                    <li><a href="#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
-                    <li><a href="#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
-                    <li><a href="#{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
-                    <li><a  href="" data-toggle="modal" data-target="#myModal"> <span class="icon-shopping-cart"></span></a></li>
+                    <li><a  href="#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                    <li><a  href="#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                    <li><a  href="#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
+                    <li><a  href="#{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                    <li><a href="" data-toggle="modal" data-target="#myModal"> <span class="icon-shopping-cart"></span></a></li>
                 </ul>
             </div>
         </nav>
     </header>
-    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <div id="cuisinevive" class="carousel slide" data-ride="carousel" data-interval="10000">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#carousel" data-slide-to="1"></li>
-            <li data-target="#carousel" data-slide-to="2"></li>
-            <li data-target="#carousel" data-slide-to="3"></li>
-            <li data-target="#carousel" data-slide-to="4"></li>
-            <li data-target="#carousel" data-slide-to="5"></li>
+            <li data-target="#cuisinevive" data-slide-to="0" class="active"></li>
+            <li data-target="#cuisinevive" data-slide-to="1"></li>
+            <li data-target="#cuisinevive" data-slide-to="2"></li>
+            <li data-target="#cuisinevive" data-slide-to="3"></li>
+            <li data-target="#cuisinevive" data-slide-to="4"></li>
+            <li data-target="#cuisinevive" data-slide-to="5"></li>
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
@@ -164,10 +164,10 @@
             </div>
         </div>
         <!-- Controls -->
-        <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#cuisinevive" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </a>
-        <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+        <a class="right carousel-control" href="#cuisinevive" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>            
         </a>
     </div>    
@@ -229,7 +229,7 @@
 
     <div class='facebook'>
         <div class='content'>
-            <div class="fb-page" data-href="https://www.facebook.com/cuisineVive/" data-tabs="timeline" data-width="500" data-height="220" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <div class="fb-page" data-href="https://www.facebook.com/cuisineVive/" data-tabs="timeline"  data-adapt_container_width="true" data-width="500" data-height="220" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                 <blockquote cite="https://www.facebook.com/cuisineVive/" class="fb-xfbml-parse-ignore">
                     <a href="https://www.facebook.com/cuisineVive/">Cuisine Vive</a>
                 </blockquote>

@@ -104,7 +104,7 @@ prices[CP_POINTE_CLAIRE] = DELIVERY_MIN_PRICE;
 prices[CP_DOLLARD_DES_ORMEAUX] = DELIVERY_MIN_PRICE;
 prices[CP_BEACONSFIELD] = DELIVERY_MIN_PRICE;
 $(document).ready(function () {
-
+    navFixed();
     $("#aboutText").on("hide.bs.collapse", function () {
         $(".btn").html('<span class="glyphicon glyphicon-collapse-down"></span> Open');
     });
@@ -122,11 +122,16 @@ $(document).ready(function () {
     $('input[type=radio][name=shipping]').change(hideOrShowPCInput);
     $("form#order_form").submit(validateOrder);
     $("#btn_newsletter").click(addToNewsletter);
+    $("ul.nav.navbar-nav li a").click(closeNav);
 });
 
-function addToNewsletter(e){
+function closeNav(e){
+    $("ul.nav.navbar-nav li.button button").click();
+}
+
+function addToNewsletter(e) {
     e.preventDefault();
-    
+
     $(".js_invalid_mail").addClass('hidden');
     $(".js_add_newsletter_ok").addClass('hidden');
     $(".js_already_newsletter").addClass('hidden');
@@ -139,7 +144,7 @@ function addToNewsletter(e){
         $("#modal_newsletter").modal("show");
         return;
     }
-    
+
     $.ajax({
         type: "POST",
         url: "/addToNewsletter",
@@ -147,8 +152,10 @@ function addToNewsletter(e){
 
     }).done(function (msg) {
         if ("OK" == msg.message) {
+            $("#newsletter").val('');
             $(".js_add_newsletter_ok").removeClass('hidden');
         } else if ("ALREADY_EXISTS" == msg.message) {
+            $("#newsletter").val('');
             $(".js_already_newsletter").removeClass('hidden');
         }
     }).fail(function (msg) {
@@ -159,12 +166,12 @@ function addToNewsletter(e){
 
 function validateOrder(e) {
     e.preventDefault();
-    
+
     if (validateOrderForm()) {
-        $("form#order_form").off('submit',validateOrder);
+        $("form#order_form").off('submit', validateOrder);
         $("form#order_form").submit();
     }
-    
+
 }
 
 function validateOrderForm() {
@@ -175,17 +182,24 @@ function validateOrderForm() {
         $("#name").addClass("error");
         $("#name").focus();
         validator += 1;
+    } else {
+        $("#name").removeClass("error");
     }
     //email
     if (!$("#email").val().match(/^.{2,30}@.{2,30}\.[a-z]{2,4}$/)) {
         $("#email").addClass("error");
         $("#email").focus();
         validator += 1;
-    }//phone
+    } else {
+        $("#email").removeClass("error");
+    }
+    //phone
     if (!$("#tel").val().match(/^(\+1)? ?\(?[0-9]{3}\)? ?-?[0-9]{3} ?-?[0-9]{2} ?-?[0-9]{2}$/)) {
         $("#tel").addClass("error");
         $("#tel").focus();
         validator += 1;
+    } else {
+        $("#tel").removeClass("error");
     }
 
     if ($('input[type=radio][name=shipping]:checked').val() == 1) {
@@ -194,13 +208,19 @@ function validateOrderForm() {
             $("#address").addClass("error");
             $("#address").focus();
             validator += 1;
+        } else {
+            $("#address").removeClass("error");
         }
 
         if (!$("#postalCode").val().match(/^(h|H){1}[0-9]{1}([a-z]|[A-Z]){1}\s{0,1}[0-9]{1}([a-z]|[A-Z])[0-9]{1}$/)) {
             $("#pc").addClass("error");
+            $("#postalCode").addClass("error");
             $("#pc").focus();
             $("#error_zip_code").modal('show');
             validator += 1;
+        } else {
+            $("#pc").removeClass("error");
+            $("#postalCode").removeClass("error");
         }
     }
 
@@ -233,6 +253,8 @@ function selectCodePostal() {
                                 var price = determinePrice(components[i].long_name);
                                 $("#deli_total").val(price);
                                 $("#postalCode").val(pc_input.value.toUpperCase());
+                                $("#pc").removeClass("error");
+                                $("#postalCode").removeClass("error");
                                 calculateTaxes();
                                 return;
                             }
@@ -242,6 +264,8 @@ function selectCodePostal() {
                                 var price = determinePrice(components[j].long_name);
                                 $("#deli_total").val(price);
                                 $("#postalCode").val(pc_input.value.toUpperCase());
+                                $("#pc").removeClass("error");
+                                $("#postalCode").removeClass("error");
                                 calculateTaxes();
                                 return;
                             }
@@ -251,9 +275,6 @@ function selectCodePostal() {
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     $("#postalCode").val('');
                     $("#deli_total").val(0);
-                    console.log(XMLHttpRequest);
-                    console.log(textStatus);
-                    console.log(errorThrown);
                 }
             });
         } else {
@@ -263,11 +284,9 @@ function selectCodePostal() {
             });
 
             if (totalPrice > MIN_FREE_DELIVERY) {
-                console.log('hola gratis')
                 var zero = 0;
                 $("#deli_total").val(zero.toFixed(2));
             } else {
-                console.log('hola 5 dolares');
                 $("#deli_total").val(current_price_delivery);
             }
             calculateTaxes();
@@ -276,12 +295,11 @@ function selectCodePostal() {
         //modal desole livrasion juast a montreal
         $("#postalCode").val('');
         $("#deli_total").val(0);
+        $("#pc").addClass("error");
         calculateTaxes();
         is_postal_code_valide = false;
         current_price_delivery = 0;
     } else {
-        //affichar nada campo del valor
-        //en el estilo mostrar que esta mal
         is_postal_code_valide = false;
         current_price_delivery = 0;
         calculateTaxes();
@@ -346,33 +364,26 @@ function addCart(e) {
         $("#myModal").modal('show');
     }).fail(function (msg) {
 
-        console.log("failed: " + msg);
     });
 }
 
 function navFixed() {
     var body = document.body; // For Chrome, Safari and Opera
     //var html = document.documentElement;
-    //console.log(body.scrollTop);
-    //console.log(html.scrollTop);
 
     if (body.scrollTop > 50) {
         $("#nav").addClass("navbar-sticky");
-        $("div#home").addClass("hidden");
-        $("body").css("padding-top", "130px");
-        //setTimeout(paddTop, 500);
-        
+        $("div#home").addClass("hidden");               
     } else {
         $("#nav").removeClass("navbar-sticky");
         $("div#home").removeClass("hidden");
-        $("body").css("padding-top", "130px");
     }
 
 }
 
 /*function paddTop(){
-    $("body").css("padding-top", "59px");
-}*/
+ $("body").css("padding-top", "59px");
+ }*/
 
 function deleteItem() {
     var itemId = $(this).attr("data-delete");
@@ -395,7 +406,7 @@ function deleteItem() {
         }
         addDeliveryPrice();
     }).fail(function (msg) {
-        console.log("failed: " + msg.message);
+
     });
 }
 
@@ -414,9 +425,9 @@ function changeQte() {
         data: {item: itemId, qte: qte}
 
     }).done(function (msg) {
-        console.log("ok: " + msg.message);
+
     }).fail(function (msg) {
-        console.log("failed: " + msg.message);
+
     });
     var totalPrice = parseFloat($(this).val()) * parseFloat($("#price" + $(this).attr("data-total")).val());
     $("#total" + $(this).attr("data-total")).val(totalPrice.toFixed(2));

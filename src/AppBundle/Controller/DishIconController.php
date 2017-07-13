@@ -38,35 +38,49 @@ class DishIconController extends Controller {
      * @Route("/new/{id}", name="dishicon_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request, Dish $dish) {
+    public function newAction(Request $request, Dish $dish, $id) {
         $em = $this->getDoctrine()->getManager();
 
-        $dishIcon = new Dishicon();
+        $icons = $em->getRepository('AppBundle:Icon')->findAll();
+        $dish = $em->getRepository('AppBundle:Dish')->find($id);
 
-        $form = $this->createForm('AppBundle\Form\DishIconType', $dishIcon);
-        $form->handleRequest($request);
+        if (NULL !== $request->request->get('newDishIcon')) {
+            foreach ($icons as $icon) {
+                if (!empty($request->request->get('icon'))) {
+                    if (in_array($icon->getId(), $request->request->get('icon'))) {
+                        if (!$dish->hasIcon($icon->getId())) {
+                            $newDishIcon = new DishIcon();
+                            $newDishIcon->setDish($dish)
+                                    ->setIcon($icon);
+                            $dish->addIcon($newDishIcon);
+                            $em->persist($newDishIcon);
+                            $em->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-
-            $iconos = $_POST['appbundle_dishicon'];
-            foreach ($iconos['icon'] as $icon) {
-
-                $iconSelected = $this->getDoctrine()->getRepository('AppBundle:Icon')->find($icon);
-
-                $newDishIcon = new DishIcon();
-                $newDishIcon->setDish($dish);
-                $newDishIcon->setIcon($iconSelected);
-                $em->persist($newDishIcon);
-                $em->flush($newDishIcon);
+                            continue;
+                        }
+                    } else {
+                        foreach ($dish->getIcons() as $iconCollection) {
+                            if ($iconCollection->getIcon()->getId() == $icon->getId()) {
+                                $dish->removeIcon($iconCollection);
+                                $em->remove($iconCollection);
+                                $em->flush();
+                            }
+                        }
+                    }
+                } else {
+                    foreach ($dish->getIcons() as $iconCollection) {
+                        $dish->removeIcon($iconCollection);
+                        $em->remove($iconCollection);
+                        $em->flush();
+                    }
+                }
             }
-
             return $this->redirectToRoute('administracion_dish_show', array('id' => $dish->getId()));
         }
 
         return $this->render('dishicon/new.html.twig', array(
-                    'dishIcon' => $dishIcon,
-                    'form' => $form->createView(),
+                    'dish' => $dish,
+                    'icons' => $icons,
         ));
     }
 

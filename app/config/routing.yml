@@ -4,3 +4,12 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    schemes:  [http]
+    
+_errors:
+    resource: "@TwigBundle/Resources/config/routing/errors.xml"
+    prefix:   /_error
+    
+order:
+    path:     /order
+    defaults: { _controller: AppBundle:Index:order }   

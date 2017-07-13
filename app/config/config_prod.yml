@@ -19,6 +19,3 @@ monolog:
             level: debug
         console:
             type:  console
-            
-swiftmailer:
-    delivery_addresses: ['cabcas84@yahoo.es']

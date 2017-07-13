@@ -4,23 +4,19 @@
     <div class="contenu">
         <h1>Dish icon creation</h1>
         <div class="form-horizontal">
-            <div class="form-group">
-                {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit" class="btn btn-default" value="Create" />
-                {{ form_end(form) }}
-            </div>
+            <form method="POST">
+                <table class="table table-striped">
+                    {% for icon in icons %}
+                        <tr>
+                            <td><label for="icon_{{ icon.id }}"><img style="width: 40px; height: auto;" class="" src="{{ asset('Resources/public/images/' ~ icon.image ) }}" alt="{{ icon.name }}" /></label></td>
+                            <td><label for="icon_{{ icon.id }}">{{ icon.name }}</label></td>
+                            <td><input id="icon_{{ icon.id }}" name="icon[]" value="{{ icon.id }}" type="checkbox" 
+                                       {% if dish.hasIcon(icon.id) == 'delivered' %}checked{% endif %}/></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <button style='display:inline-block;float:left' type="submit" class="btn btn-default" name="newDishIcon">Éditer Icons</button>
+            </form>
         </div>
-        <ul>
-            <li>
-                <a href="{{ path('dishicon_index') }}" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back to the list
-                </a>
-            </li>
-        </ul>
-
-
-
-
     </div>
 {% endblock %}

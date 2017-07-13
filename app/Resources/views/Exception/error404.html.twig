@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Cuisine Vive{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Catamaran|Dancing+Script" rel="stylesheet">
         {% block stylesheets %}
             {% stylesheets 'Resources/public/css/*' filter='cssrewrite' output='css/compiled/app.css' %}
@@ -14,13 +15,12 @@
     </head>
     <body>
         <header>
-            <div id="home" class="barTop">  
+            <div class="barTop">  
                 <div class="content">
                     <div class="promotion">
-                        <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} </p>
+                        <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} {{ liv|date("d/m/Y") }} - {{ liv|date_modify('+1 day')|date(" d/m/Y") }}</p>
                     </div>
-                    <div class="links">        
-
+                    <div class="links">
                         {#<a href="{{ lang.homepage.sectionTop.link0.path}}">
                             <p class="">{{ lang.homepage.sectionTop.link0.title}}</p>
                         </a>
@@ -50,8 +50,8 @@
                     </div>
                 </div>
             </div>
-            <nav class="navbar content" role="navigation">
-                <div class="container-fluid">
+            <nav class="navbar content" id="nav" role="navigation">
+                <div class="container-fluid content">
                     <div class="navbar-header">
                         <h1>
                             <a href="/">
@@ -60,7 +60,7 @@
                                 {% endimage %}
                             </a>    
                         </h1>
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapsed" data-target="#navbar-collapse-1">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
                             <span class="sr-only"> </span>
                             <span class="icon-bar bg-primary"></span>
                             <span class="icon-bar bg-primary"></span>
@@ -68,69 +68,36 @@
                         </button>
                     </div>
                 </div>
-
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ path('homepage') }}"> <span class="icon-home"></span></a></li>
+                        <li class="button">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="icon icon-circle-with-cross"/></button>
+                        </li>
                         <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
                         <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
                         <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>
                         <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                        <li class="hidden"></li>
                     </ul>
                 </div>
             </nav>
         </header>
-        <div class='newsletter'>
-            <div class='content'>
-                <div class="fl_left left">
-                    <h3>{{ lang.homepage.setionNewsletter.contenuLeft.title}}</h3>
-                    <p>{{ lang.homepage.setionNewsletter.contenuLeft.text }}</p>
-                    <input class="emailNewsletter" type="text" placeholder="{{lang.homepage.setionNewsletter.contenuLeft.placeholder}}">
-                    <a class="btn-3" href="{{lang.homepage.setionNewsletter.contenuLeft.path}}" target="_blank">
-                        {{lang.homepage.setionNewsletter.contenuLeft.pathTitle}}</a>
-                </div>
-                <div class="fl_right right">
-                    <h3>{{ lang.homepage.setionNewsletter.contenuRight.title}}</h3>
-                    <div class="social-networks">
-                        <ul>
-                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
-                                    <span class="icon icon-facebook-with-circle"/></a></li>
-                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
-                                            <span class="icon icon-twitter-with-circle"/></a></li>#}
-                            <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
-                                    <span class="icon icon-instagram-with-circle"/></a></li>
-                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
-                                            <span class="icon icon-youtube-with-circle"/></a></li>#}
-                                    {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
-                                            <span class="icon icon-google-with-circle"/></a></li>#}
-                            <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
-                                    <span class="icon icon-pinterest-with-circle"/></a></li>
-                        </ul> 
-                    </div>
-                </div>    
+        <div class='content'>
+            <div class="notFound">
+                <p>{{ lang.404.text }}</p>                
+                <a type="button" class="btn-1" href="{{ path('homepage') }}">{{ lang.orderReceived.button }}</a>                            
             </div>
         </div>
-        <div id='{{ lang.homepage.sectionTop.menu5.path}}' class="contact">
-            <h2>{{ lang.homepage.sectionContact.contenu.title}}</h2>  
-            <div class="info">
-                <p class="text">{{ lang.homepage.sectionContact.contenu.text }}</p>
-                <p class="email"><span class="icon icon-mail4"/>info@cuisinevive.ca</p>
-                <p class="tel"><span class="icon icon-phone"/>438 886-5538</p>                
-            </div>
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2799.36119370762!2d-73.66795814971718!3d45.44237714281923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc916c2c580f6c7%3A0xec565c5c950bdb96!2s702+2e+Avenue%2C+Lachine%2C+QC+H8S!5e0!3m2!1ses!2sca!4v1489848842461"></iframe>
-            </div>
-        </div>
-
         <footer>
             <div class="content">
                 <div class="col col-1">
-                    <li><a href="{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
-                    <li><a href="{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>                
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu3.path}}">{{ lang.homepage.sectionTop.menu3.title}}</a></li>
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu2.path}}">{{ lang.homepage.sectionTop.menu2.title}}</a></li>                
                 </div>
                 <div class="col col-2">
-                    <li><a href="{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
-                    <li><a href="{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu4.path}}">{{ lang.homepage.sectionTop.menu4.title}}</a></li>
+                    <li><a href="{{ path('homepage') }}#{{ lang.homepage.sectionTop.menu5.path}}">{{ lang.homepage.sectionTop.menu5.title}}</a></li>
                 </div>
                 <div class="col col-3">                
                     <div class="copyright ">
@@ -166,6 +133,5 @@
         {% endblock %}
     </body>
 </html>
-
 
 

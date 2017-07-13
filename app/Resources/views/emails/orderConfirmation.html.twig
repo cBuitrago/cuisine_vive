@@ -1,8 +1,52 @@
-<h3>You did it! You registered!</h3>
+<div style="margin: 0 auto;">    
+    <img style="float:left; width: 18%; margin-right: 2%;" src="{{ image }}" alt="Cuisine Vive" />
+    <h4 style="float:right;width: 78%;">{{ lang.orderConfirm.order }} # {{ order.id }}</h4>
+    <h3 style="clear:both; text-align: center;"> {{ lang.orderConfirm.title }}, {{ order.firstUser.name }}</h3>
+    <table style="margin: 5px 0;">
+        <tr style="font-size:10px;">
+            <th>{{ lang.shoppingCart.contenu.dishName }}</th>
+            <th>{{ lang.shoppingCart.contenu.dishPortion }}</th>
+            <th>{{ lang.shoppingCart.contenu.dishPrice }}</th>
+            <th>{{ lang.orderConfirm.quantity }}</th>
+            <th>{{ lang.shoppingCart.contenu.dishTotal }}</th>
+        </tr>
+        {% for item in orderEmail %}
+            <tr style="font-size:12px;">
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>${{ item[2] }}</td>
+                <td style="text-align: center;">{{ item[3] }}</td>
+                <td style="text-align:right;">${{ item[4] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <table>
+        <tr>
+            <td>{{ lang.orderConfirm.deliveryTitle }}</td>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td style="text-align:right;">${{ order.deliPrice }}</td>
+        </tr>
+        <tr style="margin:5px;font-weight:bold;">
+            <td>{{ lang.orderConfirm.total }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;">${{ order.userPrice }}</td>
+        </tr>
+    </table>
 
-Hi {{ name }}! You're successfully registered.
+    <p style="margin:5px;">{{ lang.orderConfirm.comments }}: {{ order.comments }}</p>
+    
+    <p style="margin-top:10px; font-style: italic; font-size: 12px;">{{ lang.orderConfirm.message }}</p>
 
-{# example, assuming you have a route named "login" #}
-To login, go to: <a href="{{ url('homepage') }}">...</a>.
-
-Thanks!
+    <footer style="clear:both; margin:10px;font-size: 8px;">
+        <div style="text-align: center;">
+            <p style="color:#111111; text-decoration: none;">Cuisine Vive - 702 2e Avenue, Montréal, QC H8S 0A3<p>
+            <p>Copyright © 2017
+                <a href="www.cuisinevive.ca" style="color:#60c800;text-decoration: none;">Cuisine Vive</a>
+            </p>
+        </div>
+    </footer>
+</div>    

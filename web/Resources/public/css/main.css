@@ -285,6 +285,7 @@ button.btn-4:hover {
 }
 header {
   position: fixed;
+  width: 100%;
   z-index: 1030;
   top: 0;
   left: 0;
@@ -292,6 +293,7 @@ header {
   font-size: 16px;
 }
 header .barTop {
+  position: relative;
   background-color: #000000;
   height: 50px;
   padding-top: 12px;
@@ -308,8 +310,8 @@ header .barTop .promotion .promotion-text {
   padding-left: 150px;
   padding-top: 5px;
   font-size: 16px;
-  color: rgba(253, 221, 0, 0.55);
-  text-decoration: underline;
+  color: rgba(253, 221, 0, 0.8);
+  font-weight: bold;
 }
 header .barTop .links {
   float: right;
@@ -357,8 +359,13 @@ header .barTop .links .social-networks ul li {
   padding-right: 1%;
   display: inline-block;
 }
-header .barTop .links .social-networks ul li a:hover {
+header .barTop .links .social-networks ul li a:hover,
+header .barTop .links .social-networks ul li a:focus,
+header .barTop .links .social-networks ul li a:visited,
+header .barTop .links .social-networks ul li a:active {
   text-decoration: none;
+}
+header .barTop .links .social-networks ul li a:hover {
   opacity: 0.7;
 }
 header .barTop .links .social-networks ul li .icon:before {
@@ -396,7 +403,6 @@ header .navbar .navbar-nav {
 header .navbar .navbar-nav li.button {
   display: none;
   visibility: hidden;
-  height: 18px;
 }
 header .navbar .navbar-nav li.button .close {
   opacity: 1 !important;
@@ -458,11 +464,6 @@ header .navbar-sticky {
   z-index: 999;
   width: 100%;
   margin: 0 auto;
-  -webkit-transition: all 0.5s ease-in;
-  -moz-transition: all 0.5s ease-in;
-  -o-transition: all 0.5s ease-in;
-  -ms-transition: all 0.5s ease-in;
-  transition: all 0.5s ease-in;
   border-radius: 0px;
 }
 header .navbar-sticky h1 {
@@ -478,7 +479,7 @@ header .navbar-sticky h1 img {
 header .navbar-sticky .navbar-nav {
   position: relative;
   top: -18px;
-  margin-left: 300px;
+  margin-left: 15%;
 }
 header .navbar-sticky .navbar-nav li a,
 header .navbar-sticky .navbar-nav li a:focus,
@@ -518,13 +519,13 @@ header .navbar-sticky .navbar-nav li a:hover {
   text-align: center;
 }
 .promo .text {
-  color: rgba(253, 221, 0, 0.55);
+  color: rgba(253, 221, 0, 0.8);
   font-size: 12px;
   line-height: 28px;
-  text-decoration: underline;
+  font-weight: bold;
 }
-#carousel .carousel-control.left,
-#carousel .carousel-control.right {
+#cuisinevive .carousel-control.left,
+#cuisinevive .carousel-control.right {
   background-image: none;
 }
 .carousel-control .glyphicon-chevron-right,
@@ -835,8 +836,13 @@ header .navbar-sticky .navbar-nav li a:hover {
   padding: 0 15px;
   display: inline-block;
 }
-.newsletter .right .social-networks ul li a:hover {
+.newsletter .right .social-networks ul li a:hover,
+.newsletter .right .social-networks ul li a:focus,
+.newsletter .right .social-networks ul li a:visited,
+.newsletter .right .social-networks ul li a:active {
   text-decoration: none;
+}
+.newsletter .right .social-networks ul li a:hover {
   opacity: 0.7;
 }
 .newsletter .right .social-networks ul li .icon:before {
@@ -864,6 +870,7 @@ header .navbar-sticky .navbar-nav li a:hover {
   padding: 12px 10px;
   border: 0;
   font-style: italic;
+  border-radius: 0px;
 }
 .newsletter .left .emailNewsletter a {
   padding: 8px 15px;
@@ -919,10 +926,13 @@ footer li {
 footer a {
   color: #60c800;
 }
-footer a:hover,
 footer a:visited,
-footer a:focus {
-  color: #60c800;
+footer a:focus,
+footer a:active {
+  text-decoration: none;
+  opacity: 1;
+}
+footer a:hover {
   text-decoration: none;
   opacity: 0.7;
 }
@@ -953,6 +963,12 @@ footer .social-networks ul li {
   padding-right: 1%;
   display: inline-block;
 }
+footer .social-networks ul li a:focus,
+footer .social-networks ul li a:visited,
+footer .social-networks ul li a:active {
+  text-decoration: none;
+  opacity: 0.1;
+}
 footer .social-networks ul li a:hover {
   text-decoration: none;
   opacity: 0.7;
@@ -969,14 +985,13 @@ footer .social-networks ul li .icon:before {
 }
 .menuCategory h2 {
   clear: both;
-  padding-top: 40px;
+  padding-top: 60px;
 }
 .menuCategory .listMenu {
   width: 31%;
-  height: 405px;
+  height: auto;
   padding: 10px;
-  display: inline;
-  float: left;
+  display: inline-block;
   box-shadow: 0px 0px 5px #aaa;
   margin: 10px 1%;
 }
@@ -988,7 +1003,7 @@ footer .social-networks ul li .icon:before {
 .menuCategory .listMenu .title h3,
 .menuCategory .listMenu .info h3 {
   font-size: 18px;
-  height: 28px;
+  height: 34px;
   text-align: center;
 }
 .menuCategory .listMenu .title:hover h3 {
@@ -1036,7 +1051,7 @@ footer .social-networks ul li .icon:before {
 }
 .menuCategory .listMenu .second-effect a.info {
   position: relative;
-  top: -10px;
+  top: -15px;
   transform: scale(0, 0);
   transition: transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
 }
@@ -1050,22 +1065,22 @@ footer .social-networks ul li .icon:before {
   transition-delay: 0.3s;
 }
 .menuCategory .listMenu p.description {
-  height: 42px;
+  height: auto;
   font-size: 14px;
   font-style: italic;
-  padding: 10px 0 0 10px;
+  padding: 10px 3px;
   margin-bottom: 0;
+  line-height: 16px;
 }
 .menuCategory .listMenu .icons {
   text-align: center;
-  margin: 5px 0;
+  margin: 5px 0 8px 0;
   height: 30px;
 }
 .menuCategory .listMenu .icons img {
   width: 32px;
 }
 .menuCategory .listMenu .portion {
-  display: inline-block;
   margin: 5px 0;
   vertical-align: middle;
   border: 2px #333 groove;
@@ -1074,25 +1089,23 @@ footer .social-networks ul li .icon:before {
 .menuCategory .listMenu .portion h3,
 .menuCategory .listMenu .portion p {
   float: left;
-  margin: 0 8px 0 0;
-  font-size: 16px;
+  margin: 0 2px 0 0;
+  font-size: 14px;
   position: relative;
-  top: 8px;
 }
 .menuCategory .listMenu .portion h3 {
-  width: 80px;
+  width: 75px;
   padding-left: 5px;
+  top: 10px;
 }
 .menuCategory .listMenu .portion p {
-  width: 34px;
+  width: 50px;
   text-align: right;
-}
-.menuCategory .listMenu .portion form {
-  display: inline-block;
+  top: 8px;
 }
 .menuCategory .listMenu .portion form .cart {
+  float: left;
   border: none;
-  display: inline-block;
   background: none;
   font-size: 20px;
   color: #60c800;
@@ -1109,8 +1122,8 @@ footer .social-networks ul li .icon:before {
   outline: none;
 }
 .menuCategory .listMenu .portion form .btn-4 {
-  padding: 5px 8px;
-  top: -3px;
+  float: right;
+  padding: 5px 4px;
 }
 .menuIdCategory .left {
   width: 60%;
@@ -1157,35 +1170,30 @@ footer .social-networks ul li .icon:before {
   margin-bottom: 5px;
 }
 .menuIdCategory .right .portion {
-  display: inline-block;
-  margin-bottom: 5px;
+  margin: 5px 0;
   vertical-align: middle;
   border: 2px #333 groove;
+  height: 35px;
 }
 .menuIdCategory .right .portion h3,
 .menuIdCategory .right .portion p {
   float: left;
   margin: 0 20px 0 0;
-  font-size: 18px;
+  font-size: 14px;
   position: relative;
   top: 8px;
 }
 .menuIdCategory .right .portion h3 {
-  width: 100px;
+  width: 90px;
   padding-left: 5px;
-  position: relative;
-  top: 10px;
 }
 .menuIdCategory .right .portion p {
-  width: 36px;
+  width: 60px;
   text-align: right;
 }
-.menuIdCategory .right .portion form {
-  display: inline-block;
-}
 .menuIdCategory .right .portion form .cart {
+  float: left;
   border: none;
-  display: inline-block;
   background: none;
   font-size: 20px;
   color: #60c800;
@@ -1202,7 +1210,8 @@ footer .social-networks ul li .icon:before {
   outline: none;
 }
 .menuIdCategory .right .portion form .btn-4 {
-  padding: 8px 15px;
+  float: right;
+  padding: 5px 4px;
 }
 .bannerButtons {
   height: 265px;
@@ -1273,7 +1282,7 @@ footer .social-networks ul li .icon:before {
   width: 40px;
   border: none;
   background: none;
-  text-align: center;
+  text-align: left;
 }
 .modal .modal-dialog .modal-content .modal-body tr td .chartQte {
   width: 30px;
@@ -1323,7 +1332,7 @@ footer .social-networks ul li .icon:before {
 }
 .orderSummary .form-horizontal {
   margin: 0 auto;
-  padding-bottom: 50px;
+  padding: 50px 0 50px 0;
 }
 .orderSummary .form-horizontal .form-group label {
   width: 20%;
@@ -1433,7 +1442,7 @@ footer .social-networks ul li .icon:before {
   width: 40px;
   border: none;
   background: none;
-  text-align: center;
+  text-align: left;
 }
 .orderSummary form table tr td .chartQte {
   width: 30px;
@@ -1472,9 +1481,22 @@ footer .social-networks ul li .icon:before {
   background: none;
   text-align: right;
 }
+.orderSummary .orderEmpty {
+  width: 90%;
+  margin: 0 auto;
+  padding: 12%;
+  text-align: center;
+}
+.orderSummary .orderEmpty p {
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+.orderSummary .orderEmpty .btn-1 {
+  margin: 0px;
+}
 .orderReceived {
-  display: inline-block;
-  padding: 50px 50px 20px 100px;
+  padding: 12%;
+  text-align: center;
 }
 .orderReceived span {
   color: #60c800;
@@ -1488,8 +1510,57 @@ footer .social-networks ul li .icon:before {
   position: relative;
   top: -40px;
   line-height: 32px;
+  text-align: left;
 }
-@media screen and (min-width: 1201px) {
+.orderReceived .btn-1 {
+  margin: 0px;
+}
+.notFound {
+  padding: 12%;
+  text-align: center;
+}
+.notFound p {
+  float: right;
+  font-size: 30px;
+  position: relative;
+  top: -40px;
+  line-height: 32px;
+  text-align: left;
+}
+.notFound .btn-1 {
+  margin: 0px;
+}
+@media screen and (min-width: 1700px) {
+  .content {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .promo {
+    display: none;
+    visibility: hidden;
+  }
+  .carousel .carousel-inner .itm-1 .carousel-caption {
+    bottom: 130px;
+    left: 58%;
+  }
+  .carousel .carousel-inner .itm-2 .carousel-caption {
+    bottom: 130px;
+  }
+  .carousel .carousel-inner .itm-3 .carousel-caption {
+    bottom: 130px;
+  }
+  .carousel .carousel-inner .itm-4 .carousel-caption {
+    bottom: 130px;
+    top: 220px;
+  }
+  .carousel .carousel-inner .itm-5 .carousel-caption {
+    bottom: 130px;
+  }
+  .carousel .carousel-inner .itm-6 .carousel-caption {
+    bottom: 130px;
+  }
+}
+@media screen and (min-width: 1201px) and (max-width: 1699px) {
   .content {
     width: 960px;
     margin: 0 auto;
@@ -1509,7 +1580,7 @@ footer .social-networks ul li .icon:before {
     visibility: hidden;
   }
   header .navbar-sticky .navbar-nav {
-    margin-left: 19%;
+    margin-left: 16%;
   }
   .carousel .carousel-inner .carousel-caption {
     text-shadow: none;
@@ -1617,6 +1688,9 @@ footer .social-networks ul li .icon:before {
   .contact {
     padding: 60px 20px;
   }
+  .menuCategory .listMenu .portion form .cart {
+    margin: 0 3px 0 0;
+  }
   .menuIdCategory .right .icons img {
     width: 40px;
   }
@@ -1665,7 +1739,7 @@ footer .social-networks ul li .icon:before {
     margin-left: 30px;
   }
   header .navbar-sticky .navbar-nav {
-    margin-left: 24%;
+    margin-left: 14%;
   }
   header .navbar-sticky .navbar-nav li a,
   header .navbar-sticky .navbar-nav li a:focus,
@@ -1865,15 +1939,18 @@ footer .social-networks ul li .icon:before {
   }
   .menuIdCategory .right .portion h3,
   .menuIdCategory .right .portion p {
-    margin: 0 5px 0 0;
-    font-size: 16px;
+    margin: 0 2px 0 0;
+    font-size: 14px;
   }
   .menuIdCategory .right .portion h3 {
-    width: 85px;
+    width: 75px;
     padding-left: 5px;
   }
   .menuIdCategory .right .portion p {
-    width: 30px;
+    width: 45px;
+  }
+  .menuIdCategory .right .portion form .btn-4 {
+    padding: 5px 10px;
   }
   .bannerButtons {
     height: 340px;
@@ -1889,8 +1966,7 @@ footer .social-networks ul li .icon:before {
     margin-left: 35%;
   }
   .orderReceived {
-    display: inline-block;
-    padding: 50px 50px 20px 100px;
+    padding: 12%;
   }
   .orderReceived span {
     color: #60c800;
@@ -1901,6 +1977,16 @@ footer .social-networks ul li .icon:before {
     float: right;
     font-size: 30px;
     padding-left: 60px;
+    position: relative;
+    top: -40px;
+    line-height: 32px;
+  }
+  .notFound {
+    padding: 12%;
+  }
+  .notFound p {
+    float: right;
+    font-size: 30px;
     position: relative;
     top: -40px;
     line-height: 32px;
@@ -1944,7 +2030,7 @@ footer .social-networks ul li .icon:before {
     margin-left: 35px;
   }
   header .navbar-sticky .navbar-collapse.collapse .navbar-nav {
-    margin-left: 18%;
+    margin-left: 14%;
   }
   header .navbar-sticky .navbar-collapse.collapse .navbar-nav li a,
   header .navbar-sticky .navbar-collapse.collapse .navbar-nav li a:focus,
@@ -2056,7 +2142,7 @@ footer .social-networks ul li .icon:before {
     margin: 0 auto;
   }
   .menu .categories-menu .view {
-    dsplay: inline-block;
+    display: inline-block;
     width: 328px;
     height: 200px;
     margin: 15px;
@@ -2141,15 +2227,18 @@ footer .social-networks ul li .icon:before {
   }
   .menuIdCategory .right .portion h3,
   .menuIdCategory .right .portion p {
-    margin: 0 5px 0 0;
-    font-size: 16px;
+    margin: 0 2px 0 0;
+    font-size: 14px;
   }
   .menuIdCategory .right .portion h3 {
-    width: 85px;
+    width: 75px;
     padding-left: 5px;
   }
   .menuIdCategory .right .portion p {
-    width: 30px;
+    width: 45px;
+  }
+  .menuIdCategory .right .portion form .btn-4 {
+    padding: 5px 10px;
   }
   .bannerButtons {
     height: 340px;
@@ -2165,8 +2254,7 @@ footer .social-networks ul li .icon:before {
     margin-left: 35%;
   }
   .orderReceived {
-    display: inline-block;
-    padding: 50px 50px 20px 100px;
+    padding: 12%;
   }
   .orderReceived span {
     color: #60c800;
@@ -2177,6 +2265,16 @@ footer .social-networks ul li .icon:before {
     float: right;
     font-size: 30px;
     padding-left: 60px;
+    position: relative;
+    top: -40px;
+    line-height: 32px;
+  }
+  .notFound {
+    padding: 12%;
+  }
+  .notFound p {
+    float: right;
+    font-size: 30px;
     position: relative;
     top: -40px;
     line-height: 32px;
@@ -2192,6 +2290,9 @@ footer .social-networks ul li .icon:before {
   a.btn-2:active,
   a.btn-2:focus {
     padding: 15px 65px;
+  }
+  body {
+    padding-top: 98px;
   }
   .content {
     width: 460px;
@@ -2237,15 +2338,13 @@ footer .social-networks ul li .icon:before {
     position: relative;
     float: left;
     left: 62%;
-    top: 20px;
+    top: 16px;
   }
   header .navbar .cart-collapsed a,
   header .navbar .cart-collapsed a:focus,
   header .navbar .cart-collapsed a:visited,
   header .navbar .cart-collapsed a:active {
     color: #60c800;
-    font-weight: bold;
-    font-size: 23px;
     text-transform: uppercase;
     background-color: inherit;
     border: 0px;
@@ -2255,6 +2354,9 @@ footer .social-networks ul li .icon:before {
   header .navbar .cart-collapsed a:hover {
     background-color: transparent;
     color: #afe27b;
+  }
+  header .navbar .cart-collapsed a span {
+    font-size: 26px;
   }
   header .navbar .navbar-collapse {
     overflow: hidden;
@@ -2278,7 +2380,7 @@ footer .social-networks ul li .icon:before {
     display: inherit;
     visibility: visible;
     height: 18px;
-    margin: 2px;
+    margin: 2px 0 8px 0;
   }
   header .navbar .navbar-collapse ul li.button span {
     font-size: 12px;
@@ -2291,9 +2393,9 @@ footer .social-networks ul li .icon:before {
   header .navbar .navbar-collapse ul li a:active {
     color: #60c800;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 16px;
     text-transform: uppercase;
-    padding: 5px 15px;
+    padding: 16px 0;
     background-color: inherit;
     border: 0px;
     outline: none;
@@ -2463,25 +2565,45 @@ footer .social-networks ul li .icon:before {
   }
   .menu .categories-menu .view {
     width: 90%;
-    height: 195px;
+    height: 205px;
     margin: 5%;
   }
   .menu .categories-menu .view img {
     width: 100%;
-    height: 195px;
+    height: 205px;
   }
   .menu .categories-menu .view .mask {
     width: 100%;
-    height: 195px;
+    height: 205px;
+    background-color: rgba(175, 226, 123, 0.64);
   }
   .menu .categories-menu .view .mask h3 {
     margin: 0;
   }
+  .menu .categories-menu .view-first .mask {
+    opacity: 1;
+    transition: none;
+  }
+  .menu .categories-menu .view-first h3 {
+    transform: translateY(25px);
+    opacity: 1;
+    transition: none;
+  }
+  .menu .categories-menu .view-first a.info {
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+    padding: 15px 65px;
+    margin: 35px 70px;
+  }
   .menu .categories-menu .view-first:hover h3 {
-    transform: translateY(20px);
+    transition-delay: 0.1s;
+    opacity: 1;
+    transform: translateY(25px);
   }
   .menu .categories-menu .view-first:hover a.info {
-    transform: translateY(20px);
+    transition-delay: 0.2s;
+    opacity: 1;
+    transform: none;
   }
   .facebook {
     padding: 20px 0 10px 0;
@@ -2554,6 +2676,9 @@ footer .social-networks ul li .icon:before {
     padding-right: 8px;
     top: 3px;
   }
+  .contact .info p a {
+    color: #000000;
+  }
   footer {
     padding: 5px;
     font-size: 12px;
@@ -2572,7 +2697,7 @@ footer .social-networks ul li .icon:before {
   }
   .menuCategory .listMenu {
     width: 98%;
-    height: 465px;
+    height: auto;
   }
   .menuCategory .listMenu .view {
     height: 228px;
@@ -2584,14 +2709,19 @@ footer .social-networks ul li .icon:before {
   .menuCategory .listMenu .view .mask {
     height: 228px;
   }
-  .menuCategory .listMenu .second-effect a.info {
-    top: -20px;
+  .menuCategory .listMenu .second-effect .mask {
+    opacity: 1;
+    border: 129px solid rgba(0, 0, 0, 0.3);
   }
   .menuCategory .listMenu .second-effect:hover .mask {
-    border: 114px solid rgba(0, 0, 0, 0.7);
+    opacity: 1;
+    border: 129px solid rgba(0, 0, 0, 0.7);
+  }
+  .menuCategory .listMenu .second-effect a.info {
+    top: -25px;
   }
   .menuCategory .listMenu .portion h3 {
-    width: 180px;
+    width: 160px;
   }
   .menuCategory .listMenu .portion p {
     margin: 0 15px 0 0;
@@ -2627,16 +2757,18 @@ footer .social-networks ul li .icon:before {
     width: 38px;
   }
   .menuIdCategory .right .portion h3 {
-    width: 180px;
+    width: 160px;
+    margin: 0 2px 0 0;
   }
   .menuIdCategory .right .portion p {
+    width: 50px;
     margin: 0 15px 0 0;
   }
   .menuIdCategory .right .portion form .cart {
     margin: 0 15px 0 0;
   }
   .menuIdCategory .right .portion form .btn-4 {
-    padding: 8px 20px;
+    padding: 5px 18px;
   }
   .bannerButtons {
     height: 270px;
@@ -2671,23 +2803,30 @@ footer .social-networks ul li .icon:before {
     width: 50px;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .price {
-    width: 20px;
+    width: 30px;
+    padding: 0px;
+    margin: 0px;
+    color: #000000;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .chartQte {
-    width: 20px;
+    width: 30px;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .editQte {
-    width: 70px;
+    width: 80px;
     text-align: center;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .orderTotal,
   .modal .modal-dialog .modal-content .modal-body tr td .chartTotal,
   .modal .modal-dialog .modal-content .modal-body tr td .total_total {
-    width: 30px;
+    width: 35px;
+    padding: 0p;
+    margin: 0px;
+    color: #000000;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-minus-sign,
-  .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-plus-sign {
-    font-size: 11px;
+  .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-plus-sign,
+  .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-trash {
+    font-size: 12px;
     top: 2px;
   }
   .modal .modal-dialog .modal-content .modal-body .emptyText {
@@ -2703,7 +2842,6 @@ footer .social-networks ul li .icon:before {
   }
   .orderSummary .form-horizontal {
     margin: 0 auto;
-    padding-bottom: 50px;
   }
   .orderSummary .form-horizontal .form-group {
     margin: 5px;
@@ -2776,10 +2914,13 @@ footer .social-networks ul li .icon:before {
     width: 40px;
   }
   .orderSummary form table tr td .price {
-    width: 20px;
+    width: 25px;
+    padding: 0px;
+    margin: 0px;
+    color: #000000;
   }
   .orderSummary form table tr td .chartQte {
-    width: 20px;
+    width: 30px;
     text-align: center;
   }
   .orderSummary form table tr td .editQte {
@@ -2794,13 +2935,31 @@ footer .social-networks ul li .icon:before {
   .orderSummary form table tr td .orderTotal,
   .orderSummary form table tr td .chartTotal,
   .orderSummary form table tr td .total_total {
-    width: 40px;
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
+    color: #000000;
+  }
+  .orderSummary .orderEmpty {
+    padding: 25% 10%;
+    text-align: center;
+  }
+  .orderSummary .orderEmpty .btn-1 {
+    margin: 0px;
   }
   .orderReceived {
-    padding: 30px;
+    padding: 15%;
   }
   .orderReceived p {
-    padding-left: 50px;
+    font-size: 24px;
+    line-height: 22px;
+  }
+  .notFound {
+    padding: 15%;
+  }
+  .notFound p {
+    font-size: 24px;
+    line-height: 22px;
   }
 }
 @media screen and (min-width: 0px) and (max-width: 480px) {
@@ -2814,12 +2973,18 @@ footer .social-networks ul li .icon:before {
   a.btn-2:focus {
     padding: 15px 65px;
   }
+  body {
+    padding-top: 98px;
+  }
   .content {
     width: 300px;
     margin: 0 auto;
   }
   .promo {
     display: inherit;
+  }
+  .promo .text {
+    letter-spacing: -1px;
   }
   header .barTop {
     background-color: #000000;
@@ -2858,7 +3023,7 @@ footer .social-networks ul li .icon:before {
     position: relative;
     float: left;
     left: 50%;
-    top: 20px;
+    top: 16px;
   }
   header .navbar .cart-collapsed a,
   header .navbar .cart-collapsed a:focus,
@@ -2866,7 +3031,7 @@ footer .social-networks ul li .icon:before {
   header .navbar .cart-collapsed a:active {
     color: #60c800;
     font-weight: bold;
-    font-size: 23px;
+    font-size: 26px;
     text-transform: uppercase;
     background-color: inherit;
     border: 0px;
@@ -2896,9 +3061,10 @@ footer .social-networks ul li .icon:before {
     visibility: hidden;
   }
   header .navbar .navbar-collapse ul li.button {
-    display: inline;
+    display: inherit;
     visibility: visible;
     height: 18px;
+    margin: 2px 0 8px 0;
   }
   header .navbar .navbar-collapse ul li.button span {
     font-size: 12px;
@@ -2911,9 +3077,9 @@ footer .social-networks ul li .icon:before {
   header .navbar .navbar-collapse ul li a:active {
     color: #60c800;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 16px;
     text-transform: uppercase;
-    padding: 5px 15px;
+    padding: 16px 0;
     background-color: inherit;
     border: 0px;
     outline: none;
@@ -2930,11 +3096,6 @@ footer .social-networks ul li .icon:before {
     height: 60px;
     z-index: 999;
     width: 100%;
-    -webkit-transition: all 0.5s ease-in;
-    -moz-transition: all 0.5s ease-in;
-    -o-transition: all 0.5s ease-in;
-    -ms-transition: all 0.5s ease-in;
-    transition: all 0.5s ease-in;
   }
   header .navbar-sticky h1 {
     width: 54px;
@@ -2945,11 +3106,6 @@ footer .social-networks ul li .icon:before {
     top: 1px;
     width: 54px;
     margin-left: 50px;
-  }
-  header .navbar-sticky .navbar-nav {
-    position: relative;
-    top: -18px;
-    left: 300px;
   }
   header .navbar-sticky .navbar-nav li a,
   header .navbar-sticky .navbar-nav li a:focus,
@@ -3102,21 +3258,38 @@ footer .social-networks ul li .icon:before {
   .menu .categories-menu .view .mask {
     width: 100%;
     height: 180px;
+    background-color: rgba(175, 226, 123, 0.64);
+    opacity: 1;
   }
   .menu .categories-menu .view .mask h3 {
     margin: 0;
   }
+  .menu .categories-menu .view-first .mask {
+    opacity: 1;
+    transition: none;
+  }
+  .menu .categories-menu .view-first h3 {
+    transform: translateY(20px);
+    opacity: 1;
+    transition: none;
+  }
+  .menu .categories-menu .view-first a.info {
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+    padding: 15px 35px;
+  }
   .menu .categories-menu .view-first:hover h3 {
+    transition-delay: 0.1s;
+    opacity: 1;
     transform: translateY(10px);
   }
   .menu .categories-menu .view-first:hover a.info {
-    transform: translateY(20px);
+    transition-delay: 0.2s;
+    opacity: 1;
+    transform: none;
   }
   .facebook {
     padding: 20px 0 10px 0;
-  }
-  .facebook iframe {
-    width: 300px !important;
   }
   .about {
     padding: 55px 0 10px 0;
@@ -3179,6 +3352,9 @@ footer .social-networks ul li .icon:before {
     padding-right: 8px;
     top: 3px;
   }
+  .contact .info p a {
+    color: #000000;
+  }
   footer {
     padding: 5px;
     font-size: 12px;
@@ -3197,6 +3373,28 @@ footer .social-networks ul li .icon:before {
   }
   .menuCategory .listMenu {
     width: 98%;
+    margin: 10px 2px;
+  }
+  .menuCategory .listMenu .second-effect .mask {
+    opacity: 1;
+    border: 89px solid rgba(0, 0, 0, 0.3);
+  }
+  .menuCategory .listMenu .portion h3,
+  .menuCategory .listMenu .portion p {
+    float: left;
+    margin: 0px;
+    font-size: 13px;
+    position: relative;
+  }
+  .menuCategory .listMenu .portion h3 {
+    width: 70px;
+    padding-left: 3px;
+    top: 10px;
+  }
+  .menuCategory .listMenu .portion p {
+    width: 45px;
+    text-align: right;
+    top: 8px;
   }
   .menuCategory .listMenu .portion form .cart {
     margin: 0 5px 0 0;
@@ -3226,14 +3424,16 @@ footer .social-networks ul li .icon:before {
     width: 38px;
   }
   .menuIdCategory .right .portion h3 {
-    width: 98px;
+    width: 70px;
+    margin: 0px;
+    font-size: 13px;
+    top: 10px;
   }
-  .menuIdCategory .right .portion h3,
   .menuIdCategory .right .portion p {
-    margin: 0 2px 0 0;
-  }
-  .menuIdCategory .right .portion form .cart {
-    margin: 0 2px 0 0;
+    width: 45px;
+    margin: 0px;
+    font-size: 13px;
+    top: 8px;
   }
   .bannerButtons {
     height: 330px;
@@ -3262,19 +3462,24 @@ footer .social-networks ul li .icon:before {
   }
   .modal .modal-dialog .modal-content .modal-body tr td {
     font-size: 10px;
-    padding: 2px;
+    padding: 1px;
   }
   .modal .modal-dialog .modal-content .modal-body tr td img {
-    width: 30px;
+    display: none;
+    visibility: hidden;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .price {
-    width: 10px;
+    width: 25px;
+    padding: 0px;
+    margin: 0px;
+    color: #000000;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .chartQte {
-    width: 15px;
+    width: 30px;
+    text-align: center;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .editQte {
-    width: 50px;
+    width: 80px;
     text-align: center;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .orderTotal,
@@ -3283,8 +3488,9 @@ footer .social-networks ul li .icon:before {
     width: 30px;
   }
   .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-minus-sign,
-  .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-plus-sign {
-    font-size: 9px;
+  .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-plus-sign,
+  .modal .modal-dialog .modal-content .modal-body tr td .glyphicon-trash {
+    font-size: 12px;
     top: 2px;
   }
   .modal .modal-dialog .modal-content .modal-body .emptyText {
@@ -3300,7 +3506,6 @@ footer .social-networks ul li .icon:before {
   }
   .orderSummary .form-horizontal {
     margin: 0 auto;
-    padding-bottom: 50px;
   }
   .orderSummary .form-horizontal .form-group {
     margin: 5px;
@@ -3368,16 +3573,20 @@ footer .social-networks ul li .icon:before {
   .orderSummary form table tr td {
     font-size: 10px;
     vertical-align: middle;
-    padding: 2px;
+    padding: 1px;
   }
   .orderSummary form table tr td img {
-    width: 30px;
+    display: none;
+    visibility: hidden;
   }
   .orderSummary form table tr td .price {
-    width: 20px;
+    width: 30px;
+    color: #000000;
+    padding: 0px;
+    margin: 0px;
   }
   .orderSummary form table tr td .chartQte {
-    width: 20px;
+    width: 25px;
     text-align: center;
   }
   .orderSummary form table tr td .editQte {
@@ -3393,12 +3602,41 @@ footer .social-networks ul li .icon:before {
   .orderSummary form table tr td .chartTotal,
   .orderSummary form table tr td .total_total {
     width: 34px;
+    color: #000000;
+  }
+  .orderSummary .orderEmpty {
+    padding: 35% 5%;
+    text-align: center;
+  }
+  .orderSummary .orderEmpty p {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .orderSummary .orderEmpty .btn-1 {
+    margin: 0px;
+    padding: 15px 45px;
   }
   .orderReceived {
-    padding: 30px;
+    padding: 25% 5%;
   }
   .orderReceived p {
-    padding-left: 50px;
+    font-size: 24px;
+    line-height: 22px;
+  }
+  .orderReceived .btn-1 {
+    margin: 0px;
+    padding: 15px 45px;
+  }
+  .notFound {
+    padding: 25% 5%;
+  }
+  .notFound p {
+    font-size: 24px;
+    line-height: 22px;
+  }
+  .notFound .btn-1 {
+    margin: 0px;
+    padding: 15px 45px;
   }
 }
 .showCP {

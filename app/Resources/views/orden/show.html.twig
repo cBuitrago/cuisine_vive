@@ -1,0 +1,100 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <div class="contenu">
+        <h1>Commande #{{ orden.id }} - {{ orden.firstUser.name }}</h1>
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th># commande</th>
+                    <td>{{ orden.id }}</td>
+                </tr>
+                <tr>
+                    <th>Date de la commande</th>
+                    <td>{% if orden.dateOrder %}{{ orden.dateOrder|date('d-m-Y H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Statut</th>
+                    <td>{{ orden.status }}</td>
+                </tr>
+                <tr>
+                    <th>Cuillete?</th>
+                    <td>{% if orden.inSitu %}Oui{% else %}Non{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Courriel</th>
+                    <td>{{ orden.firstUser.email }}</td>
+                </tr>
+                <tr>
+                    <th>Téléphone</th>
+                    <td>{{ orden.tel }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ orden.address }}</td>
+                </tr>
+                <tr>
+                    <th>Code postal</th>
+                    <td>{{ orden.zipCode }}</td>
+                </tr>
+                <tr>
+                    <th>Prix de livraison</th>
+                    <td>{{ orden.deliPrice }}</td>
+                </tr>
+                <tr>
+                    <th>Prix de la commande</th>
+                    <td>{{ orden.userPrice }}
+                        {% if orden.userPrice != orden.calculatePrice %}
+                            <span style='color:red'> vérifier le prix avec le client {{ orden.calculatePrice }}</th>
+                            {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Commentaires</th>
+                    <td>{{ orden.comments }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Assiettes</h2>
+        <table class="table table-striped">
+            <tbody>
+            <thead>
+                <tr>
+                    <th>Assiete</th>
+                    <th>Portion</th>
+                    <th>Quantité</th>
+                    <th>Prix Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in orden.items %}
+                    <tr>
+                        <td>{{ item.dishportion.dish.name }}</td>
+                        <td>{{ item.dishportion.portion.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.quantity * item.dishportion.price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <ul>
+            <li>
+                <a class="btn btn-default" href="{{ path('orden_index') }}">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Retourner à la liste
+                </a>
+            </li>
+            <li>
+                <a class="btn btn-default" href="{{ path('orden_edit', { 'id': orden.id }) }}">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Modifier statut
+                </a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Effacer" class="btn btn-default">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+
+    </div>
+{% endblock %}

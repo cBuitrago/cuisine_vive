@@ -28,7 +28,7 @@ class OrdenDishPortion
     private $orden;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DishPortion", inversedBy="ordenes", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="DishPortion", cascade={"persist"})
      * @ORM\JoinColumn(name="dishPortion", referencedColumnName="id", nullable=false)
      */
     private $dishPortion;

@@ -12,8 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="dish")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\DishRepository")
  */
-class Dish
-{
+class Dish {
+
     /**
      * @var int
      *
@@ -24,7 +24,7 @@ class Dish
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="dish")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="dishes")
      * @ORM\JoinColumn(name="category", referencedColumnName="id", nullable=false)
      */
     private $category;
@@ -35,21 +35,21 @@ class Dish
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
-    
+
     /**
      * @var boolean
      *
      * @ORM\Column(name="isActive", type="boolean", unique=false)
      */
     private $isActive;
-    
+
     /**
      * @var int
      *
      * @ORM\Column(name="priority", type="integer")
      */
     private $priority;
-    
+
     /**
      * @var boolean
      *
@@ -72,14 +72,15 @@ class Dish
 
     /**
      * @ORM\OneToMany(targetEntity="DishLanguage", mappedBy="dish", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"priority": "ASC"})
      */
     private $languages;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="DishPortion", mappedBy="dish", cascade={"persist", "remove"})
      */
     private $portions;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="DishIcon", mappedBy="dish", cascade={"persist", "remove"})
      */
@@ -90,14 +91,13 @@ class Dish
         $this->portions = new ArrayCollection();
         $this->icons = new ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -108,8 +108,7 @@ class Dish
      *
      * @return Dish
      */
-    public function setCategory($category)
-    {
+    public function setCategory($category) {
         $this->category = $category;
 
         return $this;
@@ -120,8 +119,7 @@ class Dish
      *
      * @return int
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
 
@@ -132,8 +130,7 @@ class Dish
      *
      * @return Dish
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -144,8 +141,7 @@ class Dish
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -156,8 +152,7 @@ class Dish
      *
      * @return Dish
      */
-    public function setPhoto($photo)
-    {
+    public function setPhoto($photo) {
         $this->photo = $photo;
 
         return $this;
@@ -168,8 +163,7 @@ class Dish
      *
      * @return string
      */
-    public function getPhoto()
-    {
+    public function getPhoto() {
         return $this->photo;
     }
 
@@ -180,8 +174,7 @@ class Dish
      *
      * @return Dish
      */
-    public function setIsActive($isActive)
-    {
+    public function setIsActive($isActive) {
         $this->isActive = $isActive;
 
         return $this;
@@ -192,8 +185,7 @@ class Dish
      *
      * @return boolean
      */
-    public function getIsActive()
-    {
+    public function getIsActive() {
         return $this->isActive;
     }
 
@@ -204,8 +196,7 @@ class Dish
      *
      * @return Dish
      */
-    public function setPriority($priority)
-    {
+    public function setPriority($priority) {
         $this->priority = $priority;
 
         return $this;
@@ -216,8 +207,7 @@ class Dish
      *
      * @return integer
      */
-    public function getPriority()
-    {
+    public function getPriority() {
         return $this->priority;
     }
 
@@ -228,8 +218,7 @@ class Dish
      *
      * @return Dish
      */
-    public function setIsDishWeek($isDishWeek)
-    {
+    public function setIsDishWeek($isDishWeek) {
         $this->isDishWeek = $isDishWeek;
 
         return $this;
@@ -240,8 +229,7 @@ class Dish
      *
      * @return boolean
      */
-    public function getIsDishWeek()
-    {
+    public function getIsDishWeek() {
         return $this->isDishWeek;
     }
 
@@ -252,8 +240,7 @@ class Dish
      *
      * @return Dish
      */
-    public function addLanguage(\AppBundle\Entity\DishLanguage $language)
-    {
+    public function addLanguage(\AppBundle\Entity\DishLanguage $language) {
         $language->setDish($this);
 
         $this->languages[] = $language;
@@ -266,8 +253,7 @@ class Dish
      *
      * @param \AppBundle\Entity\DishLanguage $language
      */
-    public function removeLanguage(\AppBundle\Entity\DishLanguage $language)
-    {
+    public function removeLanguage(\AppBundle\Entity\DishLanguage $language) {
         $this->languages->removeElement($language);
     }
 
@@ -276,8 +262,7 @@ class Dish
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getLanguages()
-    {
+    public function getLanguages() {
         return $this->languages;
     }
 
@@ -288,10 +273,9 @@ class Dish
      *
      * @return Dish
      */
-    public function addPortion(\AppBundle\Entity\DishPortion $portion)
-    {
+    public function addPortion(\AppBundle\Entity\DishPortion $portion) {
         $portion->setDish($this);
-        
+
         $this->portions[] = $portion;
 
         return $this;
@@ -302,8 +286,7 @@ class Dish
      *
      * @param \AppBundle\Entity\DishPortion $portion
      */
-    public function removePortion(\AppBundle\Entity\DishPortion $portion)
-    {
+    public function removePortion(\AppBundle\Entity\DishPortion $portion) {
         $this->portions->removeElement($portion);
     }
 
@@ -312,8 +295,7 @@ class Dish
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPortions()
-    {
+    public function getPortions() {
         return $this->portions;
     }
 
@@ -324,10 +306,9 @@ class Dish
      *
      * @return Dish
      */
-    public function addIcon(\AppBundle\Entity\DishIcon $icon)
-    {
+    public function addIcon(\AppBundle\Entity\DishIcon $icon) {
         $icon->setDish($this);
-        
+
         $this->icons[] = $icon;
 
         return $this;
@@ -338,8 +319,7 @@ class Dish
      *
      * @param \AppBundle\Entity\DishIcon $icon
      */
-    public function removeIcon(\AppBundle\Entity\DishIcon $icon)
-    {
+    public function removeIcon(\AppBundle\Entity\DishIcon $icon) {
         $this->icons->removeElement($icon);
     }
 
@@ -348,8 +328,36 @@ class Dish
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getIcons()
-    {
+    public function getIcons() {
         return $this->icons;
     }
+
+    public function getLanguageOfDish($lang) {
+        foreach ($this->getLanguages() as $language) {
+            if ($language->getLanguage()->getName() === $lang) {
+                return $language->getName();
+            }
+        }
+        return NULL;
+    }
+
+    public function getLanguageOfDishAll($lang) {
+        foreach ($this->getLanguages() as $language) {
+            if ($language->getLanguage()->getName() === $lang) {
+                return $language;
+            }
+        }
+        return NULL;
+    }
+
+    public function hasIcon($id) {
+        foreach ($this->icons as $icon) {
+            if ($icon->getIcon()->getId() == intval($id)) {
+                return TRUE;
+            }
+        }
+
+        return FALSE;
+    }
+
 }

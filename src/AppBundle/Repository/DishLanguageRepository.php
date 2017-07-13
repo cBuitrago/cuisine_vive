@@ -48,7 +48,7 @@ class DishLanguageRepository extends EntityRepository {
                     $portionResponse = new stdClass();
                     $portionResponse->id = $dishPortion->getId();
                     $portionResponse->name = $portionLanguage->getName();
-                    $portionResponse->price = $dishPortion->getPrice();
+                    $portionResponse->price = number_format($dishPortion->getPrice(), 2);
                     array_push($dishResponse->portions, $portionResponse);
                     break;
                 }

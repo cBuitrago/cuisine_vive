@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="description" content="{{ lang.homepage.meta.description}}">
+        <meta name="keywords" content="{{ lang.homepage.meta.keywords}}">
         <title>{% block title %}Cuisine Vive{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Catamaran|Dancing+Script" rel="stylesheet">
@@ -11,7 +13,6 @@
             {% endstylesheets %}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-
     </head>
     <body>
 
@@ -29,7 +30,7 @@
             <div class="col col-3">                
                 <div class="copyright ">
                     <span class="wt">Cuisine Vive</span> - 702 2e Avenue, Montréal, QC H8S 0A3<div style="clear:both"></div>
-                    <span class="wt">Copyright © 2017 </span><a class="wt" href="#" target="_blank">Cuisine Vive</a>
+                    <span class="wt">Copyright © 2017 </span><a class="wt" href="/">Cuisine Vive</a>
                     {#Powered by <a href="" target="_blank">CarlosyVanessa Marketing</a> #}
                 </div>
             </div>
@@ -38,14 +39,8 @@
                     <ul>
                         <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
                                 <span class="icon icon-facebook-with-circle"/></a></li>
-                                {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
-                                        <span class="icon icon-twitter-with-circle"/></a></li>#}
                         <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
                                 <span class="icon icon-instagram-with-circle"/></a></li>
-                                {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
-                                        <span class="icon icon-youtube-with-circle"/></a></li>#}
-                                {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
-                                        <span class="icon icon-google-with-circle"/></a></li>#}
                         <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
                                 <span class="icon icon-pinterest-with-circle"/></a></li>
                     </ul> 

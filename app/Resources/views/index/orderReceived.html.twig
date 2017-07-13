@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Cuisine Vive{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{{ lang.homepage.meta.description}}">
+        <meta name="keywords" content="{{ lang.homepage.meta.keywords}}">
         <link href="https://fonts.googleapis.com/css?family=Catamaran|Dancing+Script" rel="stylesheet">
         {% block stylesheets %}
             {% stylesheets 'Resources/public/css/*' filter='cssrewrite' output='css/compiled/app.css' %}
@@ -13,24 +16,14 @@
 
     </head>
     <body>
-        <div class="promo">
-            <div class="content">
-                <p class="text">{{ lang.homepage.sectionPromo.content.text }} </p>
-            </div>
-        </div>F
         <header>
             <div class="barTop">  
                 <div class="content">
                     <div class="promotion">
-                        <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} </p>
+                        <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} {{ liv|date("d/m/Y") }} - {{ liv|date_modify('+1 day')|date(" d/m/Y") }}</p>
                     </div>
                     <div class="links">
-                        {#<a href="{{ lang.homepage.sectionTop.link0.path}}">
-                            <p class="">{{ lang.homepage.sectionTop.link0.title}}</p>
-                        </a>
-                        <a href="{{ lang.homepage.sectionTop.link1.path}}">
-                            <p class="">{{ lang.homepage.sectionTop.link1.title}}</p>
-                        </a>#}
+
                         <form method="POST">
                             <input type="hidden" name="language" value="{{ lang.homepage.sectionTop.link2.path }}">
                             <input type="submit" value="{{ lang.homepage.sectionTop.link2.title}}">
@@ -39,14 +32,8 @@
                             <ul>
                                 <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
                                         <span class="icon icon-facebook-with-circle"/></a></li>
-                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
-                                                <span class="icon icon-twitter-with-circle"/></a></li>#}
                                 <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
                                         <span class="icon icon-instagram-with-circle"/></a></li>
-                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
-                                                <span class="icon icon-youtube-with-circle"/></a></li>#}
-                                        {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
-                                                <span class="icon icon-google-with-circle"/></a></li>#}
                                 <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
                                         <span class="icon icon-pinterest-with-circle"/></a></li>
                             </ul>
@@ -72,7 +59,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <div class="collapse navbar-collapse content" id="navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ path('homepage') }}"> <span class="icon-home"></span></a></li>
                         <li class="button">
@@ -90,7 +77,8 @@
         <div class='content'>
             <div class="orderReceived">
                 <span class="icon-wink"></span>
-                <p>{{ lang.orderReceived.text }}</p>
+                <p>{{ lang.orderReceived.text }}</p>                
+                <a type="button" class="btn-1" href="{{ path('homepage') }}">{{ lang.orderReceived.button }}</a>                            
             </div>
         </div>
         <footer>
@@ -107,7 +95,6 @@
                     <div class="copyright ">
                         <span class="wt">Cuisine Vive</span> - 702 2e Avenue, Montréal, QC H8S 0A3<div style="clear:both"></div>
                         <span class="wt">Copyright © 2017 </span><a class="wt" href="#" target="_blank">Cuisine Vive</a>
-                        {#Powered by <a href="" target="_blank">CarlosyVanessa Marketing</a> #}
                     </div>
                 </div>
                 <div class="col col-4">
@@ -115,14 +102,8 @@
                         <ul>
                             <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
                                     <span class="icon icon-facebook-with-circle"/></a></li>
-                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
-                                            <span class="icon icon-twitter-with-circle"/></a></li>#}
                             <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
                                     <span class="icon icon-instagram-with-circle"/></a></li>
-                                    {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
-                                            <span class="icon icon-youtube-with-circle"/></a></li>#}
-                                    {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
-                                            <span class="icon icon-google-with-circle"/></a></li>#}
                             <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
                                     <span class="icon icon-pinterest-with-circle"/></a></li>
                         </ul> 

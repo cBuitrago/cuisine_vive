@@ -64,15 +64,20 @@ class DishController extends Controller {
 
             $file = $dish->getPhoto();
 
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
             $file->move(
-                $this->getParameter('images_directory'),
-                $fileName
+                    $this->getParameter('images_directory'), $fileName
             );
 
             $dish->setPhoto($fileName);
-            
+
+            foreach ($dish->getPortions() as $portion) {
+                if ($portion->getPrice() < 1) {
+                    $dish->removePortion($portion);
+                }
+            }
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($dish);
             $em->flush($dish);
@@ -109,24 +114,70 @@ class DishController extends Controller {
      */
     public function editAction(Request $request, Dish $dish) {
         $deleteForm = $this->createDeleteForm($dish);
-        $editForm = $this->createForm('AppBundle\Form\DishType', $dish);
+        $em = $this->getDoctrine()->getManager();
+        $portions = $em->getRepository('AppBundle:Portion')->findAll();
+        foreach ($portions as $portion) {
+            $validator = false;
+            foreach ($dish->getPortions() as $dishPortion) {
+                if ($dishPortion->getPortion() === $portion) {
+                    $validator = true;
+                    continue;
+                }
+            }
+            if (false === $validator) {
+                $newDishPortion = new DishPortion();
+                $newDishPortion->setPortion($portion);
+                $dish->addPortion($newDishPortion);
+            }
+        }
+
+        $editForm = $this->createForm('AppBundle\Form\DishEditType', $dish);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted()) {
+
+            foreach ($dish->getPortions() as $portion) {
+                if ($portion->getPrice() < 1) {
+                    $dish->removePortion($portion);
+                }
+            }
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('administracion_dish_show', array('id' => $dish->getId()));
+        }
+
+        return $this->render('dish/edit.html.twig', array(
+                    'dish' => $dish,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Displays a form to edit an existing dish entity.
+     *
+     * @Route("/{id}/editphoto", name="administracion_dish_edit_photo")
+     * @Method({"GET", "POST"})
+     */
+    public function editPhotoAction(Request $request, Dish $dish) {
+        $deleteForm = $this->createDeleteForm($dish);
+        $editForm = $this->createForm('AppBundle\Form\DishEditPhotoType', $dish);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            
             $file = $dish->getPhoto();
 
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
             $file->move(
-                $this->getParameter('images_directory'),
-                $fileName
+                    $this->getParameter('images_directory'), $fileName
             );
 
             $dish->setPhoto($fileName);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('administracion_dish_edit', array('id' => $dish->getId()));
+            return $this->redirectToRoute('administracion_dish_show', array('id' => $dish->getId()));
         }
 
         return $this->render('dish/edit.html.twig', array(

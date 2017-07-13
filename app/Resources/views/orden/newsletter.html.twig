@@ -1,0 +1,30 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <div class="contenu">
+        <ul>
+            <li>
+                <a href="{{ path('orden_index') }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Retourner
+                </a>
+            </li>
+        </ul>
+        <h1>Liste de Courriels de l'infolettre</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>courriel</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

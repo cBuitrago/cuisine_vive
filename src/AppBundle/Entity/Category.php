@@ -175,5 +175,14 @@ class Category {
     public function getLanguages() {
         return $this->languages;
     }
+    
+    public function getLanguageOfCategoryAll($lang) {
+        foreach ($this->getLanguages() as $language) {
+            if ($language->getLanguage()->getName() === $lang) {
+                return $language;
+            }
+        }
+        return NULL;
+    }
 
 }

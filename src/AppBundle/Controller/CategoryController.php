@@ -105,10 +105,10 @@ class CategoryController extends Controller
     public function editAction(Request $request, Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
-        $editForm = $this->createForm('AppBundle\Form\CategoryType', $category);
+        $editForm = $this->createForm('AppBundle\Form\CategoryEditType', $category);
         $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if ($editForm->isSubmitted()) {
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('category_edit', array('id' => $category->getId()));
@@ -118,6 +118,40 @@ class CategoryController extends Controller
             'category' => $category,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
+    /**
+     * Displays a form to edit an existing dish entity.
+     *
+     * @Route("/{id}/editphoto", name="administracion_category_edit_photo")
+     * @Method({"GET", "POST"})
+     */
+    public function editPhotoAction(Request $request, Category $category) {
+        $deleteForm = $this->createDeleteForm($category);
+        $editForm = $this->createForm('AppBundle\Form\CategoryEditPhotoType', $category);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $category->getPhoto();
+
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            $file->move(
+                $this->getParameter('images_directory'),
+                $fileName
+            );
+
+            $category->setPhoto($fileName);
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('category_index');
+        }
+
+        return $this->render('category/edit.html.twig', array(
+                    'category' => $category,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 

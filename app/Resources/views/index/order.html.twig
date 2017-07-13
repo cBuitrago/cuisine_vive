@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Cuisine Vive{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{{ lang.homepage.meta.description}}">
+        <meta name="keywords" content="{{ lang.homepage.meta.keywords}}">
         <link href="https://fonts.googleapis.com/css?family=Catamaran|Dancing+Script" rel="stylesheet">
         {% block stylesheets %}
             {% stylesheets 'Resources/public/css/*' filter='cssrewrite' output='css/compiled/app.css' %}
@@ -13,25 +16,13 @@
 
     </head>
     <body>
-        <div class="promo">
-            <div class="content">
-                <p class="text">{{ lang.homepage.sectionPromo.content.text }} </p>
-            </div>
-        </div>
         <header>
             <div id="home" class="barTop">  
                 <div class="content">
                     <div class="promotion">
-                        <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} </p>
+                        <p class="promotion-text">{{ lang.homepage.sectionPromo.content.text }} {{ liv|date("d/m/Y") }} - {{ liv|date_modify('+1 day')|date(" d/m/Y") }}</p>
                     </div>
-                    <div class="links">        
-
-                        {#<a href="{{ lang.homepage.sectionTop.link0.path}}">
-                            <p class="">{{ lang.homepage.sectionTop.link0.title}}</p>
-                        </a>
-                        <a href="{{ lang.homepage.sectionTop.link1.path}}">
-                            <p class="">{{ lang.homepage.sectionTop.link1.title}}</p>
-                        </a>#}
+                    <div class="links">  
                         <form method="POST">
                             <input type="hidden" name="language" value="{{ lang.homepage.sectionTop.link2.path }}">
                             <input type="submit" value="{{ lang.homepage.sectionTop.link2.title}}">
@@ -40,14 +31,8 @@
                             <ul>
                                 <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
                                         <span class="icon icon-facebook-with-circle"/></a></li>
-                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
-                                                <span class="icon icon-twitter-with-circle"/></a></li>#}
                                 <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
                                         <span class="icon icon-instagram-with-circle"/></a></li>
-                                        {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
-                                                <span class="icon icon-youtube-with-circle"/></a></li>#}
-                                        {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
-                                                <span class="icon icon-google-with-circle"/></a></li>#}
                                 <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
                                         <span class="icon icon-pinterest-with-circle"/></a></li>
                             </ul>
@@ -73,7 +58,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <div class="collapse navbar-collapse content" id="navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="{{ path('homepage') }}"> <span class="icon-home"></span></a></li>
                         <li class="button">
@@ -180,20 +165,16 @@
                         <textarea class="form-control" name="comments" id="comments" rows="3"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="checkbox" id="paiment" name="paiment" class="form-control" >
-                        <label class="control-label large" for="paiment">{{ lang.order.form.gift }}</label>
-                    </div>
-                    <div class="form-group">
                         <input type="checkbox" id="input_newsletter" name="input_newsletter" class="form-control" >
                         <label class="control-label large" for="input_newsletter">{{ lang.order.form.newsletter }}</label>
                     </div>
                     <button type="submit" class="btn-2" name="order">{{ lang.order.form.submit }}</button>
                 </form>
             {% else %}
-                <p class="emptyText">{{ lang.shoppingCart.contenu.emptyText }}</p>
             </div>
-            <div class="modal-footer" id="cartFooter">
-                <a type="button" class="btn-2" href="{{ path('menu') }}">{{ lang.shoppingCart.button3.text }}</a>                            
+            <div class="orderEmpty">
+                <p class="emptyText">{{ lang.shoppingCart.contenu.emptyText }}</p>                
+                <a type="button" class="btn-1" href="{{ path('menu') }}">{{ lang.shoppingCart.button3.text }}</a>                            
             </div>
         {% endif %}
     </article>
@@ -220,14 +201,8 @@
                     <ul>
                         <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link1.path}}" target="_blank">
                                 <span class="icon icon-facebook-with-circle"/></a></li>
-                                {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link2.path}}" target="_blank">
-                                        <span class="icon icon-twitter-with-circle"/></a></li>#}
                         <li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link3.path}}" target="_blank">
                                 <span class="icon icon-instagram-with-circle"/></a></li>
-                                {#<li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link4.path}}" target="_blank">
-                                        <span class="icon icon-youtube-with-circle"/></a></li>#}
-                                {#<li class=""> <a href="{{ lang.homepage.sectionTop.socialIcons.link5.path}}" target="_blank">
-                                        <span class="icon icon-google-with-circle"/></a></li>#}
                         <li class=""><a href="{{ lang.homepage.sectionTop.socialIcons.link6.path}}" target="_blank">
                                 <span class="icon icon-pinterest-with-circle"/></a></li>
                     </ul> 
@@ -246,8 +221,8 @@
                 </div>
                 <div class="modal-body" id="cartBody">
                     {% for textModalOrder in lang.modalOrder.contenu.list %}
-                    <p><span class="glyphicon glyphicon-info-sign"></span>{{ textModalOrder }}</p>                    
-                    {% endfor %}
+                        <p><span class="glyphicon glyphicon-info-sign"></span>{{ textModalOrder }}</p>                    
+                        {% endfor %}
                 </div>
                 <div class="modal-footer" id="cartFooter">
 
@@ -262,6 +237,3 @@
     {% endblock %}
 </body>
 </html>
-
-
-

@@ -2,13 +2,13 @@
 
 {% block body %}
     <div class="contenu">
-        <h1>Dish edit</h1>
+        <h1>Modifier Assiette</h1>
         <div class="form-horizontal">
             <div class="form-group">
 
                 {{ form_start(edit_form) }}
                 {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" class="btn btn-default" />
+                <input type="submit" value="Modifier" class="btn btn-default" />
                 {{ form_end(edit_form) }}
             </div>
         </div>
@@ -16,14 +16,19 @@
         <ul>
             <li>
                 <a href="{{ path('administracion_dish_index') }}" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back to the list
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Retourner à la liste
                 </a>
             </li>
             <li>
+                <a href="{{ path('administracion_dish_edit_photo', { 'id' : dish.id }) }}" class="btn btn-default">
+                    Changer Photo
+                </a>
+            </li>
+            {#<li>
                 {{ form_start(delete_form) }}
                 <input type="submit" value="Delete" class="btn btn-default">
                 {{ form_end(delete_form) }}
-            </li>
+            </li>#}
         </ul>
     </div>
 {% endblock %}

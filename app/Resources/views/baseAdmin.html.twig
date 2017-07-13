@@ -10,7 +10,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body style="padding-top: 0;">
         <div class="sidebar">
             <div class="brand">
                 <a href="/">
@@ -26,31 +26,37 @@
                             <li>
                                 <a href="{{ path('administracion_dish_index') }}" class="active"><i class="lnr lnr-home"></i> 
                                     <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
-                                    <span class="glyphicon-class">Our Dishes</span>
+                                    <span class="glyphicon-class">Assiettes</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('category_index') }}" class="active"><i class="lnr lnr-home"></i> 
                                     <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
-                                    <span class="glyphicon-class">Our Categories</span>
+                                    <span class="glyphicon-class">Catégories</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('portion_index') }}" class="active"><i class="lnr lnr-home"></i> 
                                     <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-                                    <span class="glyphicon-class">Our Portions</span>
+                                    <span class="glyphicon-class">Portions</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('icon_index') }}" class="active"><i class="lnr lnr-home"></i> 
                                     <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                                    <span class="glyphicon-class">Our Icons</span>
+                                    <span class="glyphicon-class">Icônes</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ path('category_index') }}" class="active"><i class="lnr lnr-home"></i> 
+                                <a href="{{ path('orden_index') }}" class="active"><i class="lnr lnr-home"></i> 
                                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
-                                    <span class="glyphicon-class">Chart</span>
+                                    <span class="glyphicon-class">Commandes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/logout" class="active"><i class="lnr lnr-home"></i>
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                    <span class="glyphicon-class">Sortir</span>
                                 </a>
                             </li>
                         </ul>

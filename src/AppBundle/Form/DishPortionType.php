@@ -17,8 +17,7 @@ class DishPortionType extends AbstractType {
                     'class' => 'AppBundle:Portion',
                     'choice_label' => 'name',
                     'disabled' => true))
-                ->add('price')
-                ->add('lastPrice');
+                ->add('price');
     }
 
     /**

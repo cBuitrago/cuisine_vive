@@ -21,9 +21,9 @@ class IndexController extends Controller {
     public function indexAction(Request $request) {
 
         $session = $request->getSession();
-        $language = $this->getLanguage();
+        $language = $this->getLanguage($session);
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('AppBundle:Category')->getCategoriesIndex();
+        $categories = $em->getRepository('AppBundle:Category')->getCategoriesIndex($language);
         $cart_info = $this->cartInformation($session, $language);
 
         return $this->render('index/index.html.twig', array(
@@ -31,7 +31,8 @@ class IndexController extends Controller {
                     'language' => $language,
                     'categories' => $categories,
                     'modal' => FALSE,
-                    'cart' => $cart_info
+                    'cart' => $cart_info,
+                    'liv' => $this->dateLivraison(),
         ));
     }
 
@@ -42,19 +43,20 @@ class IndexController extends Controller {
     public function menuAction(Request $request) {
 
         $session = $request->getSession();
-        $language = $this->getLanguage();
+        $language = $this->getLanguage($session);
         $em = $this->getDoctrine()->getManager();
 
         $cart_info = $this->cartInformation($session, $language);
 
-        $categories = $em->getRepository('AppBundle:Category')->getCategoriesMenu();
+        $categories = $em->getRepository('AppBundle:Category')->getCategoriesMenu($language);
 
         return $this->render('index/menu.html.twig', array(
                     'lang' => $this->getLang($language),
                     'language' => $language,
                     'categories' => $categories,
                     'modal' => FALSE,
-                    'cart' => $cart_info
+                    'cart' => $cart_info,
+                    'liv' => $this->dateLivraison(),
         ));
     }
 
@@ -63,13 +65,20 @@ class IndexController extends Controller {
      */
     public function menuIdAction(Request $request, $id) {
 
-        $session = $request->getSession();
-
         $em = $this->getDoctrine()->getManager();
         $dish = $em->getRepository('AppBundle:DishLanguage')
-                ->getDishLanguageByName(str_replace("-", " ", $id));
+                ->getDishLanguageByName(str_replace("-", " ", $id), $request);
 
+        if ($dish === FALSE) {
+            throw new NotFoundHttpException("Page not found");
+        }
+
+        $session = $request->getSession();
         $language = $dish->language;
+
+        if (!empty($language) && $session->get('language') != $language) {
+            $session->set("language", $language);
+        }
 
         $cart_info = $this->cartInformation($session, $language);
 
@@ -78,7 +87,8 @@ class IndexController extends Controller {
                     'language' => $language,
                     'dish' => $dish,
                     'modal' => FALSE,
-                    'cart' => $cart_info
+                    'cart' => $cart_info,
+                    'liv' => $this->dateLivraison(),
         ));
     }
 
@@ -88,7 +98,7 @@ class IndexController extends Controller {
     public function orderAction(Request $request) {
 
         $session = $request->getSession();
-        $language = $this->getLanguage();
+        $language = $this->getLanguage($session);
         $cart_info = [];
         $modal = FALSE;
         $em = $this->getDoctrine()->getManager();
@@ -186,6 +196,7 @@ class IndexController extends Controller {
             $em->flush($order);
 
             $priceCalculate = 0;
+            $orderEmail = array();
             foreach ($_POST as $key => $item) {
                 if (preg_match('/^qte_/', $key) == true) {
                     $index = intval(substr($key, 4));
@@ -197,41 +208,53 @@ class IndexController extends Controller {
                     $priceCalculate = $priceCalculate + floatval($item * $dish_portion->getPrice());
                     $em->persist($orderDishPortion);
                     $em->flush($orderDishPortion);
+                    $order->addItem($orderDishPortion);
+                    $orderEmail[$index] = array();
+                    $orderEmail[$index][0] = $dish_portion->getDish()->getLanguageOfDish($language);
+                    $orderEmail[$index][1] = $dish_portion->getPortion()->getLanguageOfPortion($language);
+                    $orderEmail[$index][2] = $dish_portion->getPrice();
+                    $orderEmail[$index][3] = intval($item);
+                    $orderEmail[$index][4] = intval($item) * $dish_portion->getPrice();
                 }
             }
             $priceCalculate = $priceCalculate + floatval($_POST["deli_total"]);
             $priceCalculate = $priceCalculate * 1.1475;
-            
+
             $order->setCalculatePrice($priceCalculate);
             $em->merge($order);
             $em->flush($order);
-
+            $subject = ($language == 'en') ? 'Cuisine Vive - Order confirmation' : 'Cuisine Vive - Confirmation de commande';
             $message = \Swift_Message::newInstance()
-                    ->setSubject('Hello Email')
-                    ->setFrom('vane550@hotmail.com')
-                    ->setTo('cabcas84@yahoo.es')
-                    ->setBody('hola');
-            //If you also want to include a plaintext version of the message
-            /* ->addPart(
-              $this->renderView(
-              'Emails/registration.txt.twig',
-              array('name' => $name)
-              ),
-              'text/plain'
-              ); */
+                    ->setSubject($subject)
+                    ->setFrom('info@cuisinevive.ca')
+                    ->setTo(array($order->getFirstUser()->getEmail()));
+            $image_src = $message->embed(\Swift_Image::fromPath('Resources/public/images/logo.png'));
+            $message->setBody(
+                    $this->renderView(
+                            'emails/orderConfirmation.html.twig', array(
+                        'lang' => $this->getLang($language),
+                        'order' => $order,
+                        'orderEmail' => $orderEmail,
+                        'image' => $image_src,
+                            )
+                    ), 'text/html'
+            );
 
+            $this->get('mailer')->send($message);
             $session->remove("items");
 
             return $this->render('index/orderReceived.html.twig', array(
                         'lang' => $this->getLang($language),
-                        'language' => $language
+                        'language' => $language,
+                        'liv' => $this->dateLivraison(),
             ));
         } else {
             return $this->render('index/order.html.twig', array(
                         'lang' => $this->getLang($language),
                         'language' => $language,
                         'modal' => $modal,
-                        'cart' => $cart_info
+                        'cart' => $cart_info,
+                        'liv' => $this->dateLivraison(),
             ));
         }
     }
@@ -246,7 +269,7 @@ class IndexController extends Controller {
         }
 
         $session = $request->getSession();
-        $language = $this->getLanguage();
+        $language = $this->getLanguage($session);
         $em = $this->getDoctrine()->getManager();
         if ($session->has("items")) {
             $cart_array = $session->get("items");
@@ -308,7 +331,6 @@ class IndexController extends Controller {
         }
 
         return new JsonResponse(array('message' => 'NOT FOUND'), 404);
-
     }
 
     /**
@@ -373,7 +395,7 @@ class IndexController extends Controller {
                     if (count($session->get("items")) > 0) {
                         return new JsonResponse(array('message' => 'OK'), 200);
                     } else {
-                        $language = $this->getLanguage();
+                        $language = $this->getLanguage($session);
                         $lang = $this->getLang($language);
                         $cart_view = $this->cartView(array(), $lang);
                         return new JsonResponse(array('message' => 'view',
@@ -386,19 +408,20 @@ class IndexController extends Controller {
         return new JsonResponse(array('message' => $_POST["item"]), 404);
     }
 
-    private function getLanguage() {
-        $language = "fr";
+    private function getLanguage($session) {
+
         if (!empty($_POST["language"])) {
+
             $language = $_POST["language"];
-            $_SESSION["language"] = $language;
-        } elseif (!empty($_SESSION["language"])) {
-            $language = $_SESSION["language"];
-        } else {
+            $session->set("language", $language);
+        } elseif (!$session->has("language") || empty($session->get("language"))) {
+
             $languageServer = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
             $language = ($languageServer == "en") ? "en" : "fr";
+            $session->set("language", $language);
         }
 
-        return $language;
+        return $session->get("language");
     }
 
     private function getLang($language) {
@@ -504,6 +527,44 @@ class IndexController extends Controller {
         $reponse_view['footer'] = $reponse_view_footer;
 
         return $reponse_view;
+    }
+
+    private function dateLivraison() {
+
+        $dayWeek = jddayofweek(unixtojd(time()));
+
+        switch ($dayWeek) {
+            case 0:
+                $day = 6;
+                break;
+            case 1:
+                $day = 5;
+                break;
+            case 2:
+                $day = 4;
+                break;
+            case 3:
+                $day = 3;
+                break;
+            case 4:
+                $day = 2;
+                break;
+            case 5:
+                $day = 8;
+                break;
+            case 6:
+                $day = 7;
+                break;
+
+            default:
+                $day = 7;
+                break;
+        }
+
+        $date = new \DateTime();
+        $nextSamedi = $date->setTimestamp(time() + (86400 * intval($day)));
+
+        return $nextSamedi;
     }
 
 }

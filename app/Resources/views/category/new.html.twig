@@ -2,20 +2,20 @@
 
 {% block body %}
     <div class="contenu">
-        <h1>Category creation</h1>
+        <h1>Créér Catégorie</h1>
         <div class="form-horizontal">
             <div class="form-group">
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                 
-                <input type="submit" value="Create" class="btn btn-default"/>
+                <input type="submit" value="Créér catégorie" class="btn btn-default"/>
                 {{ form_end(form) }}
             </div>
         </div>
         <ul>
             <li>
                 <a href="{{ path('category_index') }}" class="btn btn-default">
-                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back to the list
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Retourner à la liste
                 </a>
             </li>
         </ul>

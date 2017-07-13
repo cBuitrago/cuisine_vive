@@ -161,6 +161,7 @@ body{
 @thirdColor:#f3f9e6;
 @white:#ffffff;
 @black:#000000;
+@yellow:rgba(253, 221, 0, 0.80);
 
 .fl_right{
     float: right;
@@ -289,13 +290,16 @@ button.btn-4:hover{
 
 header{
     position: fixed;
+    width: 100%;
     z-index: 1030;
     top: 0;
     left: 0;
-    
+
     font-family: Helvetica, Verdana, Arial, Sans-Serif;
     font-size: 16px;
     .barTop{
+
+        position: relative;
         background-color: @black;
         height: 50px;
         padding-top: 12px;
@@ -310,8 +314,8 @@ header{
                 padding-left: 150px;
                 padding-top:5px;
                 font-size: 16px;
-                color:@viveColorYellow;
-                text-decoration: underline;
+                color:@yellow;
+                font-weight: bold;
             }
         }
         .links{
@@ -355,8 +359,10 @@ header{
                         list-style-type: none;
                         padding-right: 1%;
                         display: inline-block;  
-                        a:hover{
+                        a:hover, a:focus, a:visited, a:active{
                             text-decoration: none;
+                        }
+                        a:hover{
                             opacity: 0.7;
                         }
                         .icon:before{
@@ -391,7 +397,6 @@ header{
             margin-left: 150px;   
             li.button{
                 display: none; visibility: hidden;
-                height: 18px;
                 .close{
                     opacity: 1 !important;
                     span{
@@ -445,11 +450,11 @@ header{
         z-index:999;
         width: 100%;
         margin: 0 auto;
-        -webkit-transition: all 0.5s ease-in;
-        -moz-transition: all 0.5s ease-in;
-        -o-transition: all 0.5s ease-in;
-        -ms-transition: all 0.5s ease-in;
-        transition: all 0.5s ease-in;
+        //-webkit-transition: all 0.25s ease-in;
+        //-moz-transition: all 0.25s ease-in;
+        //-o-transition: all 0.25s ease-in;
+        //-ms-transition: all 0.25s ease-in;
+        //transition: all 0.25s ease-in;
         border-radius: 0px;
         h1{
             width: 54px;
@@ -464,7 +469,7 @@ header{
         .navbar-nav{
             position: relative;
             top: -18px;
-            margin-left: 300px;          
+            margin-left: 15%;          
             li{
                 a, a:focus, a:visited, a:active{
                     color:@viveColorGreen;
@@ -498,13 +503,14 @@ header{
     height: 24px;
     text-align: center;
     .text{        
-        color: @viveColorYellow;
+        color: @yellow;
         font-size:12px;
         line-height: 28px;
-        text-decoration: underline;
+        font-weight: bold;
     }
 }
-#carousel .carousel-control.left, #carousel .carousel-control.right{
+#cuisinevive .carousel-control.left, #cuisinevive
+.carousel-control.right{
     background-image: none;
 }
 .carousel-control .glyphicon-chevron-right, .carousel-control .icon-next, 
@@ -781,7 +787,6 @@ header{
     padding: 60px; 
     text-align: center;
     position: relative;
-    iframe{}
 }
 .about{
     background-color: @secondColor;
@@ -830,8 +835,10 @@ header{
                     list-style-type: none;
                     padding:0 15px;
                     display: inline-block;  
-                    a:hover{
+                    a:hover, a:focus, a:visited, a:active{
                         text-decoration: none;
+                    }
+                    a:hover{
                         opacity: 0.7;
                     }
                     .icon:before{
@@ -861,6 +868,7 @@ header{
                 padding: 12px 10px;
                 border: 0;
                 font-style: italic;
+                border-radius: 0px;
             }
             a{       
                 padding: 8px 15px;
@@ -916,12 +924,14 @@ footer{
     a{
         color:@viveColorGreen;
     }
-    a:hover, a:visited, a:focus{
-        color: @viveColorGreen;
+    a:visited, a:focus, a:active{
+        text-decoration: none;
+        opacity: 1;
+    }
+    a:hover, {
         text-decoration: none;
         opacity: 0.7;
     }
-
     .col{
         display: inline-block;        
     }
@@ -944,10 +954,14 @@ footer{
                 list-style-type: none;
                 padding-right: 1%;
                 display: inline-block;  
+                a:focus, a:visited, a:active{
+                    text-decoration: none;
+                    opacity: 0.1;
+                }
                 a:hover{
                     text-decoration: none;
                     opacity: 0.7;
-                }
+                }                
                 .icon:before{
                     color:@viveColorGreen;
                     font-size: 25px;
@@ -965,14 +979,13 @@ footer{
     }
     h2{
         clear: both;
-        padding-top: 40px;
+        padding-top: 60px;
     }
     .listMenu{
         width: 31%;
-        height: 405px;
+        height:auto;
         padding: 10px;
-        display: inline;
-        float:left;
+        display: inline-block;
         box-shadow: 0px 0px 5px #aaa;
         margin:10px 1%;
         .title, .info{
@@ -980,7 +993,7 @@ footer{
             text-decoration:none;
             h3{    
                 font-size: 18px;
-                height: 28px;
+                height: 34px;
                 text-align: center;                
             } 
         }
@@ -1031,7 +1044,7 @@ footer{
         }
         .second-effect a.info {
             position:relative;
-            top:-10px;
+            top:-15px;
             transform:scale(0,0);
             transition: transform 0.2s 0.1s ease-in, opacity 0.1s ease-in-out;
         }
@@ -1044,42 +1057,39 @@ footer{
             transform:scale(1,1);
             transition-delay:0.3s;
         }
-
         p.description{
-            height: 42px;
+            height: auto;
             font-size: 14px;
             font-style: italic;
-            padding: 10px 0 0 10px;
+            padding: 10px 3px;
             margin-bottom: 0;
+            line-height: 16px;
         }
         .icons{
             text-align:center;
-            margin:5px 0;
+            margin:5px 0 8px 0;
             height:30px;
             img{
                 width: 32px;
             }
         }
         .portion{
-            display: inline-block;
             margin: 5px 0;
             vertical-align:middle;
             border: 2px #333 groove;
             height: 35px;
             h3,p {
                 float: left;
-                margin: 0 8px 0 0;
-                font-size: 16px;
-                position: relative;
-                top: 8px;
+                margin: 0 2px 0 0;
+                font-size: 14px;
+                position: relative;                
             }
-            h3{width: 80px;padding-left: 5px;}
-            p{width: 34px;text-align: right;}
-            form{
-                display: inline-block;
+            h3{width: 75px;padding-left: 5px;top: 10px;}
+            p{width: 50px;text-align: right;top: 8px;}
+            form{                
                 .cart{
+                    float:left;
                     border: none;
-                    display: inline-block;
                     background:none;
                     color: @viveColorGreen;
                     font-size: 20px;
@@ -1095,10 +1105,12 @@ footer{
                 }
                 .cart:focus{
                     outline: none;
-                }
-                .btn-4{    
-                    padding: 5px 8px;
-                    top:-3px;                
+                }                
+            }
+            form{
+                .btn-4{  
+                    float: right;
+                    padding: 5px 4px;
                 }
             }
         }
@@ -1147,29 +1159,23 @@ footer{
             margin-bottom: 5px;
         }
         .portion{
-            display: inline-block;
-            margin-bottom: 5px;
+            margin: 5px 0;
             vertical-align:middle;
             border: 2px #333 groove;
+            height: 35px;
             h3,p {
                 float: left;
                 margin: 0 20px 0 0;
-                font-size: 18px;
+                font-size: 14px;
                 position: relative;
                 top: 8px;
             }
-            h3{
-                width: 100px;
-                padding-left: 5px; 
-                position: relative;
-                top: 10px;
-            }
-            p{width: 36px;text-align: right;}
+            h3{width: 90px;padding-left: 5px;}
+            p{width: 60px;text-align: right;}
             form{
-                display: inline-block;
                 .cart{
+                    float: left;
                     border: none;
-                    display: inline-block;
                     background:none;
                     color: @viveColorGreen;
                     font-size: 20px;
@@ -1185,8 +1191,13 @@ footer{
                 }
                 .cart:focus{
                     outline: none;
+                }                
+            }
+            form{
+                .btn-4{  
+                    float:right;
+                    padding: 5px 4px;
                 }
-                .btn-4{padding: 8px 15px;}
             }
         }
     }
@@ -1248,14 +1259,13 @@ footer{
                     .portion{padding-right: 5px;}
                     .qty{text-align: center;}
                     .total{text-align: right;} 
-
                     td{ 
                         font-size:12px;
                         vertical-align:middle;
                         img{
                             width: 60px;
                         }
-                        .price{width:40px;border: none;background: none;text-align: center;}
+                        .price{width:40px;border: none;background: none;text-align: left;}
                         .chartQte{width:30px;text-align: center;}
                         .orderTotal, .chartTotal, .total_total{
                             width: 60px;
@@ -1308,7 +1318,7 @@ footer{
 .orderSummary{
     .form-horizontal{
         margin: 0 auto;
-        padding-bottom: 50px;
+        padding: 50px 0 50px 0;
         .form-group{
             label{
                 width: 20%;
@@ -1403,14 +1413,13 @@ footer{
                     text-align: left;
                     padding-left: 35px;
                 } 
-
                 td{ 
                     font-size:12px;
                     vertical-align: middle;
                     img{
                         width: 100px;
                     }
-                    .price{width:40px;border: none;background: none;text-align: center;}
+                    .price{width:40px;border: none;background: none;text-align: left;}
                     .chartQte{width:30px;text-align: center;}
                     .editQte{text-align: center;}
                     .glyphicon-minus-sign{
@@ -1445,10 +1454,18 @@ footer{
             }
         }
     }
+    .orderEmpty{
+        width: 90%;
+        margin: 0 auto;
+        padding: 12%;
+        text-align:center;
+        p{font-size: 35px;margin-bottom: 40px;}
+        .btn-1{margin: 0px; }
+    }
 }
 .orderReceived{
-    display: inline-block;
-    padding: 50px 50px 20px 100px;
+    padding: 12%;
+    text-align:center;
     span{
         color:@viveColorGreen;
         font-size: 35px;
@@ -1461,10 +1478,58 @@ footer{
         position: relative;
         top: -40px;
         line-height: 32px;
+        text-align: left;
+    }
+    .btn-1{margin: 0px;}
+}
+.notFound{
+    padding: 12%;
+    text-align:center;
+    p{
+        float:right;
+        font-size:30px;
+        position: relative;
+        top: -40px;
+        line-height: 32px;
+        text-align: left;
+    }
+    .btn-1{margin: 0px;}
+}
+
+@media  screen and (min-width: 1700px)  {
+    .content{
+        width: 960px;
+        margin: 0 auto;
+    }
+    .promo{
+        display: none;
+        visibility: hidden;       
+    }
+    .carousel{
+        .carousel-inner{            
+            .itm-1{
+                .carousel-caption{ bottom: 130px;   left: 58%;}
+            }
+            .itm-2{
+                .carousel-caption{ bottom: 130px; }
+            }
+            .itm-3{
+                .carousel-caption{bottom:130px; }       
+            }
+            .itm-4{
+                .carousel-caption{ bottom:130px; top:220px; }              
+            }
+            .itm-5{
+                .carousel-caption{ bottom:130px;  }       
+            }
+            .itm-6{
+                .carousel-caption{ bottom:130px; }
+            }
+        }
     }
 }
 
-@media  screen and (min-width: 1201px)  {
+@media  screen and (min-width: 1201px) and (max-width: 1699px)   {
     .content{
         width: 960px;
         margin: 0 auto;
@@ -1486,7 +1551,7 @@ footer{
     header{      
         .navbar-sticky{          
             .navbar-nav{                
-                margin-left: 19%;               
+                margin-left: 16%;               
             }
         }
     }
@@ -1609,7 +1674,6 @@ footer{
     }
     .facebook{
         padding: 60px 20px; 
-        iframe{}        
     }
     .about{        
         padding: 60px 20px;        
@@ -1619,6 +1683,16 @@ footer{
     }
     .contact{
         padding: 60px 20px;
+    }
+    .menuCategory{
+        .listMenu{
+            .portion{
+                form{
+                    .cart{margin: 0 3px 0 0;}
+                }
+            }
+
+        }
     }
     .menuIdCategory{        
         .right{            
@@ -1689,7 +1763,7 @@ footer{
                 }
             }
             .navbar-nav{
-                margin-left: 24%;          
+                margin-left: 14%;          
                 li{
                     a, a:focus, a:visited, a:active{                        
                         font-size: 14px;
@@ -1844,7 +1918,6 @@ footer{
     }
     .facebook{        
         padding: 60px 20px;
-        iframe{}
     }
     .about{        
         padding: 60px 20px;        
@@ -1917,14 +1990,19 @@ footer{
             }
             .portion{
                 h3,p {
-                    margin: 0 5px 0 0;
-                    font-size: 16px;
+                    margin: 0 2px 0 0;
+                    font-size: 14px;
                 }
                 h3{
-                    width: 85px;
+                    width: 75px;
                     padding-left: 5px; 
                 }
-                p{width: 30px;}                
+                p{width: 45px;}   
+                form{
+                    .btn-4 {
+                        padding: 5px 10px;
+                    }
+                } 
             }
         }
     }
@@ -1946,8 +2024,7 @@ footer{
         }       
     }
     .orderReceived{
-        display: inline-block;
-        padding: 50px 50px 20px 100px;
+        padding: 12%;
         span{
             color:@viveColorGreen;
             font-size: 35px;
@@ -1957,6 +2034,16 @@ footer{
             float:right;
             font-size:30px;
             padding-left: 60px;
+            position: relative;
+            top: -40px;
+            line-height: 32px;
+        }
+    }
+    .notFound{
+        padding: 12%;
+        p{
+            float:right;
+            font-size:30px;
             position: relative;
             top: -40px;
             line-height: 32px;
@@ -2012,9 +2099,8 @@ footer{
                 }
             }
             .navbar-collapse.collapse{
-
                 .navbar-nav{
-                    margin-left: 18%;          
+                    margin-left: 14%;          
                     li{
                         a, a:focus, a:visited, a:active{                        
                             font-size: 14px;
@@ -2148,7 +2234,7 @@ footer{
             position: relative;
             margin: 0 auto;
             .view {
-                dsplay: inline-block;
+                display: inline-block;
                 width: 328px;
                 height: 200px;                
                 margin: 15px;                
@@ -2169,7 +2255,6 @@ footer{
     }
     .facebook{        
         padding: 60px 20px;  
-        iframe{}        
     }
     .about{        
         padding: 60px 20px;        
@@ -2241,14 +2326,19 @@ footer{
             }
             .portion{
                 h3,p {
-                    margin: 0 5px 0 0;
-                    font-size: 16px;
+                    margin: 0 2px 0 0;
+                    font-size: 14px;
                 }
                 h3{
-                    width: 85px;
+                    width: 75px;
                     padding-left: 5px; 
                 }
-                p{width: 30px;}                
+                p{width: 45px;} 
+                form{
+                    .btn-4 {
+                        padding: 5px 10px;
+                    }
+                }
             }
         }
     }
@@ -2270,8 +2360,7 @@ footer{
         }       
     }
     .orderReceived{
-        display: inline-block;
-        padding: 50px 50px 20px 100px;
+        padding: 12%;
         span{
             color:@viveColorGreen;
             font-size: 35px;
@@ -2285,13 +2374,25 @@ footer{
             top: -40px;
             line-height: 32px;
         }
-    }    
+    } 
+    .notFound{
+        padding: 12%;
+        p{
+            float:right;
+            font-size:30px;
+            position: relative;
+            top: -40px;
+            line-height: 32px;
+        }
+    } 
 }
 @media  screen and (min-width: 481px) and (max-width: 768px) {   
 
     a.btn-1, a.btn-1:active, a.btn-1:focus{  padding: 15px 65px;}
     a.btn-2, a.btn-2:active, a.btn-2:focus{padding: 15px 65px;}
-
+    body{
+        padding-top: 98px;
+    }
     .content{
         width: 460px;
         margin: 0 auto;
@@ -2337,11 +2438,9 @@ footer{
                 position: relative;
                 float: left;
                 left: 62%;
-                top: 20px;
+                top: 16px;
                 a, a:focus, a:visited, a:active{
                     color:@viveColorGreen;
-                    font-weight: bold;
-                    font-size: 23px;
                     text-transform: uppercase;
                     background-color: inherit;
                     border: 0px;
@@ -2351,6 +2450,9 @@ footer{
                 a:hover{
                     background-color: transparent;
                     color: @mainColor;
+                }
+                a{
+                    span{font-size:26px;}
                 }
             }
             .navbar-collapse{
@@ -2366,9 +2468,10 @@ footer{
                     margin: 0px;
                     li:first-of-type, li:last-of-type{display: none; visibility: hidden;}
                     li.button{
-                        display: inherit; visibility: visible;
-                        height:18px;
-                        margin:2px;
+                        display: inherit;
+                        visibility: visible;
+                        height: 18px;
+                        margin: 2px 0 8px 0;
                         span{
                             font-size:12px;
                             color:@viveColorGreen;
@@ -2379,9 +2482,9 @@ footer{
                         a, a:focus, a:visited, a:active{
                             color:@viveColorGreen;
                             font-weight: bold;
-                            font-size: 12px;
+                            font-size: 16px;
                             text-transform: uppercase;
-                            padding: 5px 15px;
+                            padding: 16px 0;
                             background-color: inherit;
                             border: 0px;
                             outline: none; 
@@ -2563,25 +2666,48 @@ footer{
             padding:0 0 10px;
             .view {                
                 width:90%;
-                height: 195px;                
+                height: 205px;                
                 margin: 5%;                
                 img{
                     width: 100%; 
-                    height: 195px; 
+                    height: 205px; 
                 }
                 .mask {
                     width: 100%; 
-                    height: 195px; 
+                    height: 205px;
+                    background-color: rgba(175, 226, 123, 0.64);
                     h3  {margin: 0;}
                 }
             }            
-            .view-first:hover h3 {transform: translateY(20px);}
-            .view-first:hover a.info {transform: translateY(20px);}
+            .view-first .mask {
+                opacity: 1;
+                transition: none;
+            }
+            .view-first h3 {
+                transform: translateY(25px);
+                opacity: 1;
+                transition: none;
+            }
+            .view-first a.info{
+                opacity: 1;
+                transition: all 0.2s ease-in-out;
+                padding: 15px 65px;
+                margin: 35px 70px; 
+            }            
+            .view-first:hover h3 {
+                transition-delay: 0.1s;
+                opacity: 1;
+                transform: translateY(25px);
+            }
+            .view-first:hover a.info {
+                transition-delay: 0.2s;
+                opacity: 1;
+                transform: none;
+            }
         }
     }
     .facebook{
-        padding: 20px 0 10px 0;         
-        iframe{}
+        padding: 20px 0 10px 0;  
     }
     .about{        
         padding: 55px 0 10px 0; 
@@ -2637,6 +2763,7 @@ footer{
                       padding-right: 8px;                   
                       top: 3px;                    
                   }
+                  a{color:@black;}
               }
         }
     }
@@ -2653,7 +2780,7 @@ footer{
         h2{padding-top: 10px; }
         .listMenu{
             width: 98%;
-            height: 465px;         
+            height: auto;         
             .view {                
                 height: 228px;
                 img{
@@ -2663,15 +2790,20 @@ footer{
             }
             .view .mask{                
                 height: 228px;                
-            }          
-            .second-effect a.info {                
-                top:-20px;               
+            }     
+            .second-effect .mask {
+                opacity: 1;                
+                border:129px solid rgba(0,0,0,0.3);           
             }
-            .second-effect:hover .mask {                
-                border:114px solid rgba(0,0,0,0.7);
-            }            
+            .second-effect:hover .mask {
+                opacity: 1;
+                border:129px solid rgba(0,0,0,0.7);
+            }
+            .second-effect a.info {               
+                top:-25px;                
+            }
             .portion{
-                h3{width: 180px;}  
+                h3{width: 160px;}  
                 p{                        
                     margin: 0 15px 0 0;                        
                 }
@@ -2709,17 +2841,11 @@ footer{
                 img{width: 38px;}
             }
             .portion{
-                h3{width: 180px;}  
-                p{                        
-                    margin: 0 15px 0 0;                        
-                }
+                h3{width: 160px;margin: 0 2px 0 0; }  
+                p{ width:50px; margin: 0 15px 0 0; }
                 form{                    
-                    .cart{                        
-                        margin: 0 15px 0 0;                        
-                    }
-                    .btn-4{    
-                        padding: 8px 20px;                                       
-                    }
+                    .cart{ margin: 0 15px 0 0; }
+                    .btn-4{padding: 5px 18px; }
                 }
             }
         }
@@ -2743,11 +2869,11 @@ footer{
                                   .qty{text-align: center; width: 80px;}
                                   td{ font-size:12px; padding:5px;
                                       img{ width: 50px;}
-                                      .price{width:20px;}
-                                      .chartQte{width:20px;}
-                                      .editQte{ width: 70px; text-align: center;}
-                                      .orderTotal, .chartTotal, .total_total{ width: 30px;}
-                                      .glyphicon-minus-sign, .glyphicon-plus-sign {font-size: 11px; top:2px;}                                                                       
+                                      .price{width:30px; padding: 0px; margin:0px; color:@black;}
+                                      .chartQte{width:30px;}
+                                      .editQte{ width: 80px; text-align: center;}
+                                      .orderTotal, .chartTotal, .total_total{ width: 35px; padding:0p; margin:0px; color:@black;}
+                                      .glyphicon-minus-sign, .glyphicon-plus-sign, .glyphicon-trash {font-size: 12px; top:2px;}                                                                       
                                   }
                               }
                               .emptyText{font-size: 24px;}
@@ -2766,7 +2892,6 @@ footer{
     .orderSummary{
         .form-horizontal{
             margin: 0 auto;
-            padding-bottom: 50px;
             .form-group{  margin:5px;
                           label{  line-height: 12px;font-size: 12px;}
                           input, textarea{ margin-right:0;  width: 70%;}
@@ -2817,8 +2942,8 @@ footer{
                         vertical-align: middle;
                         padding:5px;
                         img{ width: 40px;}
-                        .price{width:20px;}
-                        .chartQte{width:20px;text-align: center;}
+                        .price{width:25px; padding: 0px; margin: 0px; color:@black;}
+                        .chartQte{width:30px;text-align: center;}
                         .editQte{text-align: center;}
                         .glyphicon-minus-sign, .glyphicon-plus-sign{
                             padding: 2px;                            
@@ -2826,29 +2951,47 @@ footer{
                             font-size: 12px;
                         }
                         .orderTotal, .chartTotal, .total_total{
-                            width: 40px;                            
+                            width:50px; padding: 0px; margin: 0px; color:@black;                            
                         }                                               
                     }
                 }
             }
         }
+        .orderEmpty{
+            padding: 25% 10%;
+            text-align:center;
+            .btn-1{margin: 0px; }
+        }
     }
     .orderReceived{
-        padding: 30px;
-        p{padding-left: 50px;}
+        padding: 15%;
+        p{
+            font-size:24px;
+            line-height: 22px;
+        }
+    }
+    .notFound{
+        padding: 15%;
+        p{
+            font-size:24px;
+            line-height: 22px;
+        }
     }
 }
 @media  screen and (min-width: 0px) and (max-width: 480px) {
 
     a.btn-1, a.btn-1:active, a.btn-1:focus{  padding: 15px 65px;}
     a.btn-2, a.btn-2:active, a.btn-2:focus{padding: 15px 65px;}
-
+    body{
+        padding-top: 98px;
+    }
     .content{
         width: 300px;
         margin: 0 auto;
     }
     .promo{
         display: inherit;
+        .text{letter-spacing: -1px;}
     }
     header{
         .barTop{
@@ -2888,11 +3031,11 @@ footer{
                 position: relative;
                 float: left;
                 left: 50%;
-                top: 20px;
+                top: 16px;
                 a, a:focus, a:visited, a:active{
                     color:@viveColorGreen;
                     font-weight: bold;
-                    font-size: 23px;
+                    font-size: 26px;
                     text-transform: uppercase;
                     background-color: inherit;
                     border: 0px;
@@ -2917,9 +3060,10 @@ footer{
                     margin: 0px;  
                     li:first-of-type, li:last-of-type{display: none; visibility: hidden;}
                     li.button{
-                        display: inline; 
+                        display: inherit;
                         visibility: visible;
-                        height:18px;
+                        height: 18px;
+                        margin: 2px 0 8px 0;
                         span{
                             font-size:12px;
                             color:@viveColorGreen;
@@ -2930,9 +3074,9 @@ footer{
                         a, a:focus, a:visited, a:active{
                             color:@viveColorGreen;
                             font-weight: bold;
-                            font-size: 12px;
+                            font-size: 16px;
                             text-transform: uppercase;
-                            padding: 5px 15px;
+                            padding: 16px 0;
                             background-color: inherit;
                             border: 0px;
                             outline: none; 
@@ -2953,11 +3097,11 @@ footer{
             height:60px;
             z-index:999;
             width:100%;
-            -webkit-transition: all 0.5s ease-in;
-            -moz-transition: all 0.5s ease-in;
-            -o-transition: all 0.5s ease-in;
-            -ms-transition: all 0.5s ease-in;
-            transition: all 0.5s ease-in;
+            //-webkit-transition: all 0.25s ease-in;
+            //-moz-transition: all 0.25s ease-in;
+            //-o-transition: all 0.25s ease-in;
+            //-ms-transition: all 0.25s ease-in;
+            //transition: all 0.25s ease-in;
             h1{
                 width: 54px;
                 float:left;
@@ -2969,9 +3113,6 @@ footer{
                 }
             }
             .navbar-nav{
-                position: relative;
-                top: -18px;
-                left: 300px;          
                 li{
                     a, a:focus, a:visited, a:active{
                         color:@viveColorGreen;
@@ -3120,16 +3261,39 @@ footer{
                 .mask {
                     width: 100%; 
                     height: 180px; 
+                    background-color: rgba(175, 226, 123, 0.64);
+                    opacity:1;
                     h3  {margin: 0;}
                 }
             }            
-            .view-first:hover h3 {transform: translateY(10px);}
-            .view-first:hover a.info {transform: translateY(20px);}
+            .view-first .mask {
+                opacity: 1;
+                transition: none;
+            }
+            .view-first h3 {
+                transform: translateY(20px);
+                opacity: 1;
+                transition: none;
+            }
+            .view-first a.info{
+                opacity: 1;
+                transition: all 0.2s ease-in-out;
+                padding: 15px 35px;
+            }            
+            .view-first:hover h3 {
+                transition-delay: 0.1s;
+                opacity: 1;
+                transform: translateY(10px);
+            }
+            .view-first:hover a.info {
+                transition-delay: 0.2s;
+                opacity: 1;
+                transform: none;
+            }
         }
     }
     .facebook{
-        padding: 20px 0 10px 0;         
-        iframe{width: 300px !important;}
+        padding: 20px 0 10px 0;      
     }
     .about{        
         padding: 55px 0 10px 0;
@@ -3180,6 +3344,7 @@ footer{
                     padding-right: 8px;                   
                     top: 3px;                    
                 }
+                a{color:@black;}
             }
         }
     }
@@ -3196,12 +3361,26 @@ footer{
         h2{padding-top: 10px; }
         .listMenu{
             width: 98%;
-            .portion{
-                form{
-                    .cart{margin: 0 5px 0 0;}
+            margin:10px 2px;
+            .second-effect .mask {
+                opacity: 1;                
+                border:89px solid rgba(0,0,0,0.3);           
+            }
+            .portion{                
+                h3,p {
+                    float: left;
+                    margin: 0px;
+                    font-size: 13px;
+                    position: relative;                    
+                }
+                h3{width: 70px;padding-left: 3px; top: 10px;}
+                p{width: 45px;text-align: right; top: 8px;}
+                form{                
+                    .cart{                           
+                        margin: 0 5px 0 0;                        
+                    }
                 }
             }
-
         }
     }
     .menuIdCategory{
@@ -3227,11 +3406,8 @@ footer{
                 img{width: 38px;}
             }
             .portion{
-                h3{width:98px;}
-                h3,p { margin: 0 2px 0 0;}              
-                form{                    
-                    .cart{ margin: 0 2px 0 0;}                   
-                }
+                h3{width: 70px; margin: 0px; font-size:13px; top:10px;}
+                p{width: 45px;  margin: 0px; font-size:13px; top:8px;}
             }
         }
     }
@@ -3253,13 +3429,13 @@ footer{
                                   .portion{padding-right: 0px;}
                                   .qty{text-align: center; width: 60px;}
                                   td{ 
-                                      font-size:10px; padding:2px;
-                                      img{ width: 30px;}
-                                      .price{width:10px;}
-                                      .chartQte{width:15px;}
-                                      .editQte{ width: 50px; text-align: center;}
+                                      font-size:10px; padding:1px;
+                                      img{ display: none; visibility: hidden;}
+                                      .price{width:25px; padding: 0px; margin: 0px; color:@black;}
+                                      .chartQte{width:30px; text-align: center;}
+                                      .editQte{ width: 80px; text-align: center;}
                                       .orderTotal, .chartTotal, .total_total{ width: 30px;}
-                                      .glyphicon-minus-sign, .glyphicon-plus-sign {font-size: 9px; top:2px;}                                                                       
+                                      .glyphicon-minus-sign, .glyphicon-plus-sign, .glyphicon-trash {font-size: 12px; top:2px;}                                                                       
                                   }
                               }
                               .emptyText{ font-size: 22px; }
@@ -3277,7 +3453,6 @@ footer{
     .orderSummary{
         .form-horizontal{
             margin: 0 auto;
-            padding-bottom: 50px;
             .form-group{  margin:5px;
                           label{  line-height: 11px;font-size: 12px;}
                           input, textarea{ margin-right:0;}
@@ -3328,10 +3503,10 @@ footer{
                     td{ 
                         font-size:10px;
                         vertical-align: middle;
-                        padding:2px;
-                        img{ width: 30px;}
-                        .price{width:20px;}
-                        .chartQte{width:20px;text-align: center;}
+                        padding:1px;
+                        img{ display: none; visibility: hidden;}
+                        .price{width:30px; color:@black; padding:0px; margin:0px;}
+                        .chartQte{width:25px;text-align: center;}
                         .editQte{text-align: center;}
                         .glyphicon-minus-sign, .glyphicon-plus-sign{
                             padding: 2px;                            
@@ -3339,16 +3514,34 @@ footer{
                             font-size: 10px;
                         }
                         .orderTotal, .chartTotal, .total_total{
-                            width: 34px;                            
+                            width: 34px; color:@black;                           
                         }                                               
                     }
                 }
             }
         }
+        .orderEmpty{
+            padding: 35% 5%;
+            text-align:center;
+            p{font-size: 24px; margin-bottom: 20px;}
+            .btn-1{margin: 0px; padding: 15px 45px; }
+        }
     }
     .orderReceived{
-        padding: 30px;
-        p{padding-left: 50px;}
+        padding: 25% 5%;
+        p{
+            font-size:24px;
+            line-height: 22px;
+        }
+        .btn-1{margin: 0px; padding: 15px 45px;}
+    }
+    .notFound{
+        padding: 25% 5%;
+        p{
+            font-size:24px;
+            line-height: 22px;
+        }
+        .btn-1{margin: 0px; padding: 15px 45px;}
     }
 }
 

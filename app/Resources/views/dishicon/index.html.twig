@@ -13,17 +13,7 @@
         <tbody>
         {% for dishIcon in dishIcons %}
             <tr>
-                <td><a href="{{ path('dishicon_show', { 'id': dishIcon.id }) }}">{{ dishIcon.id }}</a></td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('dishicon_show', { 'id': dishIcon.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('dishicon_edit', { 'id': dishIcon.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                
             </tr>
         {% endfor %}
         </tbody>
